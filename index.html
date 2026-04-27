@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nicole Chernow-Martinez | Fintech Product Leader</title>
+  <title>Nicole Chernow-Martinez | Head of FinTech Product Platforms</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
@@ -150,7 +150,7 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 900px;
+      max-width: 960px;
       padding: 0 24px;
     }
 
@@ -195,10 +195,10 @@
     }
 
     .hero-tagline {
-      font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+      font-size: clamp(0.88rem, 1.9vw, 1.08rem);
       font-weight: 400;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 780px;
       margin: 0 auto 48px;
       line-height: 1.7;
       opacity: 0;
@@ -390,6 +390,20 @@
 
     .about-bio strong { color: var(--text); font-weight: 600; }
 
+    .about-extras {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-top: -8px;
+      margin-bottom: 24px;
+      padding: 16px 20px;
+      border-left: 2px solid rgba(0,212,180,0.3);
+      background: rgba(0,212,180,0.04);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .about-extras strong { color: var(--accent); font-weight: 600; }
+
     .about-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -532,7 +546,9 @@
       z-index: 1;
     }
 
-    .timeline-item:nth-child(2)::before {
+    .timeline-item:nth-child(2)::before,
+    .timeline-item:nth-child(4)::before,
+    .timeline-item:nth-child(6)::before {
       background: var(--accent2);
       box-shadow: 0 0 16px rgba(124,92,252,0.6);
     }
@@ -546,7 +562,9 @@
       margin-bottom: 8px;
     }
 
-    .timeline-item:nth-child(2) .timeline-date { color: var(--accent2); }
+    .timeline-item:nth-child(2) .timeline-date,
+    .timeline-item:nth-child(4) .timeline-date,
+    .timeline-item:nth-child(6) .timeline-date { color: var(--accent2); }
 
     .timeline-company-loc {
       font-size: 0.82rem;
@@ -569,7 +587,9 @@
       margin-bottom: 16px;
     }
 
-    .timeline-item:nth-child(2) .timeline-company-full { color: var(--accent2); }
+    .timeline-item:nth-child(2) .timeline-company-full,
+    .timeline-item:nth-child(4) .timeline-company-full,
+    .timeline-item:nth-child(6) .timeline-company-full { color: var(--accent2); }
 
     .timeline-desc {
       font-size: 0.95rem;
@@ -714,10 +734,103 @@
     }
 
     /* ═══════════════════════════════
+       CASE STUDIES
+    ═══════════════════════════════ */
+    .cs-wrapper {
+      background: var(--bg2);
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      padding: 120px 0;
+    }
+
+    .cs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cs-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    }
+
+    .cs-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .cs-card:hover {
+      border-color: rgba(0,212,180,0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,180,0.06);
+    }
+
+    .cs-card:hover::before { opacity: 1; }
+
+    .cs-icon {
+      font-size: 1.8rem;
+      width: 52px; height: 52px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cs-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .cs-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .cs-arrow {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      transition: gap 0.25s;
+    }
+
+    .cs-card:hover .cs-arrow { gap: 10px; }
+
+    /* ═══════════════════════════════
        CONTACT
     ═══════════════════════════════ */
     .contact-wrapper {
-      background: var(--bg2);
+      background: var(--bg);
       width: 100vw;
       margin-left: calc(-50vw + 50%);
       padding: 120px 0;
@@ -773,7 +886,7 @@
     }
 
     .contact-email {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--accent);
       text-decoration: none;
@@ -843,13 +956,16 @@
       }
 
       .skills-grid { grid-template-columns: 1fr 1fr; }
+      .cs-grid     { grid-template-columns: 1fr 1fr; }
       .exp-inner   { padding: 0 24px; }
+      .cs-inner    { padding: 0 24px; }
       .contact-inner { padding: 0 24px; }
     }
 
     @media (max-width: 600px) {
       .nav-links   { display: none; }
       .skills-grid { grid-template-columns: 1fr; }
+      .cs-grid     { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -864,6 +980,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -876,14 +993,14 @@
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="dot"></span>
-        Fintech Executive &amp; Product Strategist
+        FinTech Product Platforms &amp; AI-Enabled Systems
       </div>
 
       <h1 class="hero-name">Nicole<br>Chernow-Martinez</h1>
 
       <p class="hero-tagline">
-        <strong>Fintech Product Leader</strong>&nbsp;&nbsp;|&nbsp;&nbsp;AI Strategy
-        &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years Building Payment Systems
+        <strong>Head of FinTech Product Platforms</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Payments, Lending &amp; AI-Enabled Systems
+        &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years in Regulated Financial Environments
       </p>
 
       <div class="hero-cta">
@@ -903,38 +1020,43 @@
     <div class="about-left">
       <div class="reveal">
         <p class="section-label">About Me</p>
-        <h2 class="section-title">Shaping the future<br>of financial products</h2>
+        <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
       </div>
 
       <p class="about-bio reveal reveal-delay-1">
-        I'm a <strong>product executive with 15+ years</strong> at the intersection of
-        financial services and technology. From architecting core payments infrastructure
-        at Wells Fargo to leading AI-powered lending transformation at Intuit and Finance
-        of America, I build products that move money more efficiently and equitably.
+        I specialize in <strong>payments, lending, and AI-enabled operational systems</strong>.
+        I operate at the intersection of product, engineering, and operations — owning platform
+        outcomes, influencing architecture, and driving measurable business impact in regulated
+        environments.
       </p>
 
       <p class="about-bio reveal reveal-delay-2">
-        My superpower is translating complex regulatory and technical constraints into
-        <strong>elegant product experiences</strong> — and rallying cross-functional teams
-        around a bold vision for what fintech can become.
+        I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong>
+        where AI is applied pragmatically to enhance operational performance — never as a substitute
+        for sound systems design.
       </p>
+
+      <div class="about-extras reveal reveal-delay-3">
+        <strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp;
+        Guest Lecturer at <strong>SDSU</strong>
+      </div>
 
       <div class="about-stats">
         <div class="stat-card reveal reveal-delay-1">
           <div class="stat-number">15+</div>
-          <div class="stat-label">Years in Fintech</div>
+          <div class="stat-label">Years of Experience</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
-          <div class="stat-number">$4B+</div>
-          <div class="stat-label">Payment Volume Influenced</div>
+          <div class="stat-number">70+</div>
+          <div class="stat-label">Countries via BetterPlanet</div>
         </div>
         <div class="stat-card reveal reveal-delay-3">
-          <div class="stat-number">3</div>
-          <div class="stat-label">Fortune 500 Companies</div>
+          <div class="stat-number">80+</div>
+          <div class="stat-label">Loan Lifecycle Initiatives</div>
         </div>
         <div class="stat-card reveal reveal-delay-4">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Products Launched at Scale</div>
+          <div class="stat-number">6</div>
+          <div class="stat-label">Case Studies Published</div>
         </div>
       </div>
     </div>
@@ -957,92 +1079,167 @@
         <p class="section-label">Career</p>
         <h2 class="section-title">Where I've Built</h2>
         <p class="section-sub">
-          A track record of delivering transformative product outcomes at
-          the most consequential financial institutions in the country.
+          Fifteen years of platform ownership, systems integration, and
+          AI-enabled product delivery across fintech, insurance, and lending.
         </p>
       </div>
 
       <div class="timeline">
 
-        <!-- Wells Fargo -->
+        <!-- Agentics Growth Lab -->
         <div class="timeline-item reveal">
           <div>
-            <div class="timeline-date">2019 – Present</div>
-            <div class="timeline-company-loc">San Francisco, CA</div>
+            <div class="timeline-date">Nov 2025 – Present</div>
+            <div class="timeline-company-loc">San Diego, CA</div>
           </div>
           <div>
-            <div class="timeline-role">VP, Head of Payments Product</div>
-            <div class="timeline-company-full">Wells Fargo</div>
+            <div class="timeline-role">Founder, CEO &amp; CPO</div>
+            <div class="timeline-company-full">Agentics Growth Lab</div>
             <p class="timeline-desc">
-              Led an 18-person product organization responsible for Wells Fargo's
-              real-time payments platform, Zelle integration, and ACH modernization
-              initiative. Drove a full re-architecture of the payments ledger to support
-              real-time settlement, reducing transaction failures by 41% and enabling
-              $2.3B in incremental daily volume. Partnered with Risk, Compliance, and
-              Engineering to launch the bank's first AI-assisted fraud detection layer,
-              cutting false positives by 28%.
+              Founded an AI product studio focused on building operational assistants
+              for fintech and business workflows. Designing and deploying AI-powered
+              systems that automate complex, regulation-adjacent processes — from
+              loan operations to compliance workflows — applying pragmatic AI where it
+              amplifies human judgment rather than replaces systems design.
             </p>
             <div class="timeline-tags">
-              <span class="tag">Real-Time Payments</span>
-              <span class="tag">ACH Modernization</span>
-              <span class="tag">Fraud Detection AI</span>
-              <span class="tag">Zelle</span>
-              <span class="tag">Platform Strategy</span>
+              <span class="tag">AI Operational Assistants</span>
+              <span class="tag">Fintech Workflows</span>
+              <span class="tag">Product Studio</span>
+              <span class="tag">0→1 Build</span>
             </div>
           </div>
         </div>
 
-        <!-- Intuit -->
+        <!-- ICW Group -->
         <div class="timeline-item reveal reveal-delay-1">
           <div>
-            <div class="timeline-date">2015 – 2019</div>
-            <div class="timeline-company-loc">Mountain View, CA</div>
+            <div class="timeline-date">May – Nov 2025</div>
+            <div class="timeline-company-loc">San Diego, CA</div>
           </div>
           <div>
-            <div class="timeline-role">Director of Product, Financial Services</div>
-            <div class="timeline-company-full">Intuit</div>
+            <div class="timeline-role">Technical Product Manager, Digital Platforms &amp; PaaS</div>
+            <div class="timeline-company-full">ICW Group</div>
             <p class="timeline-desc">
-              Owned the product roadmap for QuickBooks Payments and Mint's financial
-              health dashboard, serving 7M+ SMB customers. Spearheaded the launch of
-              instant deposit for QuickBooks, growing adoption to 1.2M users in 9 months.
-              Introduced an ML-driven cash flow forecasting feature that became Intuit's
-              most-upvoted product request. Managed $40M product P&L with full
-              accountability from discovery through GTM.
+              Led a platform product organization of 6 Product Owners across ICW's
+              digital platforms and PaaS infrastructure. Reduced release cycles by 40%
+              through process modernization and delivery rhythm improvements. Drove
+              platform architecture decisions that bridged engineering capability with
+              business outcomes in a regulated insurance environment.
             </p>
             <div class="timeline-tags">
-              <span class="tag">QuickBooks Payments</span>
-              <span class="tag">Instant Deposit</span>
-              <span class="tag">ML Forecasting</span>
-              <span class="tag">SMB Banking</span>
-              <span class="tag">P&amp;L Ownership</span>
+              <span class="tag">PaaS</span>
+              <span class="tag">Release Optimization</span>
+              <span class="tag">Team Leadership</span>
+              <span class="tag">Insurance Tech</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- First American -->
+        <div class="timeline-item reveal reveal-delay-2">
+          <div>
+            <div class="timeline-date">Jan 2024 – Feb 2025</div>
+            <div class="timeline-company-loc">Santa Ana, CA</div>
+          </div>
+          <div>
+            <div class="timeline-role">Product Manager / Senior Product Owner</div>
+            <div class="timeline-company-full">First American</div>
+            <p class="timeline-desc">
+              Owned end-to-end product delivery for digital payment rail integrations
+              including ACH, wire, and RTP. Managed complex vendor integrations with
+              Jack Henry, Fiserv, and Bottomline Technologies — navigating compliance,
+              API architecture, and operational readiness across all three rails
+              simultaneously. Delivered within a heavily regulated title and settlement
+              environment.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">ACH</span>
+              <span class="tag">Wire</span>
+              <span class="tag">RTP</span>
+              <span class="tag">Jack Henry</span>
+              <span class="tag">Fiserv</span>
+              <span class="tag">Bottomline</span>
             </div>
           </div>
         </div>
 
         <!-- Finance of America -->
-        <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-item reveal reveal-delay-1">
           <div>
-            <div class="timeline-date">2010 – 2015</div>
-            <div class="timeline-company-loc">Calabasas, CA</div>
+            <div class="timeline-date">Jun 2022 – Sep 2023</div>
+            <div class="timeline-company-loc">Scottsdale, AZ</div>
           </div>
           <div>
-            <div class="timeline-role">Senior PM, Digital Lending</div>
+            <div class="timeline-role">Product Manager / Platform Product Owner</div>
             <div class="timeline-company-full">Finance of America</div>
             <p class="timeline-desc">
-              Built the company's first fully digital mortgage application experience
-              from 0 to 1, reducing time-to-decision from 22 days to 6. Led a
-              cross-functional team of 35 across product, engineering, and ops.
-              Delivered an automated income verification integration with IRS APIs and
-              third-party payroll providers, setting a new industry benchmark for
-              underwriting speed. Championed mobile-first design principles that lifted
-              application conversion by 33%.
+              Platform product owner across the mortgage lending lifecycle — owning
+              integrations with Salesforce, Five9, and Plaid while maintaining SOX
+              compliance across all platform touchpoints. Led cross-functional delivery
+              spanning loan origination, call center operations, and payment rail
+              connectivity. Drove operational efficiency improvements in a high-volume
+              lending environment.
             </p>
             <div class="timeline-tags">
-              <span class="tag">Digital Mortgage</span>
-              <span class="tag">Underwriting Automation</span>
-              <span class="tag">IRS API Integration</span>
-              <span class="tag">Mobile-First</span>
-              <span class="tag">0→1 Product</span>
+              <span class="tag">Salesforce</span>
+              <span class="tag">Five9</span>
+              <span class="tag">Plaid</span>
+              <span class="tag">SOX Compliance</span>
+              <span class="tag">Mortgage Tech</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tealium -->
+        <div class="timeline-item reveal reveal-delay-2">
+          <div>
+            <div class="timeline-date">Dec 2020 – Apr 2022</div>
+            <div class="timeline-company-loc">San Diego, CA</div>
+          </div>
+          <div>
+            <div class="timeline-role">Technical Product Manager / Scrum Master</div>
+            <div class="timeline-company-full">Tealium</div>
+            <p class="timeline-desc">
+              Technical PM and Scrum Master on Tealium's SaaS big data platform.
+              Owned the product roadmap for IAM capabilities and API infrastructure,
+              enabling enterprise customers to manage data collection and activation
+              at scale. Partnered closely with engineering to define API contracts and
+              drive platform extensibility across a global customer base.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">SaaS Platform</span>
+              <span class="tag">Big Data</span>
+              <span class="tag">IAM</span>
+              <span class="tag">APIs</span>
+              <span class="tag">Scrum</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wells Fargo -->
+        <div class="timeline-item reveal reveal-delay-3">
+          <div>
+            <div class="timeline-date">Mar 2005 – Nov 2020</div>
+            <div class="timeline-company-loc">San Diego, CA</div>
+          </div>
+          <div>
+            <div class="timeline-role">Assistant Vice President</div>
+            <div class="timeline-company-full">Wells Fargo</div>
+            <p class="timeline-desc">
+              Fifteen years at Wells Fargo spanning mortgage systems, risk operations,
+              and enterprise Agile transformation. Contributed to 80+ loan lifecycle
+              initiatives across origination, servicing, and default management.
+              Played a key role in the bank's Agile adoption — coaching teams, defining
+              delivery frameworks, and bridging business and technology stakeholders
+              across large-scale program portfolios in a heavily regulated environment.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">Mortgage Systems</span>
+              <span class="tag">Risk Operations</span>
+              <span class="tag">Agile Transformation</span>
+              <span class="tag">Loan Lifecycle</span>
+              <span class="tag">15 Years</span>
             </div>
           </div>
         </div>
@@ -1057,8 +1254,8 @@
       <p class="section-label">Expertise</p>
       <h2 class="section-title">What I Bring</h2>
       <p class="section-sub">
-        Deep domain knowledge across the full fintech stack — from infrastructure
-        to strategy to the user experience.
+        Deep domain knowledge across the full fintech stack — from payments
+        infrastructure to AI strategy to platform architecture.
       </p>
     </div>
 
@@ -1068,14 +1265,16 @@
         <div class="skill-icon si-a">💳</div>
         <div class="skill-name">Payments Infrastructure</div>
         <p class="skill-desc">
-          ACH, RTP, FedNow, SWIFT, card rails. I've built on every major
-          payment network and know how to ship at bank scale.
+          Hands-on delivery across ACH, wire, and RTP rails with major processors.
+          From Jack Henry and Fiserv to Bottomline and Plaid — I own the integration,
+          not just the roadmap.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-teal">Real-Time Payments</span>
-          <span class="pill pill-teal">ACH / NACHA</span>
-          <span class="pill pill-teal">FedNow</span>
-          <span class="pill pill-teal">Card Rails</span>
+          <span class="pill pill-teal">ACH</span>
+          <span class="pill pill-teal">Wire</span>
+          <span class="pill pill-teal">RTP</span>
+          <span class="pill pill-teal">Plaid</span>
+          <span class="pill pill-teal">Fiserv</span>
         </div>
       </div>
 
@@ -1083,70 +1282,79 @@
         <div class="skill-icon si-b">🤖</div>
         <div class="skill-name">AI Product Strategy</div>
         <p class="skill-desc">
-          From ML-powered fraud models to generative AI copilots for financial
-          advisors — I translate AI capability into customer value.
+          Building AI-powered operational assistants for fintech workflows.
+          I apply AI pragmatically — where it enhances operational performance
+          and is grounded in sound systems design.
         </p>
         <div class="skill-pills">
+          <span class="pill pill-purple">AI Assistants</span>
           <span class="pill pill-purple">LLM Integration</span>
-          <span class="pill pill-purple">Fraud ML</span>
-          <span class="pill pill-purple">Predictive Analytics</span>
+          <span class="pill pill-purple">Operational AI</span>
           <span class="pill pill-purple">AI Roadmapping</span>
         </div>
       </div>
 
       <div class="skill-card reveal reveal-delay-3">
         <div class="skill-icon si-c">🏦</div>
-        <div class="skill-name">Digital Banking</div>
+        <div class="skill-name">Digital Banking Platforms</div>
         <p class="skill-desc">
-          Consumer and SMB banking product strategy, including neobank launches,
-          core modernization, and embedded finance partnerships.
+          Platform product ownership across lending origination, digital banking,
+          and mortgage lifecycle systems — including CRM, telephony, and
+          data platform integrations.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-teal">Neobank</span>
-          <span class="pill pill-teal">Core Modernization</span>
-          <span class="pill pill-teal">Embedded Finance</span>
+          <span class="pill pill-teal">Salesforce</span>
+          <span class="pill pill-teal">Five9</span>
+          <span class="pill pill-teal">Jack Henry</span>
+          <span class="pill pill-teal">Mortgage Tech</span>
         </div>
       </div>
 
       <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon si-d">📐</div>
-        <div class="skill-name">Product Leadership</div>
+        <div class="skill-icon si-d">🔒</div>
+        <div class="skill-name">Risk &amp; Compliance</div>
         <p class="skill-desc">
-          Org design, OKR frameworks, roadmap prioritization, and building
-          high-performing PM teams in fast-moving regulated environments.
+          Deep fluency in SOX, FFIEC, and SOC2 requirements — translating
+          regulatory constraints into platform guardrails without sacrificing
+          delivery velocity.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-purple">Team Scaling</span>
-          <span class="pill pill-purple">OKR Design</span>
-          <span class="pill pill-purple">GTM Strategy</span>
+          <span class="pill pill-purple">SOX</span>
+          <span class="pill pill-purple">FFIEC</span>
+          <span class="pill pill-purple">SOC2</span>
+          <span class="pill pill-purple">Reg Compliance</span>
         </div>
       </div>
 
       <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon si-e">🔒</div>
-        <div class="skill-name">Risk &amp; Compliance</div>
+        <div class="skill-icon si-e">⚙️</div>
+        <div class="skill-name">Platform Architecture &amp; APIs</div>
         <p class="skill-desc">
-          Deep fluency in AML, KYC, PCI-DSS, and Reg E — translating compliance
-          requirements into product guardrails without killing UX.
+          Influencing system design, defining API contracts, and owning
+          integration-heavy platform roadmaps in PaaS and SaaS environments —
+          from IAM to big data pipelines.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-teal">AML / KYC</span>
-          <span class="pill pill-teal">PCI-DSS</span>
-          <span class="pill pill-teal">Reg E</span>
+          <span class="pill pill-teal">API Design</span>
+          <span class="pill pill-teal">PaaS</span>
+          <span class="pill pill-teal">IAM</span>
+          <span class="pill pill-teal">Systems Integration</span>
         </div>
       </div>
 
       <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon si-f">📈</div>
-        <div class="skill-name">Data &amp; Experimentation</div>
+        <div class="skill-icon si-f">📐</div>
+        <div class="skill-name">Scaled Agile &amp; OKRs</div>
         <p class="skill-desc">
-          A/B testing, funnel analysis, and instrumentation strategy.
-          I run disciplined experiments and let data drive conviction.
+          Leading product teams and coaching Agile transformation at scale.
+          From Scrum Master to multi-team Product Owner organizations — I build
+          delivery structures that hold up under regulatory pressure.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-purple">A/B Testing</span>
-          <span class="pill pill-purple">SQL / Python</span>
-          <span class="pill pill-purple">Amplitude / Mixpanel</span>
+          <span class="pill pill-purple">SAFe / Scrum</span>
+          <span class="pill pill-purple">OKR Frameworks</span>
+          <span class="pill pill-purple">Team Coaching</span>
+          <span class="pill pill-purple">PI Planning</span>
         </div>
       </div>
 
@@ -1156,30 +1364,90 @@
     <div class="reveal" style="max-width: 580px;">
       <div class="exp-bar-wrap" id="exp-bars">
         <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Payments &amp; Banking</span><span>98%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="98"></div></div>
+          <div class="exp-bar-label"><span>Payments Infrastructure (ACH, Wire, RTP)</span><span>97%</span></div>
+          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="97"></div></div>
         </div>
         <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>AI / ML Product Strategy</span><span>88%</span></div>
+          <div class="exp-bar-label"><span>AI Product Strategy</span><span>88%</span></div>
           <div class="exp-bar-track"><div class="exp-bar-fill" data-width="88"></div></div>
         </div>
         <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Risk &amp; Regulatory</span><span>92%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="92"></div></div>
+          <div class="exp-bar-label"><span>Risk &amp; Compliance (SOX, FFIEC, SOC2)</span><span>94%</span></div>
+          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="94"></div></div>
         </div>
         <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Product Team Leadership</span><span>95%</span></div>
+          <div class="exp-bar-label"><span>Platform Architecture &amp; APIs</span><span>90%</span></div>
+          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="exp-bar-item">
+          <div class="exp-bar-label"><span>Scaled Agile &amp; OKRs</span><span>95%</span></div>
           <div class="exp-bar-track"><div class="exp-bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Data &amp; Experimentation</span><span>85%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="85"></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
+
+  <!-- ══════ CASE STUDIES ══════ -->
+  <div class="cs-wrapper" id="case-studies">
+    <div class="cs-inner">
+      <div class="reveal">
+        <p class="section-label">Case Studies</p>
+        <h2 class="section-title">Work That Ships</h2>
+        <p class="section-sub">
+          Six published case studies documenting real platform outcomes —
+          from AI operations assistants to complex payment rail integrations.
+        </p>
+      </div>
+
+      <div class="cs-grid">
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+          <div class="cs-icon si-b">🤖</div>
+          <div class="cs-title">Digital Banking AI Operations Assistant</div>
+          <p class="cs-desc">Designing and deploying an AI-powered assistant to automate operational workflows in a digital banking context.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+          <div class="cs-icon si-a">🏦</div>
+          <div class="cs-title">Bottomline Digital Banking Integration</div>
+          <p class="cs-desc">End-to-end product ownership of the Bottomline payment platform integration for a regulated financial services client.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+          <div class="cs-icon si-c">📞</div>
+          <div class="cs-title">Five9 Call Center Integration</div>
+          <p class="cs-desc">Integrating Five9 cloud contact center with a mortgage lending platform — spanning telephony, CRM, and loan lifecycle data.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+          <div class="cs-icon si-d">💳</div>
+          <div class="cs-title">Plaid Payment Rails</div>
+          <p class="cs-desc">Building and owning the Plaid payment rail integration within a SOX-compliant lending environment, including identity and account verification.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+          <div class="cs-icon si-e">🌍</div>
+          <div class="cs-title">BetterPlanet Co-op</div>
+          <p class="cs-desc">Co-founded and scaled a cooperative platform reaching 70+ countries — product strategy, operations, and community infrastructure.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+          <div class="cs-icon si-f">📊</div>
+          <div class="cs-title">Tealium Big Data Platform</div>
+          <p class="cs-desc">Technical PM ownership of a SaaS big data platform — API infrastructure, IAM capabilities, and enterprise data activation at scale.</p>
+          <span class="cs-arrow">Read case study →</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
 
   <!-- ══════ CONTACT ══════ -->
   <div class="contact-wrapper" id="contact">
@@ -1188,13 +1456,13 @@
         <p class="section-label">Contact</p>
         <h2 class="section-title">Let's Connect</h2>
         <p class="section-sub">
-          Whether you're building a fintech team, exploring an advisory relationship,
-          or just want to talk payments — my inbox is open.
+          Whether you're building a fintech platform team, exploring a product advisory
+          relationship, or want to talk payments infrastructure — my inbox is open.
         </p>
       </div>
 
       <div class="contact-links reveal reveal-delay-1">
-        <a href="mailto:nicolejaymartinez@gmail.com" class="contact-link">
+        <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-link">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="M2 7l10 7 10-7"/>
@@ -1210,20 +1478,18 @@
           LinkedIn
         </a>
 
-        <a href="#" class="contact-link">
+        <a href="https://www.agenticsgrowthlab.com" class="contact-link" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
-          Resume / CV
+          Agentics Growth Lab
         </a>
       </div>
 
       <div class="reveal reveal-delay-2">
-        <a href="mailto:nicolejaymartinez@gmail.com" class="contact-email">
-          nicolejaymartinez@gmail.com
+        <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-email">
+          nicolechernowmartinez@gmail.com
         </a>
       </div>
     </div>
