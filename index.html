@@ -493,6 +493,47 @@
       opacity: 0.5;
     }
 
+    /* ── Video embed ── */
+    .video-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 9/16;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      box-shadow: 0 0 50px rgba(0,212,180,0.08), 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-label {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+      max-width: 300px;
+      padding: 0 8px;
+    }
+
+    .video-label strong { color: var(--accent); font-weight: 600; }
+
     /* ═══════════════════════════════
        EXPERIENCE
     ═══════════════════════════════ */
@@ -1061,11 +1102,18 @@
       </div>
     </div>
 
-    <div class="about-right reveal reveal-delay-2">
-      <div class="about-photo-wrap">
-        <div class="monogram">NCM</div>
-        <div class="corner-accent"></div>
-        <div class="corner-accent-bl"></div>
+    <div class="about-right">
+      <div class="video-outer reveal reveal-delay-2">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/3zjcndXSqhU"
+            title="Nicole Chernow-Martinez — AI Persona &amp; Product Leadership"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-label"><strong>Nicole's AI Persona</strong><br>See How I Think About Product Leadership</p>
       </div>
     </div>
   </section>
@@ -1403,42 +1451,42 @@
 
       <div class="cs-grid">
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/digital-banking-ai-operations-assistant" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
           <div class="cs-icon si-b">🤖</div>
           <div class="cs-title">Digital Banking AI Operations Assistant</div>
           <p class="cs-desc">Designing and deploying an AI-powered assistant to automate operational workflows in a digital banking context.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-digital-bankings-bottomline-integration" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
           <div class="cs-icon si-a">🏦</div>
           <div class="cs-title">Bottomline Digital Banking Integration</div>
           <p class="cs-desc">End-to-end product ownership of the Bottomline payment platform integration for a regulated financial services client.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-portfolio-case-study-five9-call-center-integration-for-loan-origination-platform" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
           <div class="cs-icon si-c">📞</div>
           <div class="cs-title">Five9 Call Center Integration</div>
           <p class="cs-desc">Integrating Five9 cloud contact center with a mortgage lending platform — spanning telephony, CRM, and loan lifecycle data.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/project-two-foa" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
           <div class="cs-icon si-d">💳</div>
           <div class="cs-title">Plaid Payment Rails</div>
           <p class="cs-desc">Building and owning the Plaid payment rail integration within a SOX-compliant lending environment, including identity and account verification.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-betterplanet-coop" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
           <div class="cs-icon si-e">🌍</div>
           <div class="cs-title">BetterPlanet Co-op</div>
           <p class="cs-desc">Co-founded and scaled a cooperative platform reaching 70+ countries — product strategy, operations, and community infrastructure.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/project-one-tealium" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
           <div class="cs-icon si-f">📊</div>
           <div class="cs-title">Tealium Big Data Platform</div>
           <p class="cs-desc">Technical PM ownership of a SaaS big data platform — API infrastructure, IAM capabilities, and enterprise data activation at scale.</p>
