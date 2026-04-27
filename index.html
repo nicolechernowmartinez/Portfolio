@@ -868,6 +868,198 @@
     .cs-card:hover .cs-arrow { gap: 10px; }
 
     /* ═══════════════════════════════
+       CASE STUDY EXPANDED PANELS
+    ═══════════════════════════════ */
+    .cs-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      border-top: 1px solid var(--border);
+      padding: 80px 0;
+      scroll-margin-top: 88px;
+    }
+
+    .cs-full:nth-child(odd)  { background: var(--bg); }
+    .cs-full:nth-child(even) { background: var(--bg2); }
+
+    .cs-full-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 48px 0 60px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .cs-full:nth-child(even) .cs-full-inner { border-left-color: var(--accent2); }
+
+    .cs-company-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .cs-full:nth-child(even) .cs-company-tag { color: var(--accent2); }
+
+    .cs-full-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 36px;
+    }
+
+    .cs-full h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 36px 0 10px;
+    }
+
+    .cs-full h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 22px 0 6px;
+    }
+
+    .cs-full p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .cs-full ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .cs-full li {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .cs-full li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.82rem;
+      top: 2px;
+    }
+
+    .cs-full li strong { color: var(--text); font-weight: 600; }
+
+    .cs-impact {
+      background: rgba(0,212,180,0.05);
+      border-left: 2px solid rgba(0,212,180,0.3);
+      padding: 11px 16px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 6px 0 18px;
+    }
+
+    .cs-impact p {
+      font-size: 0.88rem !important;
+      margin-bottom: 0 !important;
+      color: var(--muted);
+    }
+
+    .cs-impact strong { color: var(--accent) !important; font-weight: 700; }
+
+    .cs-journey {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(0,212,180,0.25);
+      margin: 16px 0 28px;
+    }
+
+    .cs-journey-step {
+      padding: 10px 0 10px 24px;
+      position: relative;
+    }
+
+    .cs-journey-step::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 17px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(0,212,180,0.45);
+    }
+
+    .cs-journey-step span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .cs-journey-step strong { color: var(--text); font-weight: 600; }
+
+    .cs-skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 4px 0 40px;
+    }
+
+    .cs-back-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(0,212,180,0.22);
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-top: 48px;
+      transition: border-color 0.25s, background 0.25s, gap 0.25s;
+    }
+
+    .cs-back-top:hover {
+      border-color: var(--accent);
+      background: rgba(0,212,180,0.06);
+      gap: 10px;
+    }
+
+    .btn-try {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: linear-gradient(135deg, var(--accent), #00a896);
+      color: #07091a;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 0 24px rgba(0,212,180,0.3);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    .btn-try:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0,212,180,0.5);
+    }
+
+    /* ═══════════════════════════════
        CONTACT
     ═══════════════════════════════ */
     .contact-wrapper {
@@ -1001,6 +1193,7 @@
       .exp-inner   { padding: 0 24px; }
       .cs-inner    { padding: 0 24px; }
       .contact-inner { padding: 0 24px; }
+      .cs-full-inner { padding: 0 24px 0 28px; border-left-width: 2px; }
     }
 
     @media (max-width: 600px) {
@@ -1451,42 +1644,42 @@
 
       <div class="cs-grid">
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/digital-banking-ai-operations-assistant" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+        <a href="#cs-1" class="cs-card reveal reveal-delay-1">
           <div class="cs-icon si-b">🤖</div>
           <div class="cs-title">Digital Banking AI Operations Assistant</div>
           <p class="cs-desc">Designing and deploying an AI-powered assistant to automate operational workflows in a digital banking context.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-digital-bankings-bottomline-integration" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+        <a href="#cs-2" class="cs-card reveal reveal-delay-2">
           <div class="cs-icon si-a">🏦</div>
           <div class="cs-title">Bottomline Digital Banking Integration</div>
           <p class="cs-desc">End-to-end product ownership of the Bottomline payment platform integration for a regulated financial services client.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-portfolio-case-study-five9-call-center-integration-for-loan-origination-platform" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+        <a href="#cs-3" class="cs-card reveal reveal-delay-3">
           <div class="cs-icon si-c">📞</div>
           <div class="cs-title">Five9 Call Center Integration</div>
           <p class="cs-desc">Integrating Five9 cloud contact center with a mortgage lending platform — spanning telephony, CRM, and loan lifecycle data.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/project-two-foa" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-1">
+        <a href="#cs-4" class="cs-card reveal reveal-delay-1">
           <div class="cs-icon si-d">💳</div>
           <div class="cs-title">Plaid Payment Rails</div>
           <p class="cs-desc">Building and owning the Plaid payment rail integration within a SOX-compliant lending environment, including identity and account verification.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/case-study-betterplanet-coop" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-2">
+        <a href="#cs-5" class="cs-card reveal reveal-delay-2">
           <div class="cs-icon si-e">🌍</div>
           <div class="cs-title">BetterPlanet Co-op</div>
           <p class="cs-desc">Co-founded and scaled a cooperative platform reaching 70+ countries — product strategy, operations, and community infrastructure.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
-        <a href="https://www.agenticsgrowthlab.com/product-leadership-that-shines/project-one-tealium" target="_blank" rel="noopener noreferrer" class="cs-card reveal reveal-delay-3">
+        <a href="#cs-6" class="cs-card reveal reveal-delay-3">
           <div class="cs-icon si-f">📊</div>
           <div class="cs-title">Tealium Big Data Platform</div>
           <p class="cs-desc">Technical PM ownership of a SaaS big data platform — API infrastructure, IAM capabilities, and enterprise data activation at scale.</p>
@@ -1494,6 +1687,382 @@
         </a>
 
       </div>
+    </div>
+  </div>
+
+  <!-- ══════ CS1: Digital Banking AI Operations Assistant ══════ -->
+  <div class="cs-full reveal" id="cs-1">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">Agentics Growth Lab</span>
+      <h2 class="cs-full-title">Digital Banking AI Operations Assistant</h2>
+
+      <h3>The Problem</h3>
+      <p>SMB banking teams handle high volumes of exploratory customer questions that consume contact center time without requiring financial advice or account access. These questions — about products, rates, and options — are informational by nature, but they're routed through the same channels as complex service requests, creating bottlenecks and driving up cost per interaction.</p>
+
+      <h3>The Solution</h3>
+      <p>A friendly AI assistant designed as a first-pass digital banking experience — explaining financial options in plain language without giving regulated advice, collecting personal data, or replacing human bankers. The assistant handles the exploratory conversation, creates clarity for the customer, and hands off to a human with full context when appropriate.</p>
+      <ul>
+        <li>Explains financial products and options in plain language</li>
+        <li>Never gives regulated financial advice or collects personal data</li>
+        <li>Designed to complement, not replace, the human banking relationship</li>
+        <li>Reduces contact center volume for non-advice exploratory calls</li>
+      </ul>
+
+      <h3>Customer Journey</h3>
+      <div class="cs-journey">
+        <div class="cs-journey-step"><span><strong>Step 1</strong> — Customer calls bank with a product question</span></div>
+        <div class="cs-journey-step"><span><strong>Step 2</strong> — Greeted and asked: "Do you have questions about our products?"</span></div>
+        <div class="cs-journey-step"><span><strong>Step 3</strong> — Call routed to AI first-pass assistant</span></div>
+        <div class="cs-journey-step"><span><strong>Step 4</strong> — AI engages in friendly, clear conversation and explains options</span></div>
+        <div class="cs-journey-step"><span><strong>Step 5</strong> — "What would you like to do next?" — warm handoff to human banker</span></div>
+      </div>
+
+      <a href="https://www.agenticsgrowthlab.com/britany-your-commercial-banking-assistant" target="_blank" rel="noopener noreferrer" class="btn-try">Try It Live →</a>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">AI Product Design</span>
+        <span class="pill pill-teal">Conversational UX</span>
+        <span class="pill pill-teal">Digital Banking</span>
+        <span class="pill pill-purple">LLM Integration</span>
+        <span class="pill pill-purple">Contact Center Strategy</span>
+        <span class="pill pill-teal">Compliance-Aware AI</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+    </div>
+  </div>
+
+  <!-- ══════ CS2: Bottomline Digital Banking Integration ══════ -->
+  <div class="cs-full reveal" id="cs-2">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">First American Trust</span>
+      <h2 class="cs-full-title">Modernizing Payments Infrastructure in a Regulated Banking Environment</h2>
+
+      <h3>Executive Summary</h3>
+      <p>Transformed First American Trust's payments operations from a fragile, manual-dependent infrastructure into a resilient platform capability using Bottomline's technology. The initiative expanded digital payment options across trust accounts, reduced operational friction, and enabled scalable growth without proportional increases in support staffing.</p>
+
+      <h3>Business Impact</h3>
+      <ul>
+        <li>Expanded digital payment capabilities across trust accounts</li>
+        <li>Reduced manual exception handling and operational friction</li>
+        <li>Improved transaction reliability and end-to-end visibility</li>
+        <li>Enabled scalable growth without proportional staffing increases</li>
+        <li>Higher reliability, lower operational cost, increased customer confidence</li>
+        <li>Reduced engineering dependency through self-service tooling</li>
+      </ul>
+
+      <h3>Platform Philosophy</h3>
+      <ul>
+        <li>Treat payments as a platform capability — not a feature</li>
+        <li>Build proactive tooling to surface risk before customers experience failures</li>
+        <li>Enable modular integrations through standardized APIs</li>
+        <li>Reduce dependency on scarce engineering resources through better developer tooling</li>
+      </ul>
+
+      <h3>Key Solutions Delivered</h3>
+      <ul>
+        <li>Bottomline-based payment orchestration layer</li>
+        <li>API-first integration model for downstream systems</li>
+        <li>Automated exception handling workflows</li>
+        <li>Internal dashboards for real-time transaction health monitoring</li>
+        <li>Alerting systems for proactive operational intervention</li>
+      </ul>
+
+      <h3>User Personas</h3>
+      <ul>
+        <li>Trust operations specialists managing high-value transactions</li>
+        <li>Banking compliance and risk officers</li>
+        <li>Client services teams supporting institutional customers</li>
+      </ul>
+
+      <h3>Pain Points Addressed</h3>
+      <ul>
+        <li>Manual reconciliation consuming operations team bandwidth</li>
+        <li>Payment failures and delayed settlements eroding customer trust</li>
+        <li>Limited transaction visibility creating reactive rather than proactive support</li>
+        <li>High operational cost per exception event</li>
+        <li>Overreliance on engineering teams for routine integration changes</li>
+      </ul>
+
+      <h3>KPIs Tracked</h3>
+      <ul>
+        <li>Payment success rate</li>
+        <li>Average resolution time for exception events</li>
+        <li>Support ticket volume (payments-related)</li>
+        <li>Operational cost per transaction</li>
+        <li>Platform uptime and availability</li>
+      </ul>
+
+      <h3>Future Iterations</h3>
+      <ul>
+        <li>AI-assisted payment anomaly detection</li>
+        <li>Agent-based developer support for integrations</li>
+        <li>Self-service integration tooling for partner banks</li>
+      </ul>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">FinTech Platform Strategy</span>
+        <span class="pill pill-teal">API-First Architecture</span>
+        <span class="pill pill-teal">Bottomline</span>
+        <span class="pill pill-purple">Compliance-Aware Product</span>
+        <span class="pill pill-purple">Cross-Functional Delivery</span>
+        <span class="pill pill-teal">Payments Infrastructure</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+    </div>
+  </div>
+
+  <!-- ══════ CS3: Five9 Call Center Integration ══════ -->
+  <div class="cs-full reveal" id="cs-3">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">Finance of America</span>
+      <h2 class="cs-full-title">Five9 Call Center Integration for Loan Origination Platform</h2>
+
+      <h3>Executive Summary</h3>
+      <p>Designed and delivered a real-time integration between Five9's cloud call-center platform and a home-grown loan origination system — transforming voice calls from isolated support interactions into fully connected financial workflow events. Every call became part of the loan record, compliance trail, and operational reporting structure.</p>
+
+      <h3>The Before State</h3>
+      <ul>
+        <li>Agents worked in Five9 while loan officers worked in the LOS — two separate systems</li>
+        <li>Call data lived entirely separately from loan application data</li>
+        <li>Context switching between platforms slowed resolution times</li>
+        <li>Compliance evidence was fragmented across systems</li>
+        <li>Managers lacked end-to-end visibility into borrower interactions</li>
+      </ul>
+
+      <h3>Product Vision</h3>
+      <p>Create a voice-enabled financial workflow platform where every call is a connected event:</p>
+      <ul>
+        <li>Calls automatically attach to the correct loan application</li>
+        <li>Agents operate inside a single unified interface</li>
+        <li>Call metadata becomes part of the permanent financial record</li>
+        <li>Compliance evidence is generated by default, not manually assembled</li>
+      </ul>
+
+      <h3>Key Initiatives</h3>
+
+      <h4>1. Embedded Call Panel in the Loan Platform</h4>
+      <p>Built a native call management interface directly inside the LOS — incoming call pop-ups showing borrower and loan context, one-click call controls, live loan details visible during conversation, and inline notes stored directly to the loan record.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Eliminated system switching for agents. Agents never needed to leave the loan platform.</p></div>
+
+      <h4>2. Automatic Call-to-Loan Linking</h4>
+      <p>Matching logic using phone number normalization and active application lookup. Every call produced a structured record: Loan ID, Borrower ID, Agent ID, Timestamp, Call type, and Outcome — automatically.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Complete interaction history per loan, built without manual agent data entry.</p></div>
+
+      <h4>3. Compliance and Audit Trail Engine</h4>
+      <p>Stored structured call metadata alongside recording references, disposition codes, agent actions, and notes in a queryable format designed for regulatory review.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Simplified regulatory audits and reduced compliance team effort per review cycle.</p></div>
+
+      <h4>4. Agent Productivity Dashboard</h4>
+      <p>Built reporting visibility across calls per loan stage, conversion by call outcome, handle time vs. funding success rate, missed call rates, and queue performance by team.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Enabled data-driven staffing decisions and coaching conversations grounded in real operational data.</p></div>
+
+      <h4>5. Event-Driven Architecture</h4>
+      <p>Built on Five9 webhooks, REST APIs, and asynchronous event processing with idempotent updates — ensuring no duplicate records and full fault tolerance under high call volumes.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Reliable, scalable integration that held up under peak origination periods without engineering intervention.</p></div>
+
+      <h3>Results</h3>
+      <ul>
+        <li>Significant reduction in average call handling time</li>
+        <li>Higher loan application completion rates tied to better agent context</li>
+        <li>Improved agent satisfaction and retention</li>
+        <li>Faster underwriting cycle times through connected workflows</li>
+        <li>Stronger compliance posture with auto-generated audit trails</li>
+        <li>Improved executive visibility into call-driven revenue</li>
+      </ul>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">FinTech Platform Strategy</span>
+        <span class="pill pill-teal">Five9 Integration</span>
+        <span class="pill pill-teal">API-First Architecture</span>
+        <span class="pill pill-purple">Event-Driven Systems</span>
+        <span class="pill pill-purple">Compliance-Aware Product</span>
+        <span class="pill pill-purple">Cross-Functional Delivery</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+    </div>
+  </div>
+
+  <!-- ══════ CS4: Plaid Payment Rails ══════ -->
+  <div class="cs-full reveal" id="cs-4">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">Finance of America Home Improvement</span>
+      <h2 class="cs-full-title">Plaid Payment Rails — Elevating Payment Functionalities</h2>
+
+      <h3>Executive Summary</h3>
+      <p>Led ACH payment expansion on a legacy lending stack, enabling contractors and homeowners to transact more efficiently — reducing friction, increasing conversions, and strengthening revenue. The initiative extended payment options to underserved customer segments and built the data linkage needed to validate impact over time.</p>
+
+      <h3>Challenges</h3>
+      <ul>
+        <li>Legacy payments infrastructure limited payment options and slowed application throughput</li>
+        <li>Contractor and homeowner personas experienced inconsistent checkout experiences</li>
+        <li>Limited data linkage between payments, loan status, and customer engagement events</li>
+        <li>Measurement systems lacked structured mechanisms to validate business impact</li>
+      </ul>
+
+      <h3>User Personas</h3>
+      <ul>
+        <li><strong>Contractors</strong> — needed fast, reliable payments tied directly to customer approvals</li>
+        <li><strong>Homeowners</strong> — demanded transparent payment options with minimal friction at checkout</li>
+        <li><strong>Operations teams</strong> — required detailed payment outcomes linked to loan data for reporting</li>
+      </ul>
+
+      <h3>Key Solutions Delivered</h3>
+      <ul>
+        <li>Added ACH payment method via Plaid integration</li>
+        <li>Tied payment status directly to loan application progress and lifecycle events</li>
+        <li>Built API endpoints for payment webhook events with real-time status updates</li>
+        <li>Improved UI with progressive disclosure to reduce cognitive load at checkout</li>
+        <li>Inline error handling for ACH failures with clear customer-facing messaging</li>
+      </ul>
+
+      <h3>KPIs Tracked</h3>
+      <ul>
+        <li>Payment completion rate</li>
+        <li>Loan disbursement time</li>
+        <li>Abandonment rate before funding</li>
+        <li>Revenue uplift attributable to expanded payment options</li>
+      </ul>
+
+      <h3>Future Iterations</h3>
+      <ul>
+        <li>Recurring payments support for installment loan structures</li>
+        <li>Enhanced fraud and risk scoring integrated at checkout</li>
+        <li>Multi-currency and payout support for contractor networks</li>
+      </ul>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">Payments Modernization</span>
+        <span class="pill pill-teal">Plaid Integration</span>
+        <span class="pill pill-teal">API Design</span>
+        <span class="pill pill-purple">Product Discovery</span>
+        <span class="pill pill-purple">Cross-Functional Leadership</span>
+        <span class="pill pill-teal">SOX Compliance</span>
+        <span class="pill pill-purple">Data-Driven Decisions</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+    </div>
+  </div>
+
+  <!-- ══════ CS5: BetterPlanet Co-op ══════ -->
+  <div class="cs-full reveal" id="cs-5">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">BetterPlanet Co-op — Founder &amp; Strategic Product Leader</span>
+      <h2 class="cs-full-title">eCommerce and Payments Platform Transformation</h2>
+
+      <h3>Executive Summary</h3>
+      <p>Led end-to-end transformation of BetterPlanet Co-op's commerce platform from a limited donation and content experience into a modern payment-enabled digital product capable of supporting sustainable revenue growth and mission-driven scale — reaching customers in 70+ countries.</p>
+
+      <h3>Results</h3>
+      <ul>
+        <li>350%+ revenue increase in 5 months</li>
+        <li>100% month-over-month growth in customer engagement</li>
+        <li>Higher transaction success rates across all payment methods</li>
+        <li>Improved customer trust and repeat purchase retention</li>
+        <li>Scalable platform foundation for future products and subscriptions</li>
+      </ul>
+
+      <h3>The Before State</h3>
+      <ul>
+        <li>Revenue collection was fragmented across disconnected tools</li>
+        <li>Payment options were limited, excluding key customer segments</li>
+        <li>Customer journeys were inconsistent across devices and channels</li>
+        <li>Analytics were minimal — no reliable feedback loops for growth decisions</li>
+      </ul>
+
+      <h3>Key Initiatives</h3>
+
+      <h4>1. Credit Card Processing Integration</h4>
+      <p>Implemented secure credit-card checkout with transaction state management, payment failure handling, refund and reconciliation workflows, and support for both donation and product purchase flows.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Removed the primary barrier to conversion and unlocked scalable revenue growth for the first time.</p></div>
+
+      <h4>2. Conversion-Focused Checkout Redesign</h4>
+      <p>Reduced steps to completion, added clear trust signals, optimized for mobile, and incorporated transparent pricing with mission-impact messaging at the point of decision.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Significant reduction in cart abandonment rates and increased average order value.</p></div>
+
+      <h4>3. API-First Commerce Platform</h4>
+      <p>Built a modular API layer supporting product catalog, donations, subscriptions, customer accounts, and payment events — enabling rapid iteration without platform rewrites.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Enabled the team to ship new product lines and campaigns without engineering rewrites.</p></div>
+
+      <h4>4. Analytics and Growth Instrumentation</h4>
+      <p>Implemented tracking across page views, checkout funnels, payment success and failure events, repeat customer behavior, and campaign performance attribution.</p>
+      <div class="cs-impact"><p><strong>Impact:</strong> Enabled data-driven experimentation — a key driver of the 100% month-over-month engagement growth.</p></div>
+
+      <h3>Operating Model</h3>
+      <ul>
+        <li>Lean experimentation — test, measure, double down</li>
+        <li>Agile delivery with outcomes-over-output prioritization</li>
+        <li>Working Backwards methodology from customer and mission goals</li>
+        <li>Servant leadership across a distributed cooperative team</li>
+      </ul>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">Payments Platform Design</span>
+        <span class="pill pill-teal">eCommerce Product Leadership</span>
+        <span class="pill pill-teal">API-Driven Architecture</span>
+        <span class="pill pill-purple">Conversion Optimization</span>
+        <span class="pill pill-purple">Data-Driven Strategy</span>
+        <span class="pill pill-teal">FinTech Integration</span>
+        <span class="pill pill-purple">Nonprofit Technology Scaling</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+    </div>
+  </div>
+
+  <!-- ══════ CS6: Tealium Big Data Platform ══════ -->
+  <div class="cs-full reveal" id="cs-6">
+    <div class="cs-full-inner">
+      <span class="cs-company-tag">Tealium — SaaS Customer Data Platform</span>
+      <h2 class="cs-full-title">Big Data Platform — Data Collection at Scale</h2>
+
+      <h3>Summary</h3>
+      <p>Under Nicole's product leadership, Tealium's CDP underwent a significant transformation — achieving meaningful reduction in production bugs, boosting customer confidence across the integration ecosystem, and improving the developer experience for advertisers connecting data sources worldwide. Nicole's leadership elevated API integrations from inconsistent point solutions into a coherent ecosystem of specialized data connections serving diverse enterprise needs globally.</p>
+
+      <h3>The Approach</h3>
+      <p>Led a data-driven product process anchored in DevOps Release Management analytics — using release data to uncover dependency bottlenecks, unique scaling challenges, and the compounding complexity of connecting billions of data records. Cross-functional teams were led to re-architect data ingestion and storage methodologies, resulting in unprecedented improvement in customer outcomes across a global customer base.</p>
+      <ul>
+        <li>Identified dependency bottlenecks through release analytics, not intuition</li>
+        <li>Partnered with engineering to re-architect data ingestion pipelines</li>
+        <li>Improved API consistency across a global ecosystem of advertiser integrations</li>
+        <li>Drove IAM capability improvements for enterprise security requirements</li>
+        <li>Reduced production bug rates through systematic process and tooling improvements</li>
+      </ul>
+
+      <h3>Leadership Framework Applied</h3>
+      <ul>
+        <li>User personas and pain point mapping for enterprise developer customers</li>
+        <li>Data analytics deep dive to validate assumptions before prioritization</li>
+        <li>Assumptions testing and problem validation with customer success teams</li>
+        <li>MVP definition with clear scope boundaries for engineering</li>
+        <li>Design and wireframe review for developer-facing interfaces</li>
+        <li>Engineering collaboration on user stories and acceptance criteria</li>
+        <li>KPI measurement setting before and after each release cycle</li>
+        <li>Future iteration planning informed by post-launch data</li>
+        <li>Executive summaries communicating outcomes to leadership</li>
+      </ul>
+
+      <h3>Skills Applied</h3>
+      <div class="cs-skills-wrap">
+        <span class="pill pill-teal">SaaS Platform Product Management</span>
+        <span class="pill pill-teal">Big Data Systems</span>
+        <span class="pill pill-teal">IAM</span>
+        <span class="pill pill-teal">API Infrastructure</span>
+        <span class="pill pill-purple">DevOps Release Management</span>
+        <span class="pill pill-purple">Kubernetes / AWS</span>
+        <span class="pill pill-purple">Agile Delivery</span>
+        <span class="pill pill-purple">Data-Driven Product</span>
+      </div>
+
+      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
     </div>
   </div>
 
