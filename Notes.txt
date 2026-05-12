@@ -1,0 +1,7 @@
+Notes
+
+Updating the favicon
+git add favicon.ico
+git commit -m "add favicon file"
+git push
+
