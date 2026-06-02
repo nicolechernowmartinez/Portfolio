@@ -220,6 +220,82 @@
       font-weight: 600;
     }
 
+
+    .build-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      max-width: 860px;
+      margin: -20px auto 42px;
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 100px;
+      background: rgba(255,255,255,0.035);
+      box-shadow: 0 0 30px rgba(0,212,180,0.06);
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.88s forwards;
+    }
+
+    .build-strip-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .build-strip-item {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .build-strip-divider {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+    }
+
+    .executive-lens {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 900px;
+    }
+
+    .lens-card {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+
+    .lens-kicker {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .lens-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .lens-copy {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
     .hero-cta {
       display: flex;
       gap: 16px;
@@ -1199,6 +1275,7 @@
       }
 
       .skills-grid { grid-template-columns: 1fr 1fr; }
+      .executive-lens { grid-template-columns: 1fr; }
       .cs-grid     { grid-template-columns: 1fr 1fr; }
       .exp-inner   { padding: 0 24px; }
       .cs-inner    { padding: 0 24px; }
@@ -1210,6 +1287,8 @@
       .nav-links   { display: none; }
       .skills-grid { grid-template-columns: 1fr; }
       .cs-grid     { grid-template-columns: 1fr; }
+      .build-strip { border-radius: var(--radius-lg); margin-top: -12px; }
+      .build-strip-divider { display: none; }
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -1243,12 +1322,22 @@
       <h1 class="hero-name">Nicole<br>Chernow-Martinez</h1>
 
       <p class="hero-tagline">
-        <strong>FinTech Product Platforms</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Payments, Lending &amp; AI-Enabled Systems
+        <strong>FinTech Product Platforms</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Payments, Insurance, Banking, Lending &amp; AI-Enabled Systems
         &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years in Regulated Financial Environments
       </p>
 
+      <div class="build-strip">
+        <span class="build-strip-label">Currently Building</span>
+        <span class="build-strip-item">Product Thinking Growth Console</span>
+        <span class="build-strip-divider"></span>
+        <span class="build-strip-item">Human-in-the-Loop Operational Intelligence Systems</span>
+        <span class="build-strip-divider"></span>
+        <span class="build-strip-item">Telemetry + Iteration Frameworks</span>
+      </div>
+
       <div class="hero-cta">
-        <a href="#experience" class="btn-primary">View My Work</a>
+        <a href="#case-studies" class="btn-primary">View My Work</a>
+        <a href="#cs-1" class="btn-outline" onclick="gtag('event', 'portfolio_executive_one_pager_cta');">Executive One-Pager</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
     </div>
@@ -1276,8 +1365,8 @@
 
       <p class="about-bio reveal reveal-delay-2">
         I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong>
-        where AI is applied pragmatically to enhance operational performance — never as a substitute
-        for sound systems design.
+        where AI proposes, humans decide, and telemetry turns operational judgment into measurable
+        product iteration — especially in fintech and regulated workflows.
       </p>
 
       <div class="about-extras reveal reveal-delay-3">
@@ -1305,6 +1394,7 @@
       </div>
     </div>
 
+   
     <div class="about-right">
       <div class="video-outer reveal reveal-delay-2">
         <div class="video-wrap">
@@ -1347,17 +1437,19 @@
             <div class="timeline-role">Founder, CEO &amp; CPO</div>
             <div class="timeline-company-full">Agentics Growth Lab</div>
             <p class="timeline-desc">
-              Founded an AI product studio focused on building operational assistants
-              for fintech and business workflows. Designing and deploying AI-powered
-              systems that automate complex, regulation-adjacent processes — from
-              loan operations to compliance workflows — applying pragmatic AI where it
-              amplifies human judgment rather than replaces systems design.
+              Founded an AI product studio building human-in-the-loop operational
+              intelligence systems for fintech and regulated workflows. Current work
+              includes the Product Thinking Growth Console, telemetry-driven scoring,
+              recommendation workflows, and Measure + Iteration workspaces that turn
+              product judgment into observable operating systems — where AI proposes
+              and humans decide.
             </p>
             <div class="timeline-tags">
-              <span class="tag">AI Operational Assistants</span>
-              <span class="tag">Fintech Workflows</span>
-              <span class="tag">Product Studio</span>
-              <span class="tag">0→1 Build</span>
+              <span class="tag">Human-in-the-Loop AI</span>
+              <span class="tag">PTG Console</span>
+              <span class="tag">Telemetry Scoring</span>
+              <span class="tag">Recommendation Workflows</span>
+              <span class="tag">Measure + Iteration</span>
             </div>
           </div>
         </div>
@@ -1533,15 +1625,15 @@
         <div class="skill-icon si-b">🤖</div>
         <div class="skill-name">AI Product Strategy</div>
         <p class="skill-desc">
-          Building AI-powered operational assistants for fintech workflows.
-          I apply AI pragmatically — where it enhances operational performance
-          and is grounded in sound systems design.
+          Building human-in-the-loop operational intelligence for fintech workflows.
+          I apply AI pragmatically — as a recommendation layer supported by telemetry,
+          scoring, measure loops, and human decision rights.
         </p>
         <div class="skill-pills">
-          <span class="pill pill-purple">AI Assistants</span>
-          <span class="pill pill-purple">LLM Integration</span>
-          <span class="pill pill-purple">Operational AI</span>
-          <span class="pill pill-purple">AI Roadmapping</span>
+          <span class="pill pill-purple">Human-in-the-Loop AI</span>
+          <span class="pill pill-purple">PTG Console</span>
+          <span class="pill pill-purple">Telemetry Scoring</span>
+          <span class="pill pill-purple">Measure + Iterate</span>
         </div>
       </div>
 
@@ -1611,29 +1703,22 @@
 
     </div>
 
-    <!-- Expertise bars -->
-    <div class="reveal" style="max-width: 580px;">
-      <div class="exp-bar-wrap" id="exp-bars">
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Payments Infrastructure (ACH, Wire, RTP)</span><span>97%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="97"></div></div>
-        </div>
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>AI Product Strategy</span><span>88%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="88"></div></div>
-        </div>
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Risk &amp; Compliance (SOX, FFIEC, SOC2)</span><span>94%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="94"></div></div>
-        </div>
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Platform Architecture &amp; APIs</span><span>90%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="exp-bar-item">
-          <div class="exp-bar-label"><span>Scaled Agile &amp; OKRs</span><span>95%</span></div>
-          <div class="exp-bar-track"><div class="exp-bar-fill" data-width="95"></div></div>
-        </div>
+    <!-- Executive capability lens -->
+    <div class="executive-lens reveal">
+      <div class="lens-card">
+        <div class="lens-kicker">Platform</div>
+        <div class="lens-title">Payments + Digital Banking Infrastructure</div>
+        <p class="lens-copy">ACH, wire, RTP, lending, servicing, IAM, APIs, vendor integrations, and regulated platform delivery.</p>
+      </div>
+      <div class="lens-card">
+        <div class="lens-kicker">AI Systems</div>
+        <div class="lens-title">Operational Intelligence + Human Review</div>
+        <p class="lens-copy">AI-assisted recommendation workflows, scoring models, telemetry loops, and decision frameworks where humans retain control.</p>
+      </div>
+      <div class="lens-card">
+        <div class="lens-kicker">Execution</div>
+        <div class="lens-title">Product Operating Models That Ship</div>
+        <p class="lens-copy">Roadmaps, OKRs, Agile delivery, measurable iteration, risk-aware prioritization, and executive-ready product narratives.</p>
       </div>
     </div>
   </section>
@@ -1648,16 +1733,16 @@
         <h2 class="section-title">Work That Ships</h2>
         <p class="section-sub">
           Six published case studies documenting real platform outcomes —
-          from AI operations assistants to complex payment rail integrations.
+          from operational intelligence systems to complex payment rail integrations.
         </p>
       </div>
 
       <div class="cs-grid">
 
         <a href="#cs-1" class="cs-card reveal reveal-delay-1">
-          <div class="cs-icon si-b">🤖</div>
-          <div class="cs-title">Digital Banking AI Operations Assistant</div>
-          <p class="cs-desc">Designing and deploying an AI-powered assistant to automate operational workflows in a digital banking context.</p>
+          <div class="cs-icon si-b">📈</div>
+          <div class="cs-title">Product Thinking Growth Console</div>
+          <p class="cs-desc">Operational intelligence console turning the NCM framework into measurable software: scoring, recommendations, telemetry, and iteration.</p>
           <span class="cs-arrow">Read case study →</span>
         </a>
 
@@ -1700,43 +1785,47 @@
     </div>
   </div>
 
-  <!-- ══════ CS1: Digital Banking AI Operations Assistant ══════ -->
+  <!-- ══════ CS1: Product Thinking Growth Console ══════ -->
   <div class="cs-full reveal" id="cs-1">
     <div class="cs-full-inner">
       <span class="cs-company-tag">Agentics Growth Lab</span>
-      <h2 class="cs-full-title">Digital Banking AI Operations Assistant</h2>
+      <h2 class="cs-full-title">Product Thinking Growth Console</h2>
+
+      <h3>Executive Summary</h3>
+      <p>The Product Thinking Growth Console translates the NCM product framework into a measurable operational intelligence system. Instead of treating product judgment as static documentation, the console structures discovery, prioritization, scoring, recommendations, and iteration into one executive-ready workspace.</p>
 
       <h3>The Problem</h3>
-      <p>SMB banking teams handle high volumes of exploratory customer questions that consume contact center time without requiring financial advice or account access. These questions — about products, rates, and options — are informational by nature, but they're routed through the same channels as complex service requests, creating bottlenecks and driving up cost per interaction.</p>
+      <p>Product and operations teams in fintech and regulated environments often make high-impact decisions across fragmented artifacts: roadmaps, meeting notes, KPI dashboards, risk conversations, customer feedback, and delivery backlogs. The result is not a lack of strategy — it is a lack of operating telemetry that connects strategy to measurable product movement.</p>
 
       <h3>The Solution</h3>
-      <p>A friendly AI assistant designed as a first-pass digital banking experience — explaining financial options in plain language without giving regulated advice, collecting personal data, or replacing human bankers. The assistant handles the exploratory conversation, creates clarity for the customer, and hands off to a human with full context when appropriate.</p>
+      <p>An operational intelligence console designed around human-in-the-loop decisioning. AI proposes recommendations, scores patterns, and surfaces next-best actions; humans review, approve, adjust, and decide. The system is built to support regulated workflows where explainability, accountability, and operational discipline matter.</p>
       <ul>
-        <li>Explains financial products and options in plain language</li>
-        <li>Never gives regulated financial advice or collects personal data</li>
-        <li>Designed to complement, not replace, the human banking relationship</li>
-        <li>Reduces contact center volume for non-advice exploratory calls</li>
+        <li><strong>Product Thinking Growth workspace</strong> to organize hypotheses, experiments, product decisions, and leadership-ready narratives</li>
+        <li><strong>Telemetry-driven scoring</strong> to evaluate signal strength, adoption movement, friction, risk, and iteration maturity</li>
+        <li><strong>Recommendation workflows</strong> that propose next actions without removing human judgment or decision rights</li>
+        <li><strong>Measure + Iteration workspaces</strong> that connect product decisions to observable outcomes over time</li>
+        <li><strong>Regulated-workflow posture</strong> designed for fintech, banking operations, payments, lending, and compliance-adjacent teams</li>
       </ul>
 
-      <h3>Customer Journey</h3>
+      <h3>Operating Model</h3>
       <div class="cs-journey">
-        <div class="cs-journey-step"><span><strong>Step 1</strong> — Customer calls bank with a product question</span></div>
-        <div class="cs-journey-step"><span><strong>Step 2</strong> — Greeted and asked: "Do you have questions about our products?"</span></div>
-        <div class="cs-journey-step"><span><strong>Step 3</strong> — Call routed to AI first-pass assistant</span></div>
-        <div class="cs-journey-step"><span><strong>Step 4</strong> — AI engages in friendly, clear conversation and explains options</span></div>
-        <div class="cs-journey-step"><span><strong>Step 5</strong> — "What would you like to do next?" — warm handoff to human banker</span></div>
+        <div class="cs-journey-step"><span><strong>Signal Capture</strong> — Product, customer, operations, and delivery signals are organized into a shared workspace</span></div>
+        <div class="cs-journey-step"><span><strong>Scoring</strong> — Telemetry and product criteria create a measurable view of priority, friction, opportunity, and risk</span></div>
+        <div class="cs-journey-step"><span><strong>Recommendation</strong> — AI proposes next-best actions, experiment paths, and decision options</span></div>
+        <div class="cs-journey-step"><span><strong>Human Review</strong> — Product leaders validate context, constraints, compliance posture, and business judgment</span></div>
+        <div class="cs-journey-step"><span><strong>Iteration</strong> — Measure loops show whether the decision improved the product, process, or operating outcome</span></div>
       </div>
 
-      <a href="https://www.agenticsgrowthlab.com/home#britneylive" target="_blank" rel="noopener noreferrer" class="btn-try">Try It Live →</a>
+      <div class="cs-impact"><p><strong>Positioning:</strong> AI does not own the decision. The console makes product thinking measurable, repeatable, and visible so leaders can decide with better operating intelligence.</p></div>
 
       <h3>Skills Applied</h3>
       <div class="cs-skills-wrap">
-        <span class="pill pill-teal">AI Product Design</span>
-        <span class="pill pill-teal">Conversational UX</span>
-        <span class="pill pill-teal">Digital Banking</span>
-        <span class="pill pill-purple">LLM Integration</span>
-        <span class="pill pill-purple">Contact Center Strategy</span>
-        <span class="pill pill-teal">Compliance-Aware AI</span>
+        <span class="pill pill-teal">Product Operating Model</span>
+        <span class="pill pill-teal">Human-in-the-Loop AI</span>
+        <span class="pill pill-teal">Telemetry Scoring</span>
+        <span class="pill pill-purple">Recommendation Workflows</span>
+        <span class="pill pill-purple">Measure + Iteration</span>
+        <span class="pill pill-teal">FinTech Systems Thinking</span>
       </div>
 
       <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
