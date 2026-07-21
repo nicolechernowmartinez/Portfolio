@@ -54,14 +54,14 @@
     .hero-gradient { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(0,212,180,.15) 0%,transparent 65%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(124,92,252,.13) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 70%,rgba(0,212,180,.07) 0%,transparent 60%); pointer-events:none; }
     .hero-gradient::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent); opacity:.45; }
     .hero-content { position:relative; z-index:2; max-width:1000px; padding:0 24px; }
-    .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(0,212,180,.1); border:1px solid rgba(0,212,180,.25); border-radius:100px; padding:6px 18px; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:32px; opacity:0; animation:fadeSlideUp .8s .3s forwards; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(0,212,180,.1); border:1px solid rgba(0,212,180,.25); border-radius:100px; padding:6px 18px; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; margin-top:80px; opacity:0; animation:fadeSlideUp .8s .3s forwards; max-width:90vw; text-align:center; white-space:normal; line-height:1.5; }
     .hero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
-    .hero-name { font-size:clamp(3.2rem,8vw,7rem); font-weight:800; line-height:1.0; letter-spacing:-.02em; background:linear-gradient(135deg,#fff 30%,#a8b4d0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:24px; opacity:0; animation:fadeSlideUp .9s .55s forwards; }
+    .hero-name { font-size:clamp(2.4rem,7vw,7rem); font-weight:800; line-height:1.0; letter-spacing:-.02em; background:linear-gradient(135deg,#fff 30%,#a8b4d0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:24px; opacity:0; animation:fadeSlideUp .9s .55s forwards; }
     .hero-tagline { font-size:clamp(.88rem,1.9vw,1.08rem); color:var(--muted); max-width:780px; margin:0 auto 36px; line-height:1.7; opacity:0; animation:fadeSlideUp .9s .75s forwards; }
     .hero-tagline strong { color:var(--text); font-weight:600; }
 
     /* Live products strip */
-    .hero-products { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:920px; margin:0 auto 36px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
+    .hero-products { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; max-width:760px; margin:0 auto 36px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
     .hero-product-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:14px 16px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:6px; transition:border-color .3s,transform .3s; }
     .hero-product-card:hover { border-color:rgba(0,212,180,.4); transform:translateY(-3px); }
     .hero-product-card.featured { border-color:rgba(124,92,252,.4); background:rgba(124,92,252,.08); }
@@ -196,6 +196,19 @@
     .lens-title { font-size:.95rem; font-weight:800; color:var(--text); margin-bottom:6px; }
     .lens-copy { font-size:.82rem; color:var(--muted); line-height:1.65; }
 
+
+    /* ── PHILOSOPHY ── */
+    .philosophy-wrapper { background:var(--bg); width:100vw; margin-left:calc(-50vw + 50%); padding:100px 0; }
+    .philosophy-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+    .philosophy-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .philosophy-left h2 { font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin-bottom:16px; }
+    .philosophy-left p { font-size:1rem; color:var(--muted); line-height:1.8; max-width:420px; }
+    .philosophy-principles { display:flex; flex-direction:column; gap:16px; }
+    .principle-item { display:flex; align-items:flex-start; gap:16px; padding:20px 24px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius); transition:border-color .3s,transform .3s,background .3s; }
+    .principle-item:hover { border-color:rgba(0,212,180,.3); transform:translateX(6px); background:rgba(0,212,180,.03); }
+    .principle-number { font-size:.72rem; font-weight:800; color:var(--accent); letter-spacing:.1em; flex-shrink:0; width:24px; padding-top:2px; }
+    .principle-text { font-size:.95rem; color:var(--text); font-weight:500; line-height:1.6; }
+    @media(max-width:900px){ .philosophy-grid{grid-template-columns:1fr;gap:48px} .philosophy-inner{padding:0 24px} }
     /* ── CASE STUDIES ── */
     .cs-wrapper { background:var(--bg2); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
     .cs-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
@@ -269,14 +282,36 @@
       .timeline-item{grid-template-columns:1fr;gap:12px;padding-left:32px}
       .skills-grid{grid-template-columns:1fr 1fr} .executive-lens{grid-template-columns:1fr}
       .cs-grid{grid-template-columns:1fr 1fr} .products-grid{grid-template-columns:1fr}
-      .hero-products{grid-template-columns:1fr 1fr}
+      .hero-products{grid-template-columns:1fr 1fr; max-width:100%;}
       .exp-inner,.cs-inner,.contact-inner,.products-inner{padding:0 24px}
       .cs-full-inner{padding:0 24px 0 28px;border-left-width:2px}
+      .philosophy-grid{grid-template-columns:1fr;gap:48px} .philosophy-inner{padding:0 24px}
+      .hero-eyebrow{margin-top:72px; font-size:.7rem; letter-spacing:.08em; padding:5px 14px;}
+      .hero-content{padding:0 16px;}
+      .hero-tagline{margin-bottom:24px;}
+      .hero-products{gap:10px; margin-bottom:24px;}
+      .build-strip{margin-bottom:28px; padding:10px 14px;}
+      .hero-cta{gap:10px;}
     }
     @media(max-width:600px){
-      .nav-links{display:none} .skills-grid,.cs-grid{grid-template-columns:1fr}
-      .hero-products{grid-template-columns:1fr} .about-stats{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .skills-grid,.cs-grid{grid-template-columns:1fr}
+      .hero-products{grid-template-columns:1fr 1fr;}
+      .about-stats{grid-template-columns:1fr 1fr}
       .build-strip{border-radius:var(--radius-lg)} .build-strip-divider{display:none}
+      .hero-eyebrow{margin-top:80px; font-size:.68rem; padding:5px 12px; letter-spacing:.06em;}
+      .hero-name{margin-bottom:16px;}
+      .hero-tagline{font-size:.85rem; margin-bottom:20px;}
+      .hero-products{gap:8px; margin-bottom:20px;}
+      .hpc-name{font-size:.85rem;}
+      .hpc-sub{font-size:.7rem;}
+      .hero-cta .btn-primary, .hero-cta .btn-outline{padding:12px 22px; font-size:.82rem;}
+      .build-strip{padding:10px 12px; gap:8px;}
+      .build-strip-item{font-size:.72rem;}
+    }
+    @media(max-width:400px){
+      .hero-products{grid-template-columns:1fr;}
+      .hero-eyebrow{margin-top:72px;}
     }
   </style>
 </head>
@@ -287,7 +322,7 @@
   <a href="#hero" class="nav-logo">NCM</a>
   <ul class="nav-links">
     <li><a href="#about" onclick="gtag('event','nav_about')">About</a></li>
-    <li><a href="#live-products" onclick="gtag('event','nav_products')">Live Products</a></li>
+    <li><a href="#portfolio" onclick="gtag('event','nav_products')">Enterprise AI Portfolio</a></li>
     <li><a href="#experience" onclick="gtag('event','nav_experience')">Experience</a></li>
     <li><a href="#skills" onclick="gtag('event','nav_skills')">Skills</a></li>
     <li><a href="#case-studies" onclick="gtag('event','nav_case_studies')">Case Studies</a></li>
@@ -317,6 +352,11 @@
         <span class="hpc-name">AdvisorOS</span>
         <span class="hpc-sub">Enterprise AI Workspace for Financial Advisors</span>
       </a>
+      <a href="#p-eos" class="hero-product-card" onclick="gtag('event','hero_eos')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">EOS</span>
+        <span class="hpc-sub">Enterprise Platform Operating System</span>
+      </a>
       <a href="#p-britney" class="hero-product-card" onclick="gtag('event','hero_britney')">
         <span class="hpc-label">✦ Live Now</span>
         <span class="hpc-name">Britney</span>
@@ -332,6 +372,11 @@
         <span class="hpc-name">Scout</span>
         <span class="hpc-sub">Catch what broke after your release</span>
       </a>
+      <a href="#p-idea-capture" class="hero-product-card" onclick="gtag('event','hero_idea_capture')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Idea Capture</span>
+        <span class="hpc-sub">Turn employee ideas into structured opportunities</span>
+      </a>
     </div>
 
     <div class="build-strip">
@@ -340,13 +385,13 @@
       <span class="build-strip-divider"></span>
       <span class="build-strip-item">Human-in-the-Loop</span>
       <span class="build-strip-divider"></span>
-      <span class="build-strip-item">4 Live Products</span>
+      <span class="build-strip-item">6 Enterprise Products</span>
       <span class="build-strip-divider"></span>
       <span class="build-strip-item">Regulated Environments</span>
     </div>
 
     <div class="hero-cta">
-      <a href="#live-products" class="btn-primary" onclick="gtag('event','hero_see_products')">See Live Products</a>
+      <a href="#portfolio" class="btn-primary" onclick="gtag('event','hero_see_products')">See My Portfolio</a>
       <a href="#case-studies" class="btn-outline">Case Studies</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
@@ -366,7 +411,7 @@
     <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
     <div class="about-stats">
       <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
-      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">4</div><div class="stat-label">Live AI Products</div></div>
+      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">6</div><div class="stat-label">AI Products Deployed</div></div>
       <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
       <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
     </div>
@@ -384,11 +429,11 @@
 <div class="section-divider"></div>
 
 <!-- ══ LIVE PRODUCTS ══ -->
-<div class="products-wrapper" id="live-products">
+<div class="products-wrapper" id="portfolio">
   <div class="products-inner">
     <div class="reveal">
-      <p class="section-label">Live Products</p>
-      <h2 class="section-title">Four products. Deployed.<br>Try them now.</h2>
+      <p class="section-label">Enterprise AI Portfolio</p>
+      <h2 class="section-title">Six enterprise products.<br>Deployed. Try them now.</h2>
       <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
     </div>
 
@@ -400,7 +445,7 @@
           <div class="product-badge badge-watch">▶ Watch Demo</div>
           <div class="product-name">AdvisorOS</div>
           <div class="product-tagline">Enterprise AI Advisor Workstation</div>
-          <p class="product-desc">A full-stack enterprise AI workstation built for financial advisors — demonstrating what responsible, governed, explainable AI looks like in wealth management. A full-stack enterprise AI workstation built for financial advisors—demonstrating what responsible, governed, explainable AI looks like in wealth management.</p>
+          <p class="product-desc">A full-stack enterprise AI workstation demonstrating what responsible, governed, explainable AI looks like in wealth management. Built to show how AI can assist advisors while humans remain fully accountable.</p>
           <div class="product-features">
             <div class="product-feature">Real Claude API email draft generation — personalized to client + advisor voice</div>
             <div class="product-feature">Real Gmail send — advisor approves, enterprise system executes</div>
@@ -420,6 +465,36 @@
         <div class="product-actions">
           <a href="https://youtu.be/Nc5BrL5OEq0" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','advisoros_watch')">▶ Watch Demo</a>
           <a href="https://advisoros-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-watch" onclick="gtag('event','advisoros_try')">Try Live →</a>
+        </div>
+      </div>
+
+
+      <!-- EOS -->
+      <div class="product-card reveal reveal-delay-2" id="p-eos">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">EOS</div>
+          <div class="product-tagline">Enterprise Platform Operating System</div>
+          <p class="product-desc">Enterprise platform governance. Executive scorecards. AI governance and FinOps. A production-deployed operating system giving platform leaders one model for modernization, investment decisions, and responsible AI adoption across Salesforce, ServiceNow, Boomi, Microsoft Copilot, and more.</p>
+          <div class="product-features">
+            <div class="product-feature">Executive platform governance across multiple enterprise platforms in one model</div>
+            <div class="product-feature">AI governance and FinOps integrated into operational decision-making</div>
+            <div class="product-feature">Enterprise health assessments with executive scorecards and trend tracking</div>
+            <div class="product-feature">90-day modernization and onboarding playbooks</div>
+            <div class="product-feature">Automated executive reporting and leadership dashboards</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-teal">Cloudflare Workers</span>
+            <span class="pill pill-teal">Cloudflare KV</span>
+            <span class="pill pill-purple">PPTX Generation</span>
+            <span class="pill pill-purple">Serverless</span>
+            <span class="pill pill-teal">Enterprise Governance</span>
+            <span class="pill pill-purple">AI FinOps</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://eosworker.lab-d86.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','eos_try')">✦ Try EOS Live</a>
+          <a href="#cs-eos" class="btn-watch" onclick="gtag('event','eos_learn')">Learn More →</a>
         </div>
       </div>
 
@@ -507,6 +582,33 @@
         </div>
       </div>
 
+
+      <!-- Idea Capture -->
+      <div class="product-card reveal reveal-delay-1" id="p-idea-capture">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">Idea Capture</div>
+          <div class="product-tagline">Turn employee ideas into structured opportunities</div>
+          <p class="product-desc">Capture ideas through natural conversation. Claude transforms them into structured product proposals ready for review and prioritization. Built on Cloudflare's serverless edge with real Claude API integration — no friction between insight and artifact.</p>
+          <div class="product-features">
+            <div class="product-feature">Capture up to 10 minutes of natural conversation directly in the browser</div>
+            <div class="product-feature">Claude structures your ideas into a product proposal ready for prioritization</div>
+            <div class="product-feature">Download your contextualized notes instantly</div>
+            <div class="product-feature">No login, no friction — just speak and receive</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-teal">Cloudflare Workers</span>
+            <span class="pill pill-purple">Claude API</span>
+            <span class="pill pill-teal">Voice-to-Document</span>
+            <span class="pill pill-purple">Serverless</span>
+            <span class="pill pill-teal">Real AI</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://idea-capture-worker.lab-d86.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','idea_capture_try')">✦ Try Idea Capture Live</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -525,8 +627,8 @@
         <div>
           <div class="timeline-role">Founder, CEO &amp; CPO</div>
           <div class="timeline-company-full">Agentics Growth Lab</div>
-          <p class="timeline-desc">Founded an AI product studio building privacy-first, human-in-the-loop intelligence systems for fintech and regulated workflows. Shipped four live products: AdvisorOS (enterprise AI advisor workstation for LPL Financial), Britney (customer-facing member assistant), Caroline (internal employee assistant), and Scout (QA agentic assistant). Each built on the principle that AI proposes and humans decide.</p>
-          <div class="timeline-tags"><span class="tag">Human-in-the-Loop AI</span><span class="tag">AdvisorOS</span><span class="tag">Britney</span><span class="tag">Caroline</span><span class="tag">Scout</span><span class="tag">Claude API</span><span class="tag">Privacy-First</span></div>
+          <p class="timeline-desc">Founded an AI product studio and designed, built, and deployed a portfolio of enterprise AI platforms and operational products demonstrating governance, product strategy, customer experience, workflow automation, and responsible AI in regulated environments. Each product built on the principle that AI proposes and humans decide.</p>
+          <div class="timeline-tags"><span class="tag">Human-in-the-Loop AI</span><span class="tag">AdvisorOS</span><span class="tag">EOS</span><span class="tag">Britney</span><span class="tag">Caroline</span><span class="tag">Scout</span><span class="tag">Claude API</span><span class="tag">Privacy-First</span></div>
         </div>
       </div>
       <div class="timeline-item reveal reveal-delay-1">
@@ -632,15 +734,65 @@
 
 <div class="section-divider"></div>
 
+
+<!-- ══ PHILOSOPHY ══ -->
+<div class="philosophy-wrapper">
+  <div class="philosophy-inner">
+    <div class="philosophy-grid">
+      <div class="philosophy-left reveal">
+        <p class="section-label">Leadership Philosophy</p>
+        <h2 class="section-title">How I Lead<br>Product</h2>
+        <p style="font-size:1rem;color:var(--muted);line-height:1.8;margin-top:8px;max-width:400px">Fifteen years across regulated environments taught me that the best product decisions are the ones your team, your stakeholders, and your customers can all see clearly.</p>
+      </div>
+      <div class="philosophy-principles reveal reveal-delay-2">
+        <div class="principle-item">
+          <span class="principle-number">01</span>
+          <span class="principle-text">Build trust before asking for alignment.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-number">02</span>
+          <span class="principle-text">Make prioritization transparent and collaborative.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-number">03</span>
+          <span class="principle-text">Let data inform decisions while recognizing business nuance.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-number">04</span>
+          <span class="principle-text">Give engineers ownership of technical excellence.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-number">05</span>
+          <span class="principle-text">Measure success by customer outcomes, not feature output.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
 <!-- ══ CASE STUDIES ══ -->
 <div class="cs-wrapper" id="case-studies">
   <div class="cs-inner">
     <div class="reveal">
       <p class="section-label">Case Studies</p>
       <h2 class="section-title">Work That Ships</h2>
-      <p class="section-sub">Six published case studies — from complex payment rail integrations to enterprise operational intelligence systems.</p>
+      <p class="section-sub">Six published case studies — from complex payment rail integrations to enterprise platform operating systems and AI product management.</p>
     </div>
     <div class="cs-grid">
+      <a href="#cs-eos" class="cs-card reveal reveal-delay-1">
+        <div class="cs-icon si-a">🖥️</div>
+        <div class="cs-title">Enterprise Platform Operating System (EOS)</div>
+        <p class="cs-desc">A production-deployed operating system for platform leaders — governance, AI FinOps, health assessments, modernization playbooks, and executive reporting in one model.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-idea" class="cs-card reveal reveal-delay-2">
+        <div class="cs-icon si-b">🎙️</div>
+        <div class="cs-title">Idea Capture</div>
+        <p class="cs-desc">Speak your idea. Claude organizes it. Download a structured document in seconds. Built on Cloudflare Workers with real Claude API integration.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
       <a href="#cs-1" class="cs-card reveal reveal-delay-1">
         <div class="cs-icon si-b">📈</div>
         <div class="cs-title">Product Thinking Growth Console</div>
@@ -678,6 +830,60 @@
         <span class="cs-arrow">Read case study →</span>
       </a>
     </div>
+  </div>
+</div>
+
+<!-- ══ CS-EOS ══ -->
+<div class="cs-full reveal" id="cs-eos">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Agentics Growth Lab · Cloudflare Workers</span>
+    <h2 class="cs-full-title">NCM Enterprise Platform Operating System (EOS)</h2>
+
+    <a href="https://eosworker.lab-d86.workers.dev/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:linear-gradient(135deg,var(--accent),#00a896);color:#07091a;font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-radius:100px;margin-bottom:32px;box-shadow:0 0 20px rgba(0,212,180,.25);">✦ Try EOS Live</a>
+
+    <h3>Why I Built It</h3>
+    <p>Modern enterprises often manage Salesforce, ServiceNow, Boomi, Microsoft Copilot, automation platforms, and AI initiatives independently — each with its own governance model, vendor relationship, and executive reporting. I built EOS to give platform leaders a single operating model for governance, modernization, FinOps, and executive decision-making across all of them.</p>
+
+    <h3>What It Demonstrates</h3>
+    <div class="cs-journey">
+      <div class="cs-journey-step"><span><strong>A1 · Leadership</strong> — Lead, coach, build bench and succession, foster ownership and technical excellence</span></div>
+      <div class="cs-journey-step"><span><strong>A2 · Strategy</strong> — Multi-year roadmap, platform investments, governance and intake, performance visibility</span></div>
+      <div class="cs-journey-step"><span><strong>A3 · Delivery</strong> — End-to-end delivery, vendor relationships, KPIs and incident trends, release and change readiness</span></div>
+      <div class="cs-journey-step"><span><strong>A4 · AI &amp; Automation</strong> — Enterprise AI approach, use case pipeline, governance and compliance, responsible adoption</span></div>
+      <div class="cs-journey-step"><span><strong>A5 · Collaboration</strong> — Partner with business, translate strategy to decisions, trusted technology partner</span></div>
+    </div>
+
+    <h3>Capabilities</h3>
+    <ul>
+      <li><strong>Executive platform governance</strong> across multiple enterprise platforms in one operating model</li>
+      <li><strong>AI governance and FinOps</strong> integrated directly into operational decision-making — not bolted on</li>
+      <li><strong>Enterprise health assessments</strong> with executive scorecards and trend tracking</li>
+      <li><strong>90-day modernization and onboarding playbooks</strong> for new platform leaders</li>
+      <li><strong>Automated executive reporting</strong> and leadership dashboards with PPTX generation</li>
+      <li><strong>Product thinking translated</strong> into a working operational system</li>
+    </ul>
+
+    <div class="cs-impact"><p><strong>Why it matters:</strong> EOS demonstrates how I approach enterprise platform leadership — not just as a product manager, but as someone who creates operating models that help organizations modernize, govern AI responsibly, and make better executive decisions at scale.</p></div>
+
+    <h3>Technology</h3>
+    <ul>
+      <li><strong>Cloudflare Workers</strong> — serverless edge deployment, globally distributed</li>
+      <li><strong>Cloudflare KV</strong> — persistent key-value storage for platform state</li>
+      <li><strong>JavaScript</strong> — full-stack implementation, no framework dependencies</li>
+      <li><strong>PPTX Generation</strong> — automated executive report creation from live platform data</li>
+    </ul>
+
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap">
+      <span class="pill pill-teal">Enterprise Platform Governance</span>
+      <span class="pill pill-teal">AI Governance &amp; FinOps</span>
+      <span class="pill pill-purple">Cloudflare Workers</span>
+      <span class="pill pill-purple">Serverless Architecture</span>
+      <span class="pill pill-teal">Executive Reporting</span>
+      <span class="pill pill-teal">Modernization Playbooks</span>
+      <span class="pill pill-purple">Product Operating Models</span>
+    </div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
   </div>
 </div>
 
@@ -829,6 +1035,42 @@
     </ul>
     <h3>Skills Applied</h3>
     <div class="cs-skills-wrap"><span class="pill pill-teal">SaaS Platform Product Management</span><span class="pill pill-teal">Big Data Systems</span><span class="pill pill-teal">IAM</span><span class="pill pill-teal">API Infrastructure</span><span class="pill pill-purple">DevOps Release Management</span><span class="pill pill-purple">Agile Delivery</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
+
+<!-- ══ CS-IDEA ══ -->
+<div class="cs-full reveal" id="cs-idea">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Agentics Growth Lab · Cloudflare Workers + Claude API</span>
+    <h2 class="cs-full-title">Idea Capture — Voice to Structured Document</h2>
+    <a href="https://idea-capture-worker.lab-d86.workers.dev/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:linear-gradient(135deg,var(--accent),#00a896);color:#07091a;font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-radius:100px;margin-bottom:32px;box-shadow:0 0 20px rgba(0,212,180,.25);">✦ Try Idea Capture Live</a>
+    <h3>What It Does</h3>
+    <p>Idea Capture removes the friction between having an idea and having a document. Speak for up to 10 minutes — stream of consciousness, half-formed thoughts, rough framing — and Claude organizes it into a clean, structured artifact you can download and share immediately.</p>
+    <h3>The Problem It Solves</h3>
+    <p>The best ideas often happen in motion — in a car, between meetings, on a walk. By the time you open a document, the energy is gone. Idea Capture meets you where the idea is: your voice.</p>
+    <div class="cs-journey">
+      <div class="cs-journey-step"><span><strong>Speak</strong> — Record up to 10 minutes directly in the browser. No app, no login.</span></div>
+      <div class="cs-journey-step"><span><strong>Submit</strong> — Claude receives your transcript and organizes your thoughts into structured sections.</span></div>
+      <div class="cs-journey-step"><span><strong>Download</strong> — A clean document appears within 10–20 seconds, ready to share or develop further.</span></div>
+    </div>
+    <div class="cs-impact"><p><strong>Core principle:</strong> AI should reduce the distance between insight and artifact — not add steps. This tool demonstrates that philosophy in the simplest possible form.</p></div>
+    <h3>Technology</h3>
+    <ul>
+      <li><strong>Cloudflare Workers</strong> — serverless edge deployment, zero cold starts</li>
+      <li><strong>Claude API</strong> — real AI organizing and structuring spoken content</li>
+      <li><strong>Browser Speech API</strong> — no native app required, works in the browser</li>
+      <li><strong>Serverless architecture</strong> — scales to any volume without infrastructure management</li>
+    </ul>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap">
+      <span class="pill pill-teal">Voice UX Design</span>
+      <span class="pill pill-purple">Claude API Integration</span>
+      <span class="pill pill-teal">Cloudflare Workers</span>
+      <span class="pill pill-purple">Serverless Architecture</span>
+      <span class="pill pill-teal">AI Product Design</span>
+      <span class="pill pill-purple">Zero-Friction Product Thinking</span>
+    </div>
     <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
   </div>
 </div>
