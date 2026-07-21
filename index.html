@@ -2,2384 +2,917 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D5CBXS661R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D5CBXS661R');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5CBXS661R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D5CBXS661R');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nicole Chernow-Martinez | FinTech Product Platforms</title>
+  <title>Nicole Chernow-Martinez | Enterprise Product Leadership</title>
   <link rel="icon" type="image/x-icon" href="/Portfolio/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── Design Tokens ── */
     :root {
-      --bg:        #07091a;
-      --bg2:       #0c1028;
-      --bg3:       #111827;
-      --card:      rgba(255,255,255,0.04);
-      --border:    rgba(255,255,255,0.08);
-      --accent:    #7EDFD6;
-      --accent2:   #7c5cfc;
-      --text:      #f0f4ff;
-      --muted:     #7a8aab;
-      --radius:    12px;
+      --bg:      #07091a;
+      --bg2:     #0c1028;
+      --bg3:     #111827;
+      --card:    rgba(255,255,255,0.04);
+      --border:  rgba(255,255,255,0.08);
+      --accent:  #7EDFD6;
+      --accent2: #7c5cfc;
+      --text:    #f0f4ff;
+      --muted:   #7a8aab;
+      --radius:  12px;
       --radius-lg: 20px;
     }
-
-    /* ── Base ── */
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.65; -webkit-font-smoothing: antialiased; }
     ::selection { background: var(--accent); color: #07091a; }
-
-    /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
 
-    /* ═══════════════════════════════
-       NAV
-    ═══════════════════════════════ */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(7, 9, 26, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.25s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -3px;
-      width: 0; height: 1px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ═══════════════════════════════
-       HERO
-    ═══════════════════════════════ */
-    #hero {
-      position: relative;
-      height: 100vh;
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    #particles-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-gradient {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 120%, rgba(0,212,180,0.15) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 50% at 80% 20%,  rgba(124,92,252,0.13) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 10% 70%,  rgba(0,212,180,0.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-gradient::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 15%; right: 15%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
-      opacity: 0.45;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 960px;
-      padding: 0 24px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(0,212,180,0.1);
-      border: 1px solid rgba(0,212,180,0.25);
-      border-radius: 100px;
-      padding: 6px 18px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s 0.3s forwards;
-    }
-
-    .hero-eyebrow .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s infinite;
-    }
-
-    .hero-name {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(3.2rem, 8vw, 7rem);
-      font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 30%, #a8b4d0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeSlideUp 0.9s 0.55s forwards;
-    }
-
-    .hero-tagline {
-      font-size: clamp(0.88rem, 1.9vw, 1.08rem);
-      font-weight: 400;
-      color: var(--muted);
-      max-width: 780px;
-      margin: 0 auto 48px;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeSlideUp 0.9s 0.75s forwards;
-    }
-
-    .hero-tagline strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-
-    .build-strip {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      max-width: 860px;
-      margin: -20px auto 42px;
-      padding: 12px 18px;
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 100px;
-      background: rgba(255,255,255,0.035);
-      box-shadow: 0 0 30px rgba(0,212,180,0.06);
-      opacity: 0;
-      animation: fadeSlideUp 0.9s 0.88s forwards;
-    }
-
-    .build-strip-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .build-strip-item {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .build-strip-divider {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.22);
-    }
-
-    .executive-lens {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 900px;
-    }
-
-    .lens-card {
-      background: rgba(255,255,255,0.035);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 22px;
-    }
-
-    .lens-kicker {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .lens-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .lens-copy {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeSlideUp 0.9s 0.95s forwards;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 14px 36px;
-      background: linear-gradient(135deg, var(--accent), #00a896);
-      color: #07091a;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 0 30px rgba(0,212,180,0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 50px rgba(0,212,180,0.5);
-    }
-
-    .btn-outline {
-      display: inline-block;
-      padding: 13px 36px;
-      border: 1px solid rgba(255,255,255,0.18);
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: border-color 0.25s, background 0.25s, transform 0.25s;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      background: rgba(0,212,180,0.07);
-      transform: translateY(-2px);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: fadeIn 1s 1.6s forwards;
-    }
-
-    .scroll-indicator span {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .scroll-mouse {
-      width: 24px; height: 38px;
-      border: 1.5px solid rgba(255,255,255,0.25);
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      padding-top: 6px;
-    }
-
-    .scroll-mouse::before {
-      content: '';
-      width: 4px; height: 8px;
-      background: var(--accent);
-      border-radius: 2px;
-      animation: scrollBob 2s infinite;
-    }
-
-    /* ═══════════════════════════════
-       SECTIONS (shared)
-    ═══════════════════════════════ */
-    section {
-      padding: 120px 48px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--accent);
-    }
-
-    .section-title {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.75;
-      margin-bottom: 72px;
-    }
-
-    /* ── Reveal Animations ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.75s cubic-bezier(.25,.8,.25,1),
-                  transform 0.75s cubic-bezier(.25,.8,.25,1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-
-    /* ═══════════════════════════════
-       DIVIDER
-    ═══════════════════════════════ */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ═══════════════════════════════
-       ABOUT
-    ═══════════════════════════════ */
-    #about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-bio {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 24px;
-    }
-
-    .about-bio strong { color: var(--text); font-weight: 600; }
-
-    .about-extras {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-top: -8px;
-      margin-bottom: 24px;
-      padding: 16px 20px;
-      border-left: 2px solid rgba(0,212,180,0.3);
-      background: rgba(0,212,180,0.04);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-
-    .about-extras strong { color: var(--accent); font-weight: 600; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 48px;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .stat-card:hover {
-      border-color: rgba(0,212,180,0.3);
-      transform: translateY(-4px);
-    }
-
-    .stat-number {
-      font-family: 'Inter', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .about-photo-wrap {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      aspect-ratio: 4/5;
-      background: linear-gradient(135deg, var(--bg3), #1a2240);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-photo-wrap .monogram {
-      font-family: 'Inter', sans-serif;
-      font-size: 8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, rgba(0,212,180,0.25), rgba(124,92,252,0.25));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      user-select: none;
-    }
-
-    .about-photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,212,180,0.06) 0%, transparent 60%, rgba(124,92,252,0.06) 100%);
-      pointer-events: none;
-    }
-
-    .corner-accent {
-      position: absolute;
-      top: 20px; right: 20px;
-      width: 60px; height: 60px;
-      border-top: 2px solid var(--accent);
-      border-right: 2px solid var(--accent);
-      border-radius: 0 var(--radius) 0 0;
-      opacity: 0.5;
-    }
-
-    .corner-accent-bl {
-      position: absolute;
-      bottom: 20px; left: 20px;
-      width: 60px; height: 60px;
-      border-bottom: 2px solid var(--accent2);
-      border-left: 2px solid var(--accent2);
-      border-radius: 0 0 0 var(--radius);
-      opacity: 0.5;
-    }
-
-    /* ── Video embed ── */
-    .video-outer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .video-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      aspect-ratio: 9/16;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg3);
-      box-shadow: 0 0 50px rgba(0,212,180,0.08), 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .video-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-label {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      line-height: 1.6;
-      max-width: 300px;
-      padding: 0 8px;
-    }
-
-    .video-label strong { color: var(--accent); font-weight: 600; }
-
-    /* ═══════════════════════════════
-       EXPERIENCE
-    ═══════════════════════════════ */
-    .exp-wrapper {
-      background: var(--bg2);
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      padding: 120px 0;
-    }
-
-    .exp-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    .timeline {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
-      opacity: 0.3;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 48px 0 48px 40px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .timeline-item:last-child { border-bottom: none; }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -5px; top: 58px;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 16px rgba(0,212,180,0.6);
-      z-index: 1;
-    }
-
-    .timeline-item:nth-child(2)::before,
-    .timeline-item:nth-child(4)::before,
-    .timeline-item:nth-child(6)::before {
-      background: var(--accent2);
-      box-shadow: 0 0 16px rgba(124,92,252,0.6);
-    }
-
-    .timeline-date {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .timeline-item:nth-child(2) .timeline-date,
-    .timeline-item:nth-child(4) .timeline-date,
-    .timeline-item:nth-child(6) .timeline-date { color: var(--accent2); }
-
-    .timeline-company-loc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .timeline-role {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.45rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      line-height: 1.2;
-    }
-
-    .timeline-company-full {
-      font-size: 1rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .timeline-item:nth-child(2) .timeline-company-full,
-    .timeline-item:nth-child(4) .timeline-company-full,
-    .timeline-item:nth-child(6) .timeline-company-full { color: var(--accent2); }
-
-    .timeline-desc {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 24px;
-      max-width: 620px;
-    }
-
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      padding: 4px 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: border-color 0.25s, color 0.25s;
-    }
-
-    .tag:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ═══════════════════════════════
-       SKILLS
-    ═══════════════════════════════ */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 60px;
-    }
-
-    .skill-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-
-    .skill-card:hover {
-      border-color: rgba(0,212,180,0.25);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,180,0.06);
-    }
-
-    .skill-card:hover::before { opacity: 1; }
-
-    .skill-icon {
-      width: 52px; height: 52px;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 24px;
-    }
-
-    .si-a { background: rgba(0,212,180,0.1); }
-    .si-b { background: rgba(124,92,252,0.1); }
-    .si-c { background: rgba(0,212,180,0.08); }
-    .si-d { background: rgba(124,92,252,0.08); }
-    .si-e { background: rgba(0,212,180,0.06); }
-    .si-f { background: rgba(124,92,252,0.12); }
-
-    .skill-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .skill-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .skill-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .pill {
-      padding: 4px 13px;
-      border-radius: 100px;
-      font-size: 0.74rem;
-      font-weight: 600;
-    }
-
-    .pill-teal   { background: rgba(0,212,180,0.12);  color: var(--accent); }
-    .pill-purple { background: rgba(124,92,252,0.12); color: #a78bfa; }
-
-    /* Expertise bars */
-    .exp-bar-wrap { display: flex; flex-direction: column; gap: 18px; }
-
-    .exp-bar-item { display: flex; flex-direction: column; gap: 7px; }
-
-    .exp-bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .exp-bar-label span:last-child { color: var(--accent); font-weight: 600; }
-
-    .exp-bar-track {
-      height: 4px;
-      background: rgba(255,255,255,0.07);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .exp-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      width: 0;
-      transition: width 1.2s cubic-bezier(.25,.8,.25,1);
-    }
-
-    /* ═══════════════════════════════
-       CASE STUDIES
-    ═══════════════════════════════ */
-    .cs-wrapper {
-      background: var(--bg2);
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      padding: 120px 0;
-    }
-
-    .cs-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    .cs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .cs-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
-    }
-
-    .cs-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-
-    .cs-card:hover {
-      border-color: rgba(0,212,180,0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,180,0.06);
-    }
-
-    .cs-card:hover::before { opacity: 1; }
-
-    .cs-icon {
-      font-size: 1.8rem;
-      width: 52px; height: 52px;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .cs-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .cs-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-      flex: 1;
-    }
-
-    .cs-arrow {
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
-      transition: gap 0.25s;
-    }
-
-    .cs-card:hover .cs-arrow { gap: 10px; }
-
-    /* ═══════════════════════════════
-       CASE STUDY EXPANDED PANELS
-    ═══════════════════════════════ */
-    .cs-full {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      border-top: 1px solid var(--border);
-      padding: 80px 0;
-      scroll-margin-top: 88px;
-    }
-
-    .cs-full:nth-child(odd)  { background: var(--bg); }
-    .cs-full:nth-child(even) { background: var(--bg2); }
-
-    .cs-full-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 48px 0 60px;
-      border-left: 3px solid var(--accent);
-    }
-
-    .cs-full:nth-child(even) .cs-full-inner { border-left-color: var(--accent2); }
-
-    .cs-company-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .cs-full:nth-child(even) .cs-company-tag { color: var(--accent2); }
-
-    .cs-full-title {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 36px;
-    }
-
-    .cs-full h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text);
-      margin: 36px 0 10px;
-    }
-
-    .cs-full h4 {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 22px 0 6px;
-    }
-
-    .cs-full p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
-
-    .cs-full ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-bottom: 20px;
-    }
-
-    .cs-full li {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-      padding-left: 22px;
-      position: relative;
-    }
-
-    .cs-full li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.82rem;
-      top: 2px;
-    }
-
-    .cs-full li strong { color: var(--text); font-weight: 600; }
-
-    .cs-impact {
-      background: rgba(0,212,180,0.05);
-      border-left: 2px solid rgba(0,212,180,0.3);
-      padding: 11px 16px;
-      border-radius: 0 var(--radius) var(--radius) 0;
-      margin: 6px 0 18px;
-    }
-
-    .cs-impact p {
-      font-size: 0.88rem !important;
-      margin-bottom: 0 !important;
-      color: var(--muted);
-    }
-
-    .cs-impact strong { color: var(--accent) !important; font-weight: 700; }
-
-    .cs-journey {
-      display: flex;
-      flex-direction: column;
-      border-left: 1px solid rgba(0,212,180,0.25);
-      margin: 16px 0 28px;
-    }
-
-    .cs-journey-step {
-      padding: 10px 0 10px 24px;
-      position: relative;
-    }
-
-    .cs-journey-step::before {
-      content: '';
-      position: absolute;
-      left: -5px; top: 17px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px rgba(0,212,180,0.45);
-    }
-
-    .cs-journey-step span {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .cs-journey-step strong { color: var(--text); font-weight: 600; }
-
-    .cs-skills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 4px 0 40px;
-    }
-
-    .cs-back-top {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      border: 1px solid rgba(0,212,180,0.22);
-      padding: 8px 20px;
-      border-radius: 100px;
-      margin-top: 48px;
-      transition: border-color 0.25s, background 0.25s, gap 0.25s;
-    }
-
-    .cs-back-top:hover {
-      border-color: var(--accent);
-      background: rgba(0,212,180,0.06);
-      gap: 10px;
-    }
-
-    .btn-try {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      background: linear-gradient(135deg, var(--accent), #00a896);
-      color: #07091a;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 100px;
-      transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 0 24px rgba(0,212,180,0.3);
-      margin-top: 20px;
-      margin-bottom: 8px;
-    }
-
-    .btn-try:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(0,212,180,0.5);
-    }
-
-    /* ═══════════════════════════════
-       CONTACT
-    ═══════════════════════════════ */
-    .contact-wrapper {
-      background: var(--bg);
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      padding: 120px 0;
-    }
-
-    .contact-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 48px;
-      text-align: center;
-    }
-
-    .contact-inner .section-label {
-      justify-content: center;
-    }
-    .contact-inner .section-label::before { display: none; }
-    .contact-inner .section-title { text-align: center; }
-    .contact-inner .section-sub { margin: 0 auto 60px; text-align: center; }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 56px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 28px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: border-color 0.3s, transform 0.3s, background 0.3s;
-    }
-
-    .contact-link:hover {
-      border-color: var(--accent);
-      background: rgba(0,212,180,0.06);
-      transform: translateY(-4px);
-    }
-
-    .contact-link svg {
-      width: 20px; height: 20px;
-      stroke: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .contact-email {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,212,180,0.3);
-      padding-bottom: 4px;
-      transition: border-color 0.25s;
-    }
-
-    .contact-email:hover { border-color: var(--accent); }
-
-    /* ═══════════════════════════════
-       FOOTER
-    ═══════════════════════════════ */
-    footer {
-      padding: 32px 48px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    footer span { color: var(--accent); }
-
-    /* ═══════════════════════════════
-       KEYFRAMES
-    ═══════════════════════════════ */
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(0.75); }
-    }
-
-    @keyframes scrollBob {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50%       { transform: translateY(9px); opacity: 0.3; }
-    }
-
-    /* ═══════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════ */
-    @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
-      .nav-links { gap: 20px; }
-      section { padding: 80px 24px; }
-
-      #about { grid-template-columns: 1fr; gap: 48px; }
-
-      .about-photo-wrap {
-        order: -1;
-        aspect-ratio: 16/9;
-        max-height: 260px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding-left: 32px;
-      }
-
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .executive-lens { grid-template-columns: 1fr; }
-      .cs-grid     { grid-template-columns: 1fr 1fr; }
-      .exp-inner   { padding: 0 24px; }
-      .cs-inner    { padding: 0 24px; }
-      .contact-inner { padding: 0 24px; }
-      .cs-full-inner { padding: 0 24px 0 28px; border-left-width: 2px; }
-    }
-
-    @media (max-width: 600px) {
-      .nav-links   { display: none; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .cs-grid     { grid-template-columns: 1fr; }
-      .build-strip { border-radius: var(--radius-lg); margin-top: -12px; }
-      .build-strip-divider { display: none; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
+    /* ── NAV ── */
+    nav { position: fixed; top:0; left:0; right:0; z-index:100; padding:20px 48px; display:flex; align-items:center; justify-content:space-between; transition:background .4s,backdrop-filter .4s,box-shadow .4s; }
+    nav.scrolled { background:rgba(7,9,26,.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); box-shadow:0 1px 0 var(--border); }
+    .nav-logo { font-size:1.15rem; font-weight:800; letter-spacing:.02em; text-decoration:none; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; transition:color .25s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:1px; background:var(--accent); transition:width .3s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-links a:hover::after { width:100%; }
+
+    /* ── HERO ── */
+    #hero { position:relative; height:100vh; min-height:700px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+    #particles-canvas { position:absolute; inset:0; width:100%; height:100%; }
+    .hero-gradient { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(0,212,180,.15) 0%,transparent 65%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(124,92,252,.13) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 70%,rgba(0,212,180,.07) 0%,transparent 60%); pointer-events:none; }
+    .hero-gradient::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent); opacity:.45; }
+    .hero-content { position:relative; z-index:2; max-width:1000px; padding:0 24px; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(0,212,180,.1); border:1px solid rgba(0,212,180,.25); border-radius:100px; padding:6px 18px; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:32px; opacity:0; animation:fadeSlideUp .8s .3s forwards; }
+    .hero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+    .hero-name { font-size:clamp(3.2rem,8vw,7rem); font-weight:800; line-height:1.0; letter-spacing:-.02em; background:linear-gradient(135deg,#fff 30%,#a8b4d0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:24px; opacity:0; animation:fadeSlideUp .9s .55s forwards; }
+    .hero-tagline { font-size:clamp(.88rem,1.9vw,1.08rem); color:var(--muted); max-width:780px; margin:0 auto 36px; line-height:1.7; opacity:0; animation:fadeSlideUp .9s .75s forwards; }
+    .hero-tagline strong { color:var(--text); font-weight:600; }
+
+    /* Live products strip */
+    .hero-products { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:920px; margin:0 auto 36px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
+    .hero-product-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:14px 16px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:6px; transition:border-color .3s,transform .3s; }
+    .hero-product-card:hover { border-color:rgba(0,212,180,.4); transform:translateY(-3px); }
+    .hero-product-card.featured { border-color:rgba(124,92,252,.4); background:rgba(124,92,252,.08); }
+    .hero-product-card.featured:hover { border-color:rgba(124,92,252,.7); }
+    .hpc-label { font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+    .hpc-label.purple { color:#a78bfa; }
+    .hpc-name { font-size:.9rem; font-weight:700; color:var(--text); }
+    .hpc-sub { font-size:.75rem; color:var(--muted); line-height:1.5; }
+
+    .build-strip { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; max-width:860px; margin:0 auto 40px; padding:12px 18px; border:1px solid rgba(255,255,255,.10); border-radius:100px; background:rgba(255,255,255,.035); opacity:0; animation:fadeSlideUp .9s .9s forwards; }
+    .build-strip-label { font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    .build-strip-item { font-size:.78rem; color:var(--muted); font-weight:600; white-space:nowrap; }
+    .build-strip-divider { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,.22); }
+
+    .hero-cta { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; opacity:0; animation:fadeSlideUp .9s 1.0s forwards; }
+    .btn-primary { display:inline-block; padding:14px 36px; background:linear-gradient(135deg,var(--accent),#00a896); color:#07091a; font-weight:700; font-size:.9rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border-radius:100px; transition:transform .25s,box-shadow .25s; box-shadow:0 0 30px rgba(0,212,180,.3); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(0,212,180,.5); }
+    .btn-outline { display:inline-block; padding:13px 36px; border:1px solid rgba(255,255,255,.18); color:var(--text); font-weight:600; font-size:.9rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border-radius:100px; transition:border-color .25s,background .25s,transform .25s; background:rgba(255,255,255,.04); }
+    .btn-outline:hover { border-color:var(--accent); background:rgba(0,212,180,.07); transform:translateY(-2px); }
+    .scroll-indicator { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:fadeIn 1s 1.6s forwards; }
+    .scroll-indicator span { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .scroll-mouse { width:24px; height:38px; border:1.5px solid rgba(255,255,255,.25); border-radius:12px; display:flex; justify-content:center; padding-top:6px; }
+    .scroll-mouse::before { content:''; width:4px; height:8px; background:var(--accent); border-radius:2px; animation:scrollBob 2s infinite; }
+
+    /* ── SECTIONS ── */
+    section { padding:120px 48px; max-width:1200px; margin:0 auto; }
+    .section-label { display:inline-flex; align-items:center; gap:10px; font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+    .section-label::before { content:''; width:28px; height:1px; background:var(--accent); }
+    .section-title { font-size:clamp(2rem,4vw,3.2rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin-bottom:20px; }
+    .section-sub { font-size:1.05rem; color:var(--muted); max-width:540px; line-height:1.75; margin-bottom:72px; }
+    .reveal { opacity:0; transform:translateY(40px); transition:opacity .75s cubic-bezier(.25,.8,.25,1),transform .75s cubic-bezier(.25,.8,.25,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+    .reveal-delay-4 { transition-delay:.4s; }
+    .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); max-width:1200px; margin:0 auto; }
+
+    /* ── ABOUT ── */
+    #about { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .about-bio { font-size:1.05rem; color:var(--muted); line-height:1.85; margin-bottom:24px; }
+    .about-bio strong { color:var(--text); font-weight:600; }
+    .about-extras { font-size:.88rem; color:var(--muted); line-height:1.75; margin-top:-8px; margin-bottom:24px; padding:16px 20px; border-left:2px solid rgba(0,212,180,.3); background:rgba(0,212,180,.04); border-radius:0 var(--radius) var(--radius) 0; }
+    .about-extras strong { color:var(--accent); font-weight:600; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:48px; }
+    .stat-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px 24px; transition:border-color .3s,transform .3s; }
+    .stat-card:hover { border-color:rgba(0,212,180,.3); transform:translateY(-4px); }
+    .stat-number { font-size:2.4rem; font-weight:800; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:6px; }
+    .stat-label { font-size:.85rem; color:var(--muted); font-weight:500; }
+    .video-outer { display:flex; flex-direction:column; align-items:center; gap:18px; }
+    .video-wrap { position:relative; width:100%; max-width:300px; aspect-ratio:9/16; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); background:var(--bg3); box-shadow:0 0 50px rgba(0,212,180,.08),0 20px 60px rgba(0,0,0,.4); }
+    .video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    .video-label { text-align:center; font-size:.8rem; color:var(--muted); font-weight:500; line-height:1.6; max-width:300px; }
+    .video-label strong { color:var(--accent); font-weight:600; }
+
+    /* ── LIVE PRODUCTS ── */
+    .products-wrapper { background:var(--bg2); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
+    .products-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+    .products-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; margin-top:16px; }
+
+    .product-card { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; display:flex; flex-direction:column; transition:border-color .35s,transform .35s,box-shadow .35s; }
+    .product-card:hover { border-color:rgba(0,212,180,.3); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(0,212,180,.06); }
+    .product-card.advisoros { border-color:rgba(124,92,252,.35); background:linear-gradient(135deg,rgba(124,92,252,.08),rgba(0,212,180,.05)); }
+    .product-card.advisoros:hover { border-color:rgba(124,92,252,.6); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 60px rgba(124,92,252,.1); }
+
+    .product-header { padding:28px 28px 0; }
+    .product-badge { display:inline-flex; align-items:center; gap:6px; padding:3px 12px; border-radius:100px; font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; }
+    .badge-live { background:rgba(0,212,180,.12); color:var(--accent); border:1px solid rgba(0,212,180,.25); }
+    .badge-live .dot { width:5px; height:5px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+    .badge-watch { background:rgba(124,92,252,.12); color:#a78bfa; border:1px solid rgba(124,92,252,.25); }
+    .product-name { font-size:1.4rem; font-weight:800; margin-bottom:6px; line-height:1.2; }
+    .product-tagline { font-size:.9rem; color:var(--accent); font-weight:600; margin-bottom:10px; }
+    .product-desc { font-size:.9rem; color:var(--muted); line-height:1.75; margin-bottom:20px; }
+    .product-features { display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+    .product-feature { display:flex; align-items:flex-start; gap:8px; font-size:.85rem; color:var(--muted); line-height:1.5; }
+    .product-feature::before { content:'→'; color:var(--accent); font-size:.78rem; flex-shrink:0; margin-top:2px; }
+    .product-pills { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px; }
+    .pill { padding:3px 12px; border-radius:100px; font-size:.72rem; font-weight:600; }
+    .pill-teal { background:rgba(0,212,180,.12); color:var(--accent); }
+    .pill-purple { background:rgba(124,92,252,.12); color:#a78bfa; }
+    .product-actions { padding:0 28px 28px; display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; }
+    .btn-try-live { display:inline-flex; align-items:center; gap:7px; padding:11px 22px; background:linear-gradient(135deg,var(--accent),#00a896); color:#07091a; font-weight:700; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border-radius:100px; transition:transform .2s,box-shadow .2s; box-shadow:0 0 20px rgba(0,212,180,.25); }
+    .btn-try-live:hover { transform:translateY(-2px); box-shadow:0 0 35px rgba(0,212,180,.45); }
+    .btn-watch { display:inline-flex; align-items:center; gap:7px; padding:10px 22px; border:1px solid rgba(255,255,255,.18); color:var(--text); font-weight:600; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border-radius:100px; transition:border-color .25s,background .25s; background:rgba(255,255,255,.04); }
+    .btn-watch:hover { border-color:var(--accent); background:rgba(0,212,180,.07); }
+    .btn-try-advisoros { display:inline-flex; align-items:center; gap:7px; padding:11px 22px; background:linear-gradient(135deg,var(--accent2),#5a3fcc); color:#fff; font-weight:700; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; border-radius:100px; transition:transform .2s,box-shadow .2s; box-shadow:0 0 20px rgba(124,92,252,.3); }
+    .btn-try-advisoros:hover { transform:translateY(-2px); box-shadow:0 0 35px rgba(124,92,252,.5); }
+
+    /* privacy notice */
+    .privacy-notice { margin:0 28px 0; padding:10px 14px; background:rgba(0,212,180,.05); border-left:2px solid rgba(0,212,180,.3); border-radius:0 8px 8px 0; font-size:.78rem; color:var(--muted); line-height:1.55; }
+    .privacy-notice strong { color:var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    .exp-wrapper { background:var(--bg2); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
+    .exp-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+    .timeline { position:relative; display:flex; flex-direction:column; }
+    .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent); opacity:.3; }
+    .timeline-item { display:grid; grid-template-columns:200px 1fr; gap:48px; padding:48px 0 48px 40px; position:relative; border-bottom:1px solid var(--border); }
+    .timeline-item:last-child { border-bottom:none; }
+    .timeline-item::before { content:''; position:absolute; left:-5px; top:58px; width:11px; height:11px; border-radius:50%; background:var(--accent); box-shadow:0 0 16px rgba(0,212,180,.6); z-index:1; }
+    .timeline-item:nth-child(even)::before { background:var(--accent2); box-shadow:0 0 16px rgba(124,92,252,.6); }
+    .timeline-date { font-size:.8rem; font-weight:600; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+    .timeline-item:nth-child(even) .timeline-date { color:var(--accent2); }
+    .timeline-company-loc { font-size:.82rem; color:var(--muted); font-weight:500; }
+    .timeline-role { font-size:1.45rem; font-weight:800; margin-bottom:6px; line-height:1.2; }
+    .timeline-company-full { font-size:1rem; color:var(--accent); font-weight:600; margin-bottom:16px; }
+    .timeline-item:nth-child(even) .timeline-company-full { color:var(--accent2); }
+    .timeline-desc { font-size:.95rem; color:var(--muted); line-height:1.8; margin-bottom:24px; max-width:620px; }
+    .timeline-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { padding:4px 14px; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:100px; font-size:.78rem; font-weight:500; color:var(--muted); transition:border-color .25s,color .25s; }
+    .tag:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* ── SKILLS ── */
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:60px; }
+    .skill-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px 32px; position:relative; overflow:hidden; transition:border-color .35s,transform .35s,box-shadow .35s; }
+    .skill-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); opacity:0; transition:opacity .35s; }
+    .skill-card:hover { border-color:rgba(0,212,180,.25); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(0,212,180,.06); }
+    .skill-card:hover::before { opacity:1; }
+    .skill-icon { width:52px; height:52px; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:24px; }
+    .si-a { background:rgba(0,212,180,.1); }
+    .si-b { background:rgba(124,92,252,.1); }
+    .si-c { background:rgba(0,212,180,.08); }
+    .si-d { background:rgba(124,92,252,.08); }
+    .si-e { background:rgba(0,212,180,.06); }
+    .si-f { background:rgba(124,92,252,.12); }
+    .skill-name { font-size:1.1rem; font-weight:800; margin-bottom:12px; }
+    .skill-desc { font-size:.88rem; color:var(--muted); line-height:1.75; }
+    .skill-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+    .executive-lens { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:900px; }
+    .lens-card { background:rgba(255,255,255,.035); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; }
+    .lens-kicker { font-size:.7rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+    .lens-title { font-size:.95rem; font-weight:800; color:var(--text); margin-bottom:6px; }
+    .lens-copy { font-size:.82rem; color:var(--muted); line-height:1.65; }
+
+    /* ── CASE STUDIES ── */
+    .cs-wrapper { background:var(--bg2); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
+    .cs-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+    .cs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .cs-card { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px 28px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden; transition:border-color .35s,transform .35s,box-shadow .35s; }
+    .cs-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); opacity:0; transition:opacity .35s; }
+    .cs-card:hover { border-color:rgba(0,212,180,.3); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(0,212,180,.06); }
+    .cs-card:hover::before { opacity:1; }
+    .cs-icon { font-size:1.8rem; width:52px; height:52px; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .cs-title { font-size:1.05rem; font-weight:800; line-height:1.3; }
+    .cs-desc { font-size:.85rem; color:var(--muted); line-height:1.7; flex:1; }
+    .cs-arrow { font-size:.8rem; color:var(--accent); font-weight:600; letter-spacing:.06em; display:flex; align-items:center; gap:6px; margin-top:4px; transition:gap .25s; }
+    .cs-card:hover .cs-arrow { gap:10px; }
+
+    /* ── CS FULL ── */
+    .cs-full { width:100vw; margin-left:calc(-50vw + 50%); border-top:1px solid var(--border); padding:80px 0; scroll-margin-top:88px; }
+    .cs-full:nth-child(odd) { background:var(--bg); }
+    .cs-full:nth-child(even) { background:var(--bg2); }
+    .cs-full-inner { max-width:860px; margin:0 auto; padding:0 48px 0 60px; border-left:3px solid var(--accent); }
+    .cs-full:nth-child(even) .cs-full-inner { border-left-color:var(--accent2); }
+    .cs-company-tag { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+    .cs-full:nth-child(even) .cs-company-tag { color:var(--accent2); }
+    .cs-full-title { font-size:clamp(1.5rem,3vw,2.2rem); font-weight:800; letter-spacing:-.02em; line-height:1.15; margin-bottom:36px; }
+    .cs-full h3 { font-size:1.05rem; font-weight:800; color:var(--text); margin:36px 0 10px; }
+    .cs-full h4 { font-size:.92rem; font-weight:700; color:var(--text); margin:22px 0 6px; }
+    .cs-full p { color:var(--muted); font-size:.95rem; line-height:1.8; margin-bottom:14px; }
+    .cs-full ul { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:20px; }
+    .cs-full li { color:var(--muted); font-size:.92rem; line-height:1.7; padding-left:22px; position:relative; }
+    .cs-full li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-size:.82rem; top:2px; }
+    .cs-full li strong { color:var(--text); font-weight:600; }
+    .cs-impact { background:rgba(0,212,180,.05); border-left:2px solid rgba(0,212,180,.3); padding:11px 16px; border-radius:0 var(--radius) var(--radius) 0; margin:6px 0 18px; }
+    .cs-impact p { font-size:.88rem !important; margin-bottom:0 !important; color:var(--muted); }
+    .cs-impact strong { color:var(--accent) !important; font-weight:700; }
+    .cs-journey { display:flex; flex-direction:column; border-left:1px solid rgba(0,212,180,.25); margin:16px 0 28px; }
+    .cs-journey-step { padding:10px 0 10px 24px; position:relative; }
+    .cs-journey-step::before { content:''; position:absolute; left:-5px; top:17px; width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px rgba(0,212,180,.45); }
+    .cs-journey-step span { font-size:.9rem; color:var(--muted); line-height:1.55; }
+    .cs-journey-step strong { color:var(--text); font-weight:600; }
+    .cs-skills-wrap { display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 40px; }
+    .cs-back-top { display:inline-flex; align-items:center; gap:6px; color:var(--accent); text-decoration:none; font-size:.82rem; font-weight:600; letter-spacing:.04em; border:1px solid rgba(0,212,180,.22); padding:8px 20px; border-radius:100px; margin-top:48px; transition:border-color .25s,background .25s; }
+    .cs-back-top:hover { border-color:var(--accent); background:rgba(0,212,180,.06); }
+
+    /* ── CONTACT ── */
+    .contact-wrapper { background:var(--bg); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
+    .contact-inner { max-width:800px; margin:0 auto; padding:0 48px; text-align:center; }
+    .contact-inner .section-label { justify-content:center; }
+    .contact-inner .section-label::before { display:none; }
+    .contact-inner .section-title,.contact-inner .section-sub { text-align:center; }
+    .contact-inner .section-sub { margin:0 auto 60px; }
+    .contact-links { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+    .contact-link { display:flex; align-items:center; gap:10px; padding:15px 28px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; color:var(--text); font-size:.9rem; font-weight:600; transition:border-color .3s,transform .3s,background .3s; }
+    .contact-link:hover { border-color:var(--accent); background:rgba(0,212,180,.06); transform:translateY(-4px); }
+    .contact-link svg { width:20px; height:20px; stroke:var(--accent); flex-shrink:0; }
+    .contact-email { font-size:1.3rem; font-weight:700; color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(0,212,180,.3); padding-bottom:4px; transition:border-color .25s; }
+    .contact-email:hover { border-color:var(--accent); }
+
+    /* ── FOOTER ── */
+    footer { padding:32px 48px; text-align:center; font-size:.8rem; color:var(--muted); border-top:1px solid var(--border); }
+    footer span { color:var(--accent); }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeSlideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.75)} }
+    @keyframes scrollBob { 0%,100%{transform:translateY(0);opacity:1} 50%{transform:translateY(9px);opacity:.3} }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      nav{padding:18px 24px} .nav-links{gap:20px} section{padding:80px 24px}
+      #about{grid-template-columns:1fr;gap:48px}
+      .timeline-item{grid-template-columns:1fr;gap:12px;padding-left:32px}
+      .skills-grid{grid-template-columns:1fr 1fr} .executive-lens{grid-template-columns:1fr}
+      .cs-grid{grid-template-columns:1fr 1fr} .products-grid{grid-template-columns:1fr}
+      .hero-products{grid-template-columns:1fr 1fr}
+      .exp-inner,.cs-inner,.contact-inner,.products-inner{padding:0 24px}
+      .cs-full-inner{padding:0 24px 0 28px;border-left-width:2px}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none} .skills-grid,.cs-grid{grid-template-columns:1fr}
+      .hero-products{grid-template-columns:1fr} .about-stats{grid-template-columns:1fr 1fr}
+      .build-strip{border-radius:var(--radius-lg)} .build-strip-divider{display:none}
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ══════ NAV ══════ -->
+<!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">NCM</a>
   <ul class="nav-links">
-    <li><a href="#about" onclick="gtag('event', 'portfolio_nav_about');">About</a></li>
-    <li><a href="#experience" onclick="gtag('event', 'portfolio_nav_experience');">Experience</a></li>
-    <li><a href="#skills" onclick="gtag('event', 'portfolio_nav_skills');">Skills</a></li>
-    <li><a href="#case-studies" onclick="gtag('event', 'portfolio_nav_case_studies');">Case Studies</a></li>
-    <li><a href="#contact" onclick="gtag('event', 'portfolio_nav_contact');">Contact</a></li>
+    <li><a href="#about" onclick="gtag('event','nav_about')">About</a></li>
+    <li><a href="#live-products" onclick="gtag('event','nav_products')">Live Products</a></li>
+    <li><a href="#experience" onclick="gtag('event','nav_experience')">Experience</a></li>
+    <li><a href="#skills" onclick="gtag('event','nav_skills')">Skills</a></li>
+    <li><a href="#case-studies" onclick="gtag('event','nav_case_studies')">Case Studies</a></li>
+    <li><a href="#contact" onclick="gtag('event','nav_contact')">Contact</a></li>
   </ul>
 </nav>
 
-  <!-- ══════ HERO ══════ -->
-  <section id="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-gradient"></div>
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Enterprise Product Leadership &amp; Regulated Platforms
+    </div>
+    <h1 class="hero-name">Nicole<br>Chernow-Martinez</h1>
+    <p class="hero-tagline">
+      <strong>Enterprise AI Product Management</strong>&nbsp;&nbsp;|&nbsp;&nbsp;FinTech · InsurTech · Digital Banking · Agentic AI
+      &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years in Regulated Financial Environments
+    </p>
 
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        FinTech Product Platforms &amp; AI-Enabled Systems
-      </div>
-
-      <h1 class="hero-name">Nicole<br>Chernow-Martinez</h1>
-
-      <p class="hero-tagline">
-        <strong>FinTech Product Platforms</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Payments, Insurance, Banking, Lending &amp; AI-Enabled Systems
-        &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years in Regulated Financial Environments
-      </p>
-
-      <div class="build-strip">
-        <span class="build-strip-label">Currently Building</span>
-        <span class="build-strip-item">Product Thinking Growth Console</span>
-        <span class="build-strip-divider"></span>
-        <span class="build-strip-item">Human-in-the-Loop Operational Intelligence Systems</span>
-        <span class="build-strip-divider"></span>
-        <span class="build-strip-item">Telemetry + Iteration Frameworks</span>
-      </div>
-
-      <div class="hero-cta">
-        <a href="#case-studies" class="btn-primary">View My Work</a>
-        <a href="#cs-1" class="btn-outline" onclick="gtag('event', 'portfolio_executive_one_pager_cta');">Executive One-Pager</a>
-        <a href="#contact" class="btn-outline">Get in Touch</a>
-      </div>
+    <!-- 4 live products -->
+    <div class="hero-products">
+      <a href="#p-advisoros" class="hero-product-card featured" onclick="gtag('event','hero_advisoros')">
+        <span class="hpc-label purple">▶ Watch Demo</span>
+        <span class="hpc-name">AdvisorOS</span>
+        <span class="hpc-sub">Enterprise AI advisor workstation for LPL Financial</span>
+      </a>
+      <a href="#p-britney" class="hero-product-card" onclick="gtag('event','hero_britney')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Britney</span>
+        <span class="hpc-sub">Reduce customer friction at credit unions</span>
+      </a>
+      <a href="#p-caroline" class="hero-product-card" onclick="gtag('event','hero_caroline')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Caroline</span>
+        <span class="hpc-sub">Reduce employee interruptions at banks</span>
+      </a>
+      <a href="#p-scout" class="hero-product-card" onclick="gtag('event','hero_scout')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Scout</span>
+        <span class="hpc-sub">Catch what broke after your release</span>
+      </a>
     </div>
 
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-mouse"></div>
-    </div>
-  </section>
-
-  <!-- ══════ ABOUT ══════ -->
-  <section id="about">
-    <div class="about-left">
-      <div class="reveal">
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
-      </div>
-
-      <p class="about-bio reveal reveal-delay-1">
-        I specialize in <strong>payments, lending, and AI-enabled operational systems</strong>.
-        I operate at the intersection of product, engineering, and operations — owning platform
-        outcomes, influencing architecture, and driving measurable business impact in regulated
-        environments.
-      </p>
-
-      <p class="about-bio reveal reveal-delay-2">
-        I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong>
-        where AI proposes, humans decide, and telemetry turns operational judgment into measurable
-        product iteration — especially in fintech and regulated workflows.
-      </p>
-
-      <div class="about-extras reveal reveal-delay-3">
-        <strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp;
-        Guest Lecturer at <strong>SDSU</strong>
-      </div>
-
-      <div class="about-stats">
-        <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">Years of Experience</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-2">
-          <div class="stat-number">70+</div>
-          <div class="stat-label">Countries via BetterPlanet</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-3">
-          <div class="stat-number">80+</div>
-          <div class="stat-label">Loan Lifecycle Initiatives</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-4">
-          <div class="stat-number">6</div>
-          <div class="stat-label">Case Studies Published</div>
-        </div>
-      </div>
+    <div class="build-strip">
+      <span class="build-strip-label">Agentics Growth Lab</span>
+      <span class="build-strip-item">Privacy-First AI</span>
+      <span class="build-strip-divider"></span>
+      <span class="build-strip-item">Human-in-the-Loop</span>
+      <span class="build-strip-divider"></span>
+      <span class="build-strip-item">4 Live Products</span>
+      <span class="build-strip-divider"></span>
+      <span class="build-strip-item">Regulated Environments</span>
     </div>
 
-   
-    <div class="about-right">
-      <div class="video-outer reveal reveal-delay-2">
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/3zjcndXSqhU"
-            title="Nicole Chernow-Martinez — AI Persona &amp; Product Leadership"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-label"><strong>Nicole's AI Persona</strong><br>See How I Think About Product Leadership</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ══════ EXPERIENCE ══════ -->
-  <div class="exp-wrapper" id="experience">
-    <div class="exp-inner">
-      <div class="reveal">
-        <p class="section-label">Career</p>
-        <h2 class="section-title">Where I've Built</h2>
-        <p class="section-sub">
-          Fifteen years of platform ownership, systems integration, and
-          AI-enabled product delivery across fintech, insurance, and lending.
-        </p>
-      </div>
-
-      <div class="timeline">
-
-        <!-- Agentics Growth Lab -->
-        <div class="timeline-item reveal">
-          <div>
-            <div class="timeline-date">Nov 2025 – Present</div>
-            <div class="timeline-company-loc">San Diego, CA</div>
-          </div>
-          <div>
-            <div class="timeline-role">Founder, CEO &amp; CPO</div>
-            <div class="timeline-company-full">Agentics Growth Lab</div>
-            <p class="timeline-desc">
-              Founded an AI product studio building human-in-the-loop operational
-              intelligence systems for fintech and regulated workflows. Current work
-              includes the Product Thinking Growth Console, telemetry-driven scoring,
-              recommendation workflows, and Measure + Iteration workspaces that turn
-              product judgment into observable operating systems — where AI proposes
-              and humans decide.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Human-in-the-Loop AI</span>
-              <span class="tag">PTG Console</span>
-              <span class="tag">Telemetry Scoring</span>
-              <span class="tag">Recommendation Workflows</span>
-              <span class="tag">Measure + Iteration</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ICW Group -->
-        <div class="timeline-item reveal reveal-delay-1">
-          <div>
-            <div class="timeline-date">May – Nov 2025</div>
-            <div class="timeline-company-loc">San Diego, CA</div>
-          </div>
-          <div>
-            <div class="timeline-role">Technical Product Manager, Digital Platforms &amp; PaaS</div>
-            <div class="timeline-company-full">ICW Group</div>
-            <p class="timeline-desc">
-              Led a platform product organization of 6 Product Owners across ICW's
-              digital platforms and PaaS infrastructure. Reduced release cycles by 40%
-              through process modernization and delivery rhythm improvements. Drove
-              platform architecture decisions that bridged engineering capability with
-              business outcomes in a regulated insurance environment.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">PaaS</span>
-              <span class="tag">Release Optimization</span>
-              <span class="tag">Team Leadership</span>
-              <span class="tag">Insurance Tech</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- First American -->
-        <div class="timeline-item reveal reveal-delay-2">
-          <div>
-            <div class="timeline-date">Jan 2024 – Feb 2025</div>
-            <div class="timeline-company-loc">Santa Ana, CA</div>
-          </div>
-          <div>
-            <div class="timeline-role">Product Manager / Senior Product Owner</div>
-            <div class="timeline-company-full">First American</div>
-            <p class="timeline-desc">
-              Owned end-to-end product delivery for digital payment rail integrations
-              including ACH, wire, and RTP. Managed complex vendor integrations with
-              Jack Henry, Fiserv, and Bottomline Technologies — navigating compliance,
-              API architecture, and operational readiness across all three rails
-              simultaneously. Delivered within a heavily regulated title and settlement
-              environment.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">ACH</span>
-              <span class="tag">Wire</span>
-              <span class="tag">RTP</span>
-              <span class="tag">Jack Henry</span>
-              <span class="tag">Fiserv</span>
-              <span class="tag">Bottomline</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Finance of America -->
-        <div class="timeline-item reveal reveal-delay-1">
-          <div>
-            <div class="timeline-date">Jun 2022 – Sep 2023</div>
-            <div class="timeline-company-loc">Scottsdale, AZ</div>
-          </div>
-          <div>
-            <div class="timeline-role">Product Manager / Platform Product Owner</div>
-            <div class="timeline-company-full">Finance of America</div>
-            <p class="timeline-desc">
-              Platform product owner across the mortgage lending lifecycle — owning
-              integrations with Salesforce, Five9, and Plaid while maintaining SOX
-              compliance across all platform touchpoints. Led cross-functional delivery
-              spanning loan origination, call center operations, and payment rail
-              connectivity. Drove operational efficiency improvements in a high-volume
-              lending environment.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Salesforce</span>
-              <span class="tag">Five9</span>
-              <span class="tag">Plaid</span>
-              <span class="tag">SOX Compliance</span>
-              <span class="tag">Mortgage Tech</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tealium -->
-        <div class="timeline-item reveal reveal-delay-2">
-          <div>
-            <div class="timeline-date">Dec 2020 – Apr 2022</div>
-            <div class="timeline-company-loc">San Diego, CA</div>
-          </div>
-          <div>
-            <div class="timeline-role">Technical Product Owner &amp; Scrum Master</div>
-            <div class="timeline-company-full">Tealium</div>
-            <p class="timeline-desc">
-              Technical PM and Scrum Master on Tealium's SaaS big data platform.
-              Owned the product roadmap for IAM capabilities and API infrastructure,
-              enabling enterprise customers to manage data collection and activation
-              at scale. Partnered closely with engineering to define API contracts and
-              drive platform extensibility across a global customer base.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">SaaS Platform</span>
-              <span class="tag">Big Data</span>
-              <span class="tag">IAM</span>
-              <span class="tag">APIs</span>
-              <span class="tag">Scrum</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Wells Fargo -->
-        <div class="timeline-item reveal reveal-delay-3">
-          <div>
-            <div class="timeline-date">Mar 2005 – Nov 2020</div>
-            <div class="timeline-company-loc">San Diego, CA</div>
-          </div>
-          <div>
-            <div class="timeline-role">Assistant Vice President</div>
-            <div class="timeline-company-full">Wells Fargo</div>
-            <p class="timeline-desc">
-              Fifteen years at Wells Fargo spanning mortgage systems, risk operations,
-              and enterprise Agile transformation. Contributed to 80+ loan lifecycle
-              initiatives across origination, servicing, and default management.
-              Played a key role in the bank's Agile adoption — coaching teams, defining
-              delivery frameworks, and bridging business and technology stakeholders
-              across large-scale program portfolios in a heavily regulated environment.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Mortgage Systems</span>
-              <span class="tag">Risk Operations</span>
-              <span class="tag">Agile Transformation</span>
-              <span class="tag">Loan Lifecycle</span>
-              <span class="tag">15 Years</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="hero-cta">
+      <a href="#live-products" class="btn-primary" onclick="gtag('event','hero_see_products')">See Live Products</a>
+      <a href="#case-studies" class="btn-outline">Case Studies</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
   </div>
+  <div class="scroll-indicator"><span>Scroll</span><div class="scroll-mouse"></div></div>
+</section>
 
-  <!-- ══════ SKILLS ══════ -->
-  <section id="skills">
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="about-left">
     <div class="reveal">
-      <p class="section-label">Expertise</p>
-      <h2 class="section-title">What I Bring</h2>
-      <p class="section-sub">
-        Deep domain knowledge across the full fintech stack — from payments
-        infrastructure to AI strategy to platform architecture.
-      </p>
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
+    </div>
+    <p class="about-bio reveal reveal-delay-1">I specialize in <strong>payments, lending, and AI-enabled operational systems</strong>. I operate at the intersection of product, engineering, and operations — owning platform outcomes, influencing architecture, and driving measurable business impact in regulated environments.</p>
+    <p class="about-bio reveal reveal-delay-2">I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong> where AI proposes, humans decide, and telemetry turns operational judgment into measurable product iteration — especially in fintech and regulated workflows.</p>
+    <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
+    <div class="about-stats">
+      <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">4</div><div class="stat-label">Live AI Products</div></div>
+      <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
+      <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="video-outer reveal reveal-delay-2">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/3zjcndXSqhU" title="Nicole Chernow-Martinez — AI Persona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="video-label"><strong>Nicole's AI Persona</strong><br>See How I Think About Product Leadership</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ LIVE PRODUCTS ══ -->
+<div class="products-wrapper" id="live-products">
+  <div class="products-inner">
+    <div class="reveal">
+      <p class="section-label">Live Products</p>
+      <h2 class="section-title">Four products. Deployed.<br>Try them now.</h2>
+      <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
     </div>
 
-    <div class="skills-grid">
+    <div class="products-grid">
 
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon si-a">💳</div>
-        <div class="skill-name">Payments Infrastructure</div>
-        <p class="skill-desc">
-          Hands-on delivery across ACH, wire, and RTP rails with major processors.
-          From Jack Henry and Fiserv to Bottomline and Plaid — I own the integration,
-          not just the roadmap.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-teal">ACH</span>
-          <span class="pill pill-teal">Wire</span>
-          <span class="pill pill-teal">RTP</span>
-          <span class="pill pill-teal">Plaid</span>
-          <span class="pill pill-teal">Fiserv</span>
+      <!-- AdvisorOS -->
+      <div class="product-card advisoros reveal reveal-delay-1" id="p-advisoros">
+        <div class="product-header">
+          <div class="product-badge badge-watch">▶ Watch Demo</div>
+          <div class="product-name">AdvisorOS</div>
+          <div class="product-tagline">Enterprise AI Advisor Workstation</div>
+          <p class="product-desc">A full-stack enterprise AI workstation built for financial advisors — demonstrating what responsible, governed, explainable AI looks like in wealth management. Built for LPL Financial's AI Product Team.</p>
+          <div class="product-features">
+            <div class="product-feature">Real Claude API email draft generation — personalized to client + advisor voice</div>
+            <div class="product-feature">Real Gmail send — advisor approves, enterprise system executes</div>
+            <div class="product-feature">12-section Feature Decision Records with FinOps auto-calculation</div>
+            <div class="product-feature">RICE/WSJF scoring, advisor voting, pilot dashboard, one-click leadership decks</div>
+            <div class="product-feature">Complete honest AI transparency — About page documents what is real vs. demo</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-purple">Claude API</span>
+            <span class="pill pill-teal">Gmail API</span>
+            <span class="pill pill-purple">FDR Framework</span>
+            <span class="pill pill-teal">RICE / WSJF</span>
+            <span class="pill pill-purple">React · Vercel</span>
+            <span class="pill pill-teal">Responsible AI</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://youtu.be/Nc5BrL5OEq0" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','advisoros_watch')">▶ Watch Demo</a>
+          <a href="https://advisoros-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-watch" onclick="gtag('event','advisoros_try')">Try Live →</a>
         </div>
       </div>
 
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon si-b">🤖</div>
-        <div class="skill-name">AI Product Strategy</div>
-        <p class="skill-desc">
-          Building human-in-the-loop operational intelligence for fintech workflows.
-          I apply AI pragmatically — as a recommendation layer supported by telemetry,
-          scoring, measure loops, and human decision rights.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-purple">Human-in-the-Loop AI</span>
-          <span class="pill pill-purple">PTG Console</span>
-          <span class="pill pill-purple">Telemetry Scoring</span>
-          <span class="pill pill-purple">Measure + Iterate</span>
+      <!-- Britney -->
+      <div class="product-card reveal reveal-delay-2" id="p-britney">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">Britney</div>
+          <div class="product-tagline">Saturday lines don't have to be this long</div>
+          <p class="product-desc">A privacy-first, customer-facing agentic assistant that answers members' banking questions using only public-facing information — instantly. Reduces lobby lines and improves member experience at credit unions and banks.</p>
+          <div class="product-features">
+            <div class="product-feature">Live web-grounded AI responses using only publicly available information</div>
+            <div class="product-feature">Privacy-first — surfaces no customer data, no account information</div>
+            <div class="product-feature">Answers questions on rates, accounts, loans, eligibility, and products</div>
+            <div class="product-feature">Designed for branch kiosks and digital self-service channels</div>
+          </div>
+          <div class="privacy-notice"><strong>Privacy-first:</strong> Britney surfaces only publicly available information. Not financial advice. Demo references SDCCU for illustration only.</div>
+          <br>
+          <div class="product-pills">
+            <span class="pill pill-teal">Privacy-First AI</span>
+            <span class="pill pill-teal">Member Experience</span>
+            <span class="pill pill-purple">Web-Grounded</span>
+            <span class="pill pill-purple">Credit Union</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://www.agenticsgrowthlab.com/reduce-customer-friction" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','britney_try')">✦ Try Britney Live</a>
+          <a href="https://www.agenticsgrowthlab.com/reduce-customer-friction" target="_blank" rel="noopener noreferrer" class="btn-watch" onclick="gtag('event','britney_learn')">Learn More →</a>
         </div>
       </div>
 
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon si-c">🏦</div>
-        <div class="skill-name">Digital Banking Platforms</div>
-        <p class="skill-desc">
-          Platform product ownership across lending origination, digital banking,
-          and mortgage lifecycle systems — including CRM, telephony, and
-          data platform integrations.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-teal">Salesforce</span>
-          <span class="pill pill-teal">Five9</span>
-          <span class="pill pill-teal">Jack Henry</span>
-          <span class="pill pill-teal">Mortgage Tech</span>
+      <!-- Caroline -->
+      <div class="product-card reveal reveal-delay-1" id="p-caroline">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">Caroline</div>
+          <div class="product-tagline">Your best team members don't have to drown in interruptions</div>
+          <p class="product-desc">A privacy-first, internally-facing agentic assistant that answers internal banking questions using approved public-facing information — instantly. Stops the cycle where your most knowledgeable employee can't get through her own work because everyone needs her.</p>
+          <div class="product-features">
+            <div class="product-feature">Answers internal team questions using approved public information only</div>
+            <div class="product-feature">Reduces interruptions to senior staff and operations teams</div>
+            <div class="product-feature">Privacy-first — no internal systems, no customer data exposure</div>
+            <div class="product-feature">Helps operations teams stay focused on high-value work</div>
+          </div>
+          <div class="privacy-notice"><strong>Privacy-first:</strong> Caroline answers using only approved public-facing information. No internal systems accessed.</div>
+          <br>
+          <div class="product-pills">
+            <span class="pill pill-teal">Privacy-First AI</span>
+            <span class="pill pill-purple">Employee Experience</span>
+            <span class="pill pill-teal">Internal Assistant</span>
+            <span class="pill pill-purple">Operations</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://www.agenticsgrowthlab.com/reduce-employee-friction" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','caroline_try')">✦ Try Caroline Live</a>
+          <a href="https://www.agenticsgrowthlab.com/reduce-employee-friction" target="_blank" rel="noopener noreferrer" class="btn-watch" onclick="gtag('event','caroline_learn')">Learn More →</a>
         </div>
       </div>
 
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon si-d">🔒</div>
-        <div class="skill-name">Risk &amp; Compliance</div>
-        <p class="skill-desc">
-          Deep fluency in SOX, FFIEC, and SOC2 requirements — translating
-          regulatory constraints into platform guardrails without sacrificing
-          delivery velocity.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-purple">SOX</span>
-          <span class="pill pill-purple">FFIEC</span>
-          <span class="pill pill-purple">SOC2</span>
-          <span class="pill pill-purple">Reg Compliance</span>
+      <!-- Scout -->
+      <div class="product-card reveal reveal-delay-2" id="p-scout">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Free QA Audit</div>
+          <div class="product-name">Scout</div>
+          <div class="product-tagline">The release went fine… but what else broke?</div>
+          <p class="product-desc">A privacy-first, customer-facing quality control agentic assistant. Customer trust erodes when digital experiences break. Scout catches issues before your website customers do — checking site loading, broken links, and customer journey flows after every release.</p>
+          <div class="product-features">
+            <div class="product-feature">Checks site loading performance across key pages</div>
+            <div class="product-feature">Checks for broken links and missing resources</div>
+            <div class="product-feature">Checks customer journey flows end to end</div>
+            <div class="product-feature">Enter any website URL for a free live mini QA audit</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-teal">Privacy-First AI</span>
+            <span class="pill pill-teal">QA Automation</span>
+            <span class="pill pill-purple">Release Management</span>
+            <span class="pill pill-purple">Customer Trust</span>
+          </div>
+          <br>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.6"><strong style="color:var(--accent)">Get more:</strong> Add multiple pages · Scheduled reviews · Email report delivery · Customer journey flow reviews · Monetization evaluations</p>
         </div>
-      </div>
-
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon si-e">⚙️</div>
-        <div class="skill-name">Platform Architecture &amp; APIs</div>
-        <p class="skill-desc">
-          Influencing system design, defining API contracts, and owning
-          integration-heavy platform roadmaps in PaaS and SaaS environments —
-          from IAM to big data pipelines.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-teal">API Design</span>
-          <span class="pill pill-teal">PaaS</span>
-          <span class="pill pill-teal">IAM</span>
-          <span class="pill pill-teal">Systems Integration</span>
-        </div>
-      </div>
-
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon si-f">📐</div>
-        <div class="skill-name">Scaled Agile &amp; OKRs</div>
-        <p class="skill-desc">
-          Leading product teams and coaching Agile transformation at scale.
-          From Scrum Master to multi-team Product Owner organizations — I build
-          delivery structures that hold up under regulatory pressure.
-        </p>
-        <div class="skill-pills">
-          <span class="pill pill-purple">SAFe / Scrum</span>
-          <span class="pill pill-purple">OKR Frameworks</span>
-          <span class="pill pill-purple">Team Coaching</span>
-          <span class="pill pill-purple">PI Planning</span>
+        <div class="product-actions">
+          <a href="https://www.agenticsgrowthlab.com/improve-customer-trust" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','scout_try')">✦ Get Free QA Audit</a>
+          <a href="https://www.agenticsgrowthlab.com/improve-customer-trust" target="_blank" rel="noopener noreferrer" class="btn-watch" onclick="gtag('event','scout_learn')">Learn More →</a>
         </div>
       </div>
 
     </div>
+  </div>
+</div>
 
-    <!-- Executive capability lens -->
-    <div class="executive-lens reveal">
-      <div class="lens-card">
-        <div class="lens-kicker">Platform</div>
-        <div class="lens-title">Payments + Digital Banking Infrastructure</div>
-        <p class="lens-copy">ACH, wire, RTP, lending, servicing, IAM, APIs, vendor integrations, and regulated platform delivery.</p>
-      </div>
-      <div class="lens-card">
-        <div class="lens-kicker">AI Systems</div>
-        <div class="lens-title">Operational Intelligence + Human Review</div>
-        <p class="lens-copy">AI-assisted recommendation workflows, scoring models, telemetry loops, and decision frameworks where humans retain control.</p>
-      </div>
-      <div class="lens-card">
-        <div class="lens-kicker">Execution</div>
-        <div class="lens-title">Product Operating Models That Ship</div>
-        <p class="lens-copy">Roadmaps, OKRs, Agile delivery, measurable iteration, risk-aware prioritization, and executive-ready product narratives.</p>
-      </div>
+<!-- ══ EXPERIENCE ══ -->
+<div class="exp-wrapper" id="experience">
+  <div class="exp-inner">
+    <div class="reveal">
+      <p class="section-label">Career</p>
+      <h2 class="section-title">Where I've Built</h2>
+      <p class="section-sub">Fifteen years of platform ownership, systems integration, and AI-enabled product delivery across fintech, insurance, and lending.</p>
     </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ══════ CASE STUDIES ══════ -->
-  <div class="cs-wrapper" id="case-studies">
-    <div class="cs-inner">
-      <div class="reveal">
-        <p class="section-label">Case Studies</p>
-        <h2 class="section-title">Work That Ships</h2>
-        <p class="section-sub">
-          Six published case studies documenting real platform outcomes —
-          from operational intelligence systems to complex payment rail integrations.
-        </p>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div><div class="timeline-date">Nov 2025 – Present</div><div class="timeline-company-loc">San Diego, CA</div></div>
+        <div>
+          <div class="timeline-role">Founder, CEO &amp; CPO</div>
+          <div class="timeline-company-full">Agentics Growth Lab</div>
+          <p class="timeline-desc">Founded an AI product studio building privacy-first, human-in-the-loop intelligence systems for fintech and regulated workflows. Shipped four live products: AdvisorOS (enterprise AI advisor workstation for LPL Financial), Britney (customer-facing member assistant), Caroline (internal employee assistant), and Scout (QA agentic assistant). Each built on the principle that AI proposes and humans decide.</p>
+          <div class="timeline-tags"><span class="tag">Human-in-the-Loop AI</span><span class="tag">AdvisorOS</span><span class="tag">Britney</span><span class="tag">Caroline</span><span class="tag">Scout</span><span class="tag">Claude API</span><span class="tag">Privacy-First</span></div>
+        </div>
       </div>
-
-      <div class="cs-grid">
-
-        <a href="#cs-1" class="cs-card reveal reveal-delay-1">
-          <div class="cs-icon si-b">📈</div>
-          <div class="cs-title">Product Thinking Growth Console</div>
-          <p class="cs-desc">Operational intelligence console turning the NCM framework into measurable software: scoring, recommendations, telemetry, and iteration.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
-        <a href="#cs-2" class="cs-card reveal reveal-delay-2">
-          <div class="cs-icon si-a">🏦</div>
-          <div class="cs-title">Bottomline Digital Banking Integration</div>
-          <p class="cs-desc">End-to-end product ownership of the Bottomline payment platform integration for a regulated financial services client.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
-        <a href="#cs-3" class="cs-card reveal reveal-delay-3">
-          <div class="cs-icon si-c">📞</div>
-          <div class="cs-title">Five9 Call Center Integration</div>
-          <p class="cs-desc">Integrating Five9 cloud contact center with a mortgage lending platform — spanning telephony, CRM, and loan lifecycle data.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
-        <a href="#cs-4" class="cs-card reveal reveal-delay-1">
-          <div class="cs-icon si-d">💳</div>
-          <div class="cs-title">Plaid Payment Rails</div>
-          <p class="cs-desc">Building and owning the Plaid payment rail integration within a SOX-compliant lending environment, including identity and account verification.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
-        <a href="#cs-5" class="cs-card reveal reveal-delay-2">
-          <div class="cs-icon si-e">🌍</div>
-          <div class="cs-title">BetterPlanet Co-op</div>
-          <p class="cs-desc">Co-founded and scaled a cooperative platform reaching 70+ countries — product strategy, operations, and community infrastructure.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
-        <a href="#cs-6" class="cs-card reveal reveal-delay-3">
-          <div class="cs-icon si-f">📊</div>
-          <div class="cs-title">Tealium Big Data Platform</div>
-          <p class="cs-desc">Technical PM ownership of a SaaS big data platform — API infrastructure, IAM capabilities, and enterprise data activation at scale.</p>
-          <span class="cs-arrow">Read case study →</span>
-        </a>
-
+      <div class="timeline-item reveal reveal-delay-1">
+        <div><div class="timeline-date">May – Nov 2025</div><div class="timeline-company-loc">San Diego, CA</div></div>
+        <div>
+          <div class="timeline-role">Technical Product Manager, Digital Platforms &amp; PaaS</div>
+          <div class="timeline-company-full">ICW Group</div>
+          <p class="timeline-desc">Led a platform product organization of 6 Product Owners across ICW's digital platforms and PaaS infrastructure. Reduced release cycles by 40% through process modernization and delivery rhythm improvements.</p>
+          <div class="timeline-tags"><span class="tag">PaaS</span><span class="tag">Release Optimization</span><span class="tag">Team Leadership</span><span class="tag">Insurance Tech</span></div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div><div class="timeline-date">Jan 2024 – Feb 2025</div><div class="timeline-company-loc">Santa Ana, CA</div></div>
+        <div>
+          <div class="timeline-role">Product Manager / Senior Product Owner</div>
+          <div class="timeline-company-full">First American</div>
+          <p class="timeline-desc">Owned end-to-end product delivery for digital payment rail integrations including ACH, wire, and RTP. Managed complex vendor integrations with Jack Henry, Fiserv, and Bottomline Technologies.</p>
+          <div class="timeline-tags"><span class="tag">ACH</span><span class="tag">Wire</span><span class="tag">RTP</span><span class="tag">Jack Henry</span><span class="tag">Fiserv</span><span class="tag">Bottomline</span></div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div><div class="timeline-date">Jun 2022 – Sep 2023</div><div class="timeline-company-loc">Scottsdale, AZ</div></div>
+        <div>
+          <div class="timeline-role">Product Manager / Platform Product Owner</div>
+          <div class="timeline-company-full">Finance of America</div>
+          <p class="timeline-desc">Platform product owner across the mortgage lending lifecycle — owning integrations with Salesforce, Five9, and Plaid while maintaining SOX compliance across all platform touchpoints.</p>
+          <div class="timeline-tags"><span class="tag">Salesforce</span><span class="tag">Five9</span><span class="tag">Plaid</span><span class="tag">SOX Compliance</span><span class="tag">Mortgage Tech</span></div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div><div class="timeline-date">Dec 2020 – Apr 2022</div><div class="timeline-company-loc">San Diego, CA</div></div>
+        <div>
+          <div class="timeline-role">Technical Product Owner &amp; Scrum Master</div>
+          <div class="timeline-company-full">Tealium</div>
+          <p class="timeline-desc">Technical PM and Scrum Master on Tealium's SaaS big data platform. Owned the product roadmap for IAM capabilities and API infrastructure, enabling enterprise customers to manage data collection and activation at scale.</p>
+          <div class="timeline-tags"><span class="tag">SaaS Platform</span><span class="tag">Big Data</span><span class="tag">IAM</span><span class="tag">APIs</span><span class="tag">Scrum</span></div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <div><div class="timeline-date">Mar 2005 – Nov 2020</div><div class="timeline-company-loc">San Diego, CA</div></div>
+        <div>
+          <div class="timeline-role">Assistant Vice President</div>
+          <div class="timeline-company-full">Wells Fargo</div>
+          <p class="timeline-desc">Fifteen years at Wells Fargo spanning mortgage systems, risk operations, and enterprise Agile transformation. Contributed to 80+ loan lifecycle initiatives across origination, servicing, and default management.</p>
+          <div class="timeline-tags"><span class="tag">Mortgage Systems</span><span class="tag">Risk Operations</span><span class="tag">Agile Transformation</span><span class="tag">Loan Lifecycle</span><span class="tag">15 Years</span></div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ══════ CS1: Product Thinking Growth Console ══════ -->
-  <div class="cs-full reveal" id="cs-1">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">Agentics Growth Lab</span>
-      <h2 class="cs-full-title">Product Thinking Growth Console</h2>
-
-      <h3>Executive Summary</h3>
-      <p>The Product Thinking Growth Console translates the NCM product framework into a measurable operational intelligence system. Instead of treating product judgment as static documentation, the console structures discovery, prioritization, scoring, recommendations, and iteration into one executive-ready workspace.</p>
-
-      <h3>The Problem</h3>
-      <p>Product and operations teams in fintech and regulated environments often make high-impact decisions across fragmented artifacts: roadmaps, meeting notes, KPI dashboards, risk conversations, customer feedback, and delivery backlogs. The result is not a lack of strategy — it is a lack of operating telemetry that connects strategy to measurable product movement.</p>
-
-      <h3>The Solution</h3>
-      <p>An operational intelligence console designed around human-in-the-loop decisioning. AI proposes recommendations, scores patterns, and surfaces next-best actions; humans review, approve, adjust, and decide. The system is built to support regulated workflows where explainability, accountability, and operational discipline matter.</p>
-      <ul>
-        <li><strong>Product Thinking Growth workspace</strong> to organize hypotheses, experiments, product decisions, and leadership-ready narratives</li>
-        <li><strong>Telemetry-driven scoring</strong> to evaluate signal strength, adoption movement, friction, risk, and iteration maturity</li>
-        <li><strong>Recommendation workflows</strong> that propose next actions without removing human judgment or decision rights</li>
-        <li><strong>Measure + Iteration workspaces</strong> that connect product decisions to observable outcomes over time</li>
-        <li><strong>Regulated-workflow posture</strong> designed for fintech, banking operations, payments, lending, and compliance-adjacent teams</li>
-      </ul>
-
-      <h3>Operating Model</h3>
-      <div class="cs-journey">
-        <div class="cs-journey-step"><span><strong>Signal Capture</strong> — Product, customer, operations, and delivery signals are organized into a shared workspace</span></div>
-        <div class="cs-journey-step"><span><strong>Scoring</strong> — Telemetry and product criteria create a measurable view of priority, friction, opportunity, and risk</span></div>
-        <div class="cs-journey-step"><span><strong>Recommendation</strong> — AI proposes next-best actions, experiment paths, and decision options</span></div>
-        <div class="cs-journey-step"><span><strong>Human Review</strong> — Product leaders validate context, constraints, compliance posture, and business judgment</span></div>
-        <div class="cs-journey-step"><span><strong>Iteration</strong> — Measure loops show whether the decision improved the product, process, or operating outcome</span></div>
-      </div>
-
-      <div class="cs-impact"><p><strong>Positioning:</strong> AI does not own the decision. The console makes product thinking measurable, repeatable, and visible so leaders can decide with better operating intelligence.</p></div>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">Product Operating Model</span>
-        <span class="pill pill-teal">Human-in-the-Loop AI</span>
-        <span class="pill pill-teal">Telemetry Scoring</span>
-        <span class="pill pill-purple">Recommendation Workflows</span>
-        <span class="pill pill-purple">Measure + Iteration</span>
-        <span class="pill pill-teal">FinTech Systems Thinking</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="reveal">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">What I Bring</h2>
+    <p class="section-sub">Deep domain knowledge across the full stack — from enterprise AI product management to payments infrastructure to platform architecture.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-icon si-b">🤖</div>
+      <div class="skill-name">Enterprise AI Product Management</div>
+      <p class="skill-desc">Designing, governing, and delivering AI systems in regulated environments. Feature Decision Records, FinOps analysis, RICE/WSJF prioritization, pilot validation, and human-in-the-loop governance — end to end.</p>
+      <div class="skill-pills"><span class="pill pill-purple">Human-in-the-Loop AI</span><span class="pill pill-purple">FDR Framework</span><span class="pill pill-purple">AI FinOps</span><span class="pill pill-purple">Responsible AI</span></div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-icon si-a">💳</div>
+      <div class="skill-name">Payments Infrastructure</div>
+      <p class="skill-desc">Hands-on delivery across ACH, wire, and RTP rails with major processors. From Jack Henry and Fiserv to Bottomline and Plaid — I own the integration, not just the roadmap.</p>
+      <div class="skill-pills"><span class="pill pill-teal">ACH</span><span class="pill pill-teal">Wire</span><span class="pill pill-teal">RTP</span><span class="pill pill-teal">Plaid</span><span class="pill pill-teal">Fiserv</span></div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-icon si-c">🏦</div>
+      <div class="skill-name">Digital Banking Platforms</div>
+      <p class="skill-desc">Platform product ownership across lending origination, digital banking, and mortgage lifecycle systems — including CRM, telephony, and data platform integrations.</p>
+      <div class="skill-pills"><span class="pill pill-teal">Salesforce</span><span class="pill pill-teal">Five9</span><span class="pill pill-teal">Jack Henry</span><span class="pill pill-teal">Mortgage Tech</span></div>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-icon si-d">🔒</div>
+      <div class="skill-name">Risk &amp; Compliance</div>
+      <p class="skill-desc">Deep fluency in SOX, FFIEC, FINRA, and SOC2 requirements — translating regulatory constraints into platform guardrails without sacrificing delivery velocity.</p>
+      <div class="skill-pills"><span class="pill pill-purple">SOX</span><span class="pill pill-purple">FFIEC</span><span class="pill pill-purple">FINRA</span><span class="pill pill-purple">SOC2</span></div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-icon si-e">⚙️</div>
+      <div class="skill-name">Platform Architecture &amp; APIs</div>
+      <p class="skill-desc">Influencing system design, defining API contracts, and owning integration-heavy platform roadmaps in PaaS and SaaS environments — from IAM to big data pipelines.</p>
+      <div class="skill-pills"><span class="pill pill-teal">API Design</span><span class="pill pill-teal">PaaS</span><span class="pill pill-teal">IAM</span><span class="pill pill-teal">Systems Integration</span></div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-icon si-f">📐</div>
+      <div class="skill-name">Scaled Agile &amp; OKRs</div>
+      <p class="skill-desc">Leading product teams and coaching Agile transformation at scale. From Scrum Master to multi-team Product Owner organizations — delivery structures that hold up under regulatory pressure.</p>
+      <div class="skill-pills"><span class="pill pill-purple">SAFe / Scrum</span><span class="pill pill-purple">OKR Frameworks</span><span class="pill pill-purple">Team Coaching</span><span class="pill pill-purple">PI Planning</span></div>
     </div>
   </div>
+  <div class="executive-lens reveal">
+    <div class="lens-card"><div class="lens-kicker">AI Systems</div><div class="lens-title">Enterprise AI That Earns Trust</div><p class="lens-copy">Privacy-first, human-in-the-loop governance, explainable recommendations, FDR documentation, FinOps analysis — from vision to four deployed products.</p></div>
+    <div class="lens-card"><div class="lens-kicker">Platform</div><div class="lens-title">Payments + Digital Banking Infrastructure</div><p class="lens-copy">ACH, wire, RTP, lending, servicing, IAM, APIs, vendor integrations, and regulated platform delivery.</p></div>
+    <div class="lens-card"><div class="lens-kicker">Execution</div><div class="lens-title">Product Operating Models That Ship</div><p class="lens-copy">Roadmaps, OKRs, Agile delivery, measurable iteration, risk-aware prioritization, and executive-ready product narratives.</p></div>
+  </div>
+</section>
 
-  <!-- ══════ CS2: Bottomline Digital Banking Integration ══════ -->
-  <div class="cs-full reveal" id="cs-2">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">First American Trust</span>
-      <h2 class="cs-full-title">Modernizing Payments Infrastructure in a Regulated Banking Environment</h2>
+<div class="section-divider"></div>
 
-      <h3>Executive Summary</h3>
-      <p>Transformed First American Trust's payments operations from a fragile, manual-dependent infrastructure into a resilient platform capability using Bottomline's technology. The initiative expanded digital payment options across trust accounts, reduced operational friction, and enabled scalable growth without proportional increases in support staffing.</p>
-
-      <h3>Business Impact</h3>
-      <ul>
-        <li>Expanded digital payment capabilities across trust accounts</li>
-        <li>Reduced manual exception handling and operational friction</li>
-        <li>Improved transaction reliability and end-to-end visibility</li>
-        <li>Enabled scalable growth without proportional staffing increases</li>
-        <li>Higher reliability, lower operational cost, increased customer confidence</li>
-        <li>Reduced engineering dependency through self-service tooling</li>
-      </ul>
-
-      <h3>Platform Philosophy</h3>
-      <ul>
-        <li>Treat payments as a platform capability — not a feature</li>
-        <li>Build proactive tooling to surface risk before customers experience failures</li>
-        <li>Enable modular integrations through standardized APIs</li>
-        <li>Reduce dependency on scarce engineering resources through better developer tooling</li>
-      </ul>
-
-      <h3>Key Solutions Delivered</h3>
-      <ul>
-        <li>Bottomline-based payment orchestration layer</li>
-        <li>API-first integration model for downstream systems</li>
-        <li>Automated exception handling workflows</li>
-        <li>Internal dashboards for real-time transaction health monitoring</li>
-        <li>Alerting systems for proactive operational intervention</li>
-      </ul>
-
-      <h3>User Personas</h3>
-      <ul>
-        <li>Trust operations specialists managing high-value transactions</li>
-        <li>Banking compliance and risk officers</li>
-        <li>Client services teams supporting institutional customers</li>
-      </ul>
-
-      <h3>Pain Points Addressed</h3>
-      <ul>
-        <li>Manual reconciliation consuming operations team bandwidth</li>
-        <li>Payment failures and delayed settlements eroding customer trust</li>
-        <li>Limited transaction visibility creating reactive rather than proactive support</li>
-        <li>High operational cost per exception event</li>
-        <li>Overreliance on engineering teams for routine integration changes</li>
-      </ul>
-
-      <h3>KPIs Tracked</h3>
-      <ul>
-        <li>Payment success rate</li>
-        <li>Average resolution time for exception events</li>
-        <li>Support ticket volume (payments-related)</li>
-        <li>Operational cost per transaction</li>
-        <li>Platform uptime and availability</li>
-      </ul>
-
-      <h3>Future Iterations</h3>
-      <ul>
-        <li>AI-assisted payment anomaly detection</li>
-        <li>Agent-based developer support for integrations</li>
-        <li>Self-service integration tooling for partner banks</li>
-      </ul>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">FinTech Platform Strategy</span>
-        <span class="pill pill-teal">API-First Architecture</span>
-        <span class="pill pill-teal">Bottomline</span>
-        <span class="pill pill-purple">Compliance-Aware Product</span>
-        <span class="pill pill-purple">Cross-Functional Delivery</span>
-        <span class="pill pill-teal">Payments Infrastructure</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+<!-- ══ CASE STUDIES ══ -->
+<div class="cs-wrapper" id="case-studies">
+  <div class="cs-inner">
+    <div class="reveal">
+      <p class="section-label">Case Studies</p>
+      <h2 class="section-title">Work That Ships</h2>
+      <p class="section-sub">Six published case studies — from complex payment rail integrations to enterprise operational intelligence systems.</p>
+    </div>
+    <div class="cs-grid">
+      <a href="#cs-1" class="cs-card reveal reveal-delay-1">
+        <div class="cs-icon si-b">📈</div>
+        <div class="cs-title">Product Thinking Growth Console</div>
+        <p class="cs-desc">Operational intelligence console turning the NCM framework into measurable software: scoring, recommendations, telemetry, and iteration.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-2" class="cs-card reveal reveal-delay-2">
+        <div class="cs-icon si-a">🏦</div>
+        <div class="cs-title">Bottomline Digital Banking Integration</div>
+        <p class="cs-desc">End-to-end product ownership of the Bottomline payment platform integration for a regulated financial services client.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-3" class="cs-card reveal reveal-delay-3">
+        <div class="cs-icon si-c">📞</div>
+        <div class="cs-title">Five9 Call Center Integration</div>
+        <p class="cs-desc">Integrating Five9 cloud contact center with a mortgage lending platform — spanning telephony, CRM, and loan lifecycle data.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-4" class="cs-card reveal reveal-delay-1">
+        <div class="cs-icon si-d">💳</div>
+        <div class="cs-title">Plaid Payment Rails</div>
+        <p class="cs-desc">Building and owning the Plaid payment rail integration within a SOX-compliant lending environment, including identity and account verification.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-5" class="cs-card reveal reveal-delay-2">
+        <div class="cs-icon si-e">🌍</div>
+        <div class="cs-title">BetterPlanet Co-op</div>
+        <p class="cs-desc">Co-founded and scaled a cooperative platform reaching 70+ countries — product strategy, operations, and community infrastructure.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-6" class="cs-card reveal reveal-delay-3">
+        <div class="cs-icon si-f">📊</div>
+        <div class="cs-title">Tealium Big Data Platform</div>
+        <p class="cs-desc">Technical PM ownership of a SaaS big data platform — API infrastructure, IAM capabilities, and enterprise data activation at scale.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
     </div>
   </div>
+</div>
 
-  <!-- ══════ CS3: Five9 Call Center Integration ══════ -->
-  <div class="cs-full reveal" id="cs-3">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">Finance of America</span>
-      <h2 class="cs-full-title">Five9 Call Center Integration for Loan Origination Platform</h2>
+<!-- ══ CS1 ══ -->
+<div class="cs-full reveal" id="cs-1">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Agentics Growth Lab</span>
+    <h2 class="cs-full-title">Product Thinking Growth Console</h2>
+    <h3>Executive Summary</h3>
+    <p>The Product Thinking Growth Console translates the NCM product framework into a measurable operational intelligence system. Instead of treating product judgment as static documentation, the console structures discovery, prioritization, scoring, recommendations, and iteration into one executive-ready workspace.</p>
+    <h3>The Problem</h3>
+    <p>Product and operations teams in fintech and regulated environments often make high-impact decisions across fragmented artifacts: roadmaps, meeting notes, KPI dashboards, risk conversations, customer feedback, and delivery backlogs. The result is not a lack of strategy — it is a lack of operating telemetry that connects strategy to measurable product movement.</p>
+    <h3>The Solution</h3>
+    <ul>
+      <li><strong>Product Thinking Growth workspace</strong> to organize hypotheses, experiments, product decisions, and leadership-ready narratives</li>
+      <li><strong>Telemetry-driven scoring</strong> to evaluate signal strength, adoption movement, friction, risk, and iteration maturity</li>
+      <li><strong>Recommendation workflows</strong> that propose next actions without removing human judgment or decision rights</li>
+      <li><strong>Measure + Iteration workspaces</strong> that connect product decisions to observable outcomes over time</li>
+    </ul>
+    <h3>Operating Model</h3>
+    <div class="cs-journey">
+      <div class="cs-journey-step"><span><strong>Signal Capture</strong> — Product, customer, operations, and delivery signals organized</span></div>
+      <div class="cs-journey-step"><span><strong>Scoring</strong> — Telemetry creates a measurable view of priority, friction, and risk</span></div>
+      <div class="cs-journey-step"><span><strong>Recommendation</strong> — AI proposes next-best actions and decision options</span></div>
+      <div class="cs-journey-step"><span><strong>Human Review</strong> — Product leaders validate context and business judgment</span></div>
+      <div class="cs-journey-step"><span><strong>Iteration</strong> — Measure loops confirm whether decisions improved the outcome</span></div>
+    </div>
+    <div class="cs-impact"><p><strong>Positioning:</strong> AI does not own the decision. The console makes product thinking measurable, repeatable, and visible.</p></div>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">Product Operating Model</span><span class="pill pill-teal">Human-in-the-Loop AI</span><span class="pill pill-teal">Telemetry Scoring</span><span class="pill pill-purple">Recommendation Workflows</span><span class="pill pill-purple">Measure + Iteration</span><span class="pill pill-teal">FinTech Systems Thinking</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h3>Executive Summary</h3>
-      <p>Designed and delivered a real-time integration between Five9's cloud call-center platform and a home-grown loan origination system — transforming voice calls from isolated support interactions into fully connected financial workflow events. Every call became part of the loan record, compliance trail, and operational reporting structure.</p>
+<!-- ══ CS2 ══ -->
+<div class="cs-full reveal" id="cs-2">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">First American Trust</span>
+    <h2 class="cs-full-title">Modernizing Payments Infrastructure in a Regulated Banking Environment</h2>
+    <h3>Executive Summary</h3>
+    <p>Transformed First American Trust's payments operations from a fragile, manual-dependent infrastructure into a resilient platform capability using Bottomline's technology — expanding digital payment options, reducing operational friction, and enabling scalable growth.</p>
+    <h3>Business Impact</h3>
+    <ul>
+      <li>Expanded digital payment capabilities across trust accounts</li>
+      <li>Reduced manual exception handling and operational friction</li>
+      <li>Improved transaction reliability and end-to-end visibility</li>
+      <li>Enabled scalable growth without proportional staffing increases</li>
+      <li>Reduced engineering dependency through self-service tooling</li>
+    </ul>
+    <h3>Key Solutions Delivered</h3>
+    <ul>
+      <li>Bottomline-based payment orchestration layer</li>
+      <li>API-first integration model for downstream systems</li>
+      <li>Automated exception handling workflows</li>
+      <li>Internal dashboards for real-time transaction health monitoring</li>
+      <li>Alerting systems for proactive operational intervention</li>
+    </ul>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">FinTech Platform Strategy</span><span class="pill pill-teal">API-First Architecture</span><span class="pill pill-teal">Bottomline</span><span class="pill pill-purple">Compliance-Aware Product</span><span class="pill pill-purple">Cross-Functional Delivery</span><span class="pill pill-teal">Payments Infrastructure</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h3>The Before State</h3>
-      <ul>
-        <li>Agents worked in Five9 while loan officers worked in the LOS — two separate systems</li>
-        <li>Call data lived entirely separately from loan application data</li>
-        <li>Context switching between platforms slowed resolution times</li>
-        <li>Compliance evidence was fragmented across systems</li>
-        <li>Managers lacked end-to-end visibility into borrower interactions</li>
-      </ul>
+<!-- ══ CS3 ══ -->
+<div class="cs-full reveal" id="cs-3">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Finance of America</span>
+    <h2 class="cs-full-title">Five9 Call Center Integration for Loan Origination Platform</h2>
+    <h3>Executive Summary</h3>
+    <p>Designed and delivered a real-time integration between Five9's cloud call-center platform and a home-grown loan origination system — transforming voice calls from isolated support interactions into fully connected financial workflow events.</p>
+    <h3>Key Initiatives</h3>
+    <h4>1. Embedded Call Panel in the Loan Platform</h4>
+    <p>Native call management interface directly inside the LOS — incoming call pop-ups, one-click call controls, live loan details, and inline notes stored to the loan record.</p>
+    <div class="cs-impact"><p><strong>Impact:</strong> Eliminated system switching for agents entirely.</p></div>
+    <h4>2. Automatic Call-to-Loan Linking</h4>
+    <p>Every call produced a structured record automatically — Loan ID, Borrower ID, Agent ID, Timestamp, Call type, and Outcome.</p>
+    <div class="cs-impact"><p><strong>Impact:</strong> Complete interaction history per loan, without manual data entry.</p></div>
+    <h4>3. Compliance and Audit Trail Engine</h4>
+    <p>Structured call metadata in a queryable format designed for regulatory review.</p>
+    <div class="cs-impact"><p><strong>Impact:</strong> Simplified regulatory audits and reduced compliance team effort per review cycle.</p></div>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">FinTech Platform Strategy</span><span class="pill pill-teal">Five9 Integration</span><span class="pill pill-teal">API-First Architecture</span><span class="pill pill-purple">Event-Driven Systems</span><span class="pill pill-purple">Compliance-Aware Product</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h3>Product Vision</h3>
-      <p>Create a voice-enabled financial workflow platform where every call is a connected event:</p>
-      <ul>
-        <li>Calls automatically attach to the correct loan application</li>
-        <li>Agents operate inside a single unified interface</li>
-        <li>Call metadata becomes part of the permanent financial record</li>
-        <li>Compliance evidence is generated by default, not manually assembled</li>
-      </ul>
+<!-- ══ CS4 ══ -->
+<div class="cs-full reveal" id="cs-4">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Finance of America Home Improvement</span>
+    <h2 class="cs-full-title">Plaid Payment Rails — Elevating Payment Functionalities</h2>
+    <h3>Executive Summary</h3>
+    <p>Led ACH payment expansion on a legacy lending stack, enabling contractors and homeowners to transact more efficiently — reducing friction, increasing conversions, and strengthening revenue.</p>
+    <h3>Key Solutions Delivered</h3>
+    <ul>
+      <li>Added ACH payment method via Plaid integration</li>
+      <li>Tied payment status directly to loan application progress and lifecycle events</li>
+      <li>Built API endpoints for payment webhook events with real-time status updates</li>
+      <li>Improved UI with progressive disclosure to reduce cognitive load at checkout</li>
+      <li>Inline error handling for ACH failures with clear customer-facing messaging</li>
+    </ul>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">Payments Modernization</span><span class="pill pill-teal">Plaid Integration</span><span class="pill pill-teal">API Design</span><span class="pill pill-purple">Product Discovery</span><span class="pill pill-purple">SOX Compliance</span><span class="pill pill-purple">Data-Driven Decisions</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h3>Key Initiatives</h3>
+<!-- ══ CS5 ══ -->
+<div class="cs-full reveal" id="cs-5">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">BetterPlanet Co-op — Founder &amp; Strategic Product Leader</span>
+    <h2 class="cs-full-title">eCommerce and Payments Platform Transformation</h2>
+    <h3>Executive Summary</h3>
+    <p>Led end-to-end transformation of BetterPlanet Co-op's commerce platform into a modern payment-enabled digital product — reaching customers in 70+ countries.</p>
+    <h3>Results</h3>
+    <ul>
+      <li>350%+ revenue increase in 5 months</li>
+      <li>100% month-over-month growth in customer engagement</li>
+      <li>Higher transaction success rates across all payment methods</li>
+      <li>Scalable platform foundation for future products and subscriptions</li>
+    </ul>
+    <h3>Key Initiatives</h3>
+    <h4>Credit Card Processing Integration</h4>
+    <div class="cs-impact"><p><strong>Impact:</strong> Removed the primary barrier to conversion and unlocked scalable revenue growth for the first time.</p></div>
+    <h4>Conversion-Focused Checkout Redesign</h4>
+    <div class="cs-impact"><p><strong>Impact:</strong> Significant reduction in cart abandonment rates and increased average order value.</p></div>
+    <h4>Analytics and Growth Instrumentation</h4>
+    <div class="cs-impact"><p><strong>Impact:</strong> Enabled data-driven experimentation — key driver of 100% month-over-month engagement growth.</p></div>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">Payments Platform Design</span><span class="pill pill-teal">eCommerce Product Leadership</span><span class="pill pill-purple">Conversion Optimization</span><span class="pill pill-purple">Data-Driven Strategy</span><span class="pill pill-teal">FinTech Integration</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h4>1. Embedded Call Panel in the Loan Platform</h4>
-      <p>Built a native call management interface directly inside the LOS — incoming call pop-ups showing borrower and loan context, one-click call controls, live loan details visible during conversation, and inline notes stored directly to the loan record.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Eliminated system switching for agents. Agents never needed to leave the loan platform.</p></div>
+<!-- ══ CS6 ══ -->
+<div class="cs-full reveal" id="cs-6">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Tealium — SaaS Customer Data Platform</span>
+    <h2 class="cs-full-title">Big Data Platform — Data Collection at Scale</h2>
+    <h3>Summary</h3>
+    <p>Under Nicole's product leadership, Tealium's CDP underwent a significant transformation — achieving meaningful reduction in production bugs, boosting customer confidence across the integration ecosystem, and improving the developer experience for advertisers worldwide.</p>
+    <h3>The Approach</h3>
+    <ul>
+      <li>Identified dependency bottlenecks through release analytics, not intuition</li>
+      <li>Partnered with engineering to re-architect data ingestion pipelines</li>
+      <li>Improved API consistency across a global ecosystem of advertiser integrations</li>
+      <li>Drove IAM capability improvements for enterprise security requirements</li>
+      <li>Reduced production bug rates through systematic process and tooling improvements</li>
+    </ul>
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap"><span class="pill pill-teal">SaaS Platform Product Management</span><span class="pill pill-teal">Big Data Systems</span><span class="pill pill-teal">IAM</span><span class="pill pill-teal">API Infrastructure</span><span class="pill pill-purple">DevOps Release Management</span><span class="pill pill-purple">Agile Delivery</span></div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
 
-      <h4>2. Automatic Call-to-Loan Linking</h4>
-      <p>Matching logic using phone number normalization and active application lookup. Every call produced a structured record: Loan ID, Borrower ID, Agent ID, Timestamp, Call type, and Outcome — automatically.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Complete interaction history per loan, built without manual agent data entry.</p></div>
-
-      <h4>3. Compliance and Audit Trail Engine</h4>
-      <p>Stored structured call metadata alongside recording references, disposition codes, agent actions, and notes in a queryable format designed for regulatory review.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Simplified regulatory audits and reduced compliance team effort per review cycle.</p></div>
-
-      <h4>4. Agent Productivity Dashboard</h4>
-      <p>Built reporting visibility across calls per loan stage, conversion by call outcome, handle time vs. funding success rate, missed call rates, and queue performance by team.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Enabled data-driven staffing decisions and coaching conversations grounded in real operational data.</p></div>
-
-      <h4>5. Event-Driven Architecture</h4>
-      <p>Built on Five9 webhooks, REST APIs, and asynchronous event processing with idempotent updates — ensuring no duplicate records and full fault tolerance under high call volumes.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Reliable, scalable integration that held up under peak origination periods without engineering intervention.</p></div>
-
-      <h3>Results</h3>
-      <ul>
-        <li>Significant reduction in average call handling time</li>
-        <li>Higher loan application completion rates tied to better agent context</li>
-        <li>Improved agent satisfaction and retention</li>
-        <li>Faster underwriting cycle times through connected workflows</li>
-        <li>Stronger compliance posture with auto-generated audit trails</li>
-        <li>Improved executive visibility into call-driven revenue</li>
-      </ul>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">FinTech Platform Strategy</span>
-        <span class="pill pill-teal">Five9 Integration</span>
-        <span class="pill pill-teal">API-First Architecture</span>
-        <span class="pill pill-purple">Event-Driven Systems</span>
-        <span class="pill pill-purple">Compliance-Aware Product</span>
-        <span class="pill pill-purple">Cross-Functional Delivery</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+<!-- ══ CONTACT ══ -->
+<div class="contact-wrapper" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Whether you're building a fintech platform team, exploring an AI product advisory relationship, or want to talk regulated payments — my inbox is open.</p>
+    </div>
+    <div class="contact-links reveal reveal-delay-1">
+      <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        Email Me
+      </a>
+      <a href="https://linkedin.com/in/nicolechernowmartinez" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.agenticsgrowthlab.com" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Agentics Growth Lab
+      </a>
+      <a href="https://youtu.be/Nc5BrL5OEq0" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Watch AdvisorOS Demo
+      </a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-email">nicolechernowmartinez@gmail.com</a>
     </div>
   </div>
+</div>
 
-  <!-- ══════ CS4: Plaid Payment Rails ══════ -->
-  <div class="cs-full reveal" id="cs-4">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">Finance of America Home Improvement</span>
-      <h2 class="cs-full-title">Plaid Payment Rails — Elevating Payment Functionalities</h2>
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>&copy; 2026 <span>Nicole Chernow-Martinez</span>. All rights reserved. &nbsp;·&nbsp; <span>Agentics Growth Lab</span></p>
+</footer>
 
-      <h3>Executive Summary</h3>
-      <p>Led ACH payment expansion on a legacy lending stack, enabling contractors and homeowners to transact more efficiently — reducing friction, increasing conversions, and strengthening revenue. The initiative extended payment options to underserved customer segments and built the data linkage needed to validate impact over time.</p>
+<!-- ══ JS ══ -->
+<script>
+(function(){
+  'use strict';
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
-      <h3>Challenges</h3>
-      <ul>
-        <li>Legacy payments infrastructure limited payment options and slowed application throughput</li>
-        <li>Contractor and homeowner personas experienced inconsistent checkout experiences</li>
-        <li>Limited data linkage between payments, loan status, and customer engagement events</li>
-        <li>Measurement systems lacked structured mechanisms to validate business impact</li>
-      </ul>
-
-      <h3>User Personas</h3>
-      <ul>
-        <li><strong>Contractors</strong> — needed fast, reliable payments tied directly to customer approvals</li>
-        <li><strong>Homeowners</strong> — demanded transparent payment options with minimal friction at checkout</li>
-        <li><strong>Operations teams</strong> — required detailed payment outcomes linked to loan data for reporting</li>
-      </ul>
-
-      <h3>Key Solutions Delivered</h3>
-      <ul>
-        <li>Added ACH payment method via Plaid integration</li>
-        <li>Tied payment status directly to loan application progress and lifecycle events</li>
-        <li>Built API endpoints for payment webhook events with real-time status updates</li>
-        <li>Improved UI with progressive disclosure to reduce cognitive load at checkout</li>
-        <li>Inline error handling for ACH failures with clear customer-facing messaging</li>
-      </ul>
-
-      <h3>KPIs Tracked</h3>
-      <ul>
-        <li>Payment completion rate</li>
-        <li>Loan disbursement time</li>
-        <li>Abandonment rate before funding</li>
-        <li>Revenue uplift attributable to expanded payment options</li>
-      </ul>
-
-      <h3>Future Iterations</h3>
-      <ul>
-        <li>Recurring payments support for installment loan structures</li>
-        <li>Enhanced fraud and risk scoring integrated at checkout</li>
-        <li>Multi-currency and payout support for contractor networks</li>
-      </ul>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">Payments Modernization</span>
-        <span class="pill pill-teal">Plaid Integration</span>
-        <span class="pill pill-teal">API Design</span>
-        <span class="pill pill-purple">Product Discovery</span>
-        <span class="pill pill-purple">Cross-Functional Leadership</span>
-        <span class="pill pill-teal">SOX Compliance</span>
-        <span class="pill pill-purple">Data-Driven Decisions</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
-    </div>
-  </div>
-
-  <!-- ══════ CS5: BetterPlanet Co-op ══════ -->
-  <div class="cs-full reveal" id="cs-5">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">BetterPlanet Co-op — Founder &amp; Strategic Product Leader</span>
-      <h2 class="cs-full-title">eCommerce and Payments Platform Transformation</h2>
-
-      <h3>Executive Summary</h3>
-      <p>Led end-to-end transformation of BetterPlanet Co-op's commerce platform from a limited donation and content experience into a modern payment-enabled digital product capable of supporting sustainable revenue growth and mission-driven scale — reaching customers in 70+ countries.</p>
-
-      <h3>Results</h3>
-      <ul>
-        <li>350%+ revenue increase in 5 months</li>
-        <li>100% month-over-month growth in customer engagement</li>
-        <li>Higher transaction success rates across all payment methods</li>
-        <li>Improved customer trust and repeat purchase retention</li>
-        <li>Scalable platform foundation for future products and subscriptions</li>
-      </ul>
-
-      <h3>The Before State</h3>
-      <ul>
-        <li>Revenue collection was fragmented across disconnected tools</li>
-        <li>Payment options were limited, excluding key customer segments</li>
-        <li>Customer journeys were inconsistent across devices and channels</li>
-        <li>Analytics were minimal — no reliable feedback loops for growth decisions</li>
-      </ul>
-
-      <h3>Key Initiatives</h3>
-
-      <h4>1. Credit Card Processing Integration</h4>
-      <p>Implemented secure credit-card checkout with transaction state management, payment failure handling, refund and reconciliation workflows, and support for both donation and product purchase flows.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Removed the primary barrier to conversion and unlocked scalable revenue growth for the first time.</p></div>
-
-      <h4>2. Conversion-Focused Checkout Redesign</h4>
-      <p>Reduced steps to completion, added clear trust signals, optimized for mobile, and incorporated transparent pricing with mission-impact messaging at the point of decision.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Significant reduction in cart abandonment rates and increased average order value.</p></div>
-
-      <h4>3. API-First Commerce Platform</h4>
-      <p>Built a modular API layer supporting product catalog, donations, subscriptions, customer accounts, and payment events — enabling rapid iteration without platform rewrites.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Enabled the team to ship new product lines and campaigns without engineering rewrites.</p></div>
-
-      <h4>4. Analytics and Growth Instrumentation</h4>
-      <p>Implemented tracking across page views, checkout funnels, payment success and failure events, repeat customer behavior, and campaign performance attribution.</p>
-      <div class="cs-impact"><p><strong>Impact:</strong> Enabled data-driven experimentation — a key driver of the 100% month-over-month engagement growth.</p></div>
-
-      <h3>Operating Model</h3>
-      <ul>
-        <li>Lean experimentation — test, measure, double down</li>
-        <li>Agile delivery with outcomes-over-output prioritization</li>
-        <li>Working Backwards methodology from customer and mission goals</li>
-        <li>Servant leadership across a distributed cooperative team</li>
-      </ul>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">Payments Platform Design</span>
-        <span class="pill pill-teal">eCommerce Product Leadership</span>
-        <span class="pill pill-teal">API-Driven Architecture</span>
-        <span class="pill pill-purple">Conversion Optimization</span>
-        <span class="pill pill-purple">Data-Driven Strategy</span>
-        <span class="pill pill-teal">FinTech Integration</span>
-        <span class="pill pill-purple">Nonprofit Technology Scaling</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
-    </div>
-  </div>
-
-  <!-- ══════ CS6: Tealium Big Data Platform ══════ -->
-  <div class="cs-full reveal" id="cs-6">
-    <div class="cs-full-inner">
-      <span class="cs-company-tag">Tealium — SaaS Customer Data Platform</span>
-      <h2 class="cs-full-title">Big Data Platform — Data Collection at Scale</h2>
-
-      <h3>Summary</h3>
-      <p>Under Nicole's product leadership, Tealium's CDP underwent a significant transformation — achieving meaningful reduction in production bugs, boosting customer confidence across the integration ecosystem, and improving the developer experience for advertisers connecting data sources worldwide. Nicole's leadership elevated API integrations from inconsistent point solutions into a coherent ecosystem of specialized data connections serving diverse enterprise needs globally.</p>
-
-      <h3>The Approach</h3>
-      <p>Led a data-driven product process anchored in DevOps Release Management analytics — using release data to uncover dependency bottlenecks, unique scaling challenges, and the compounding complexity of connecting billions of data records. Cross-functional teams were led to re-architect data ingestion and storage methodologies, resulting in unprecedented improvement in customer outcomes across a global customer base.</p>
-      <ul>
-        <li>Identified dependency bottlenecks through release analytics, not intuition</li>
-        <li>Partnered with engineering to re-architect data ingestion pipelines</li>
-        <li>Improved API consistency across a global ecosystem of advertiser integrations</li>
-        <li>Drove IAM capability improvements for enterprise security requirements</li>
-        <li>Reduced production bug rates through systematic process and tooling improvements</li>
-      </ul>
-
-      <h3>Leadership Framework Applied</h3>
-      <ul>
-        <li>User personas and pain point mapping for enterprise developer customers</li>
-        <li>Data analytics deep dive to validate assumptions before prioritization</li>
-        <li>Assumptions testing and problem validation with customer success teams</li>
-        <li>MVP definition with clear scope boundaries for engineering</li>
-        <li>Design and wireframe review for developer-facing interfaces</li>
-        <li>Engineering collaboration on user stories and acceptance criteria</li>
-        <li>KPI measurement setting before and after each release cycle</li>
-        <li>Future iteration planning informed by post-launch data</li>
-        <li>Executive summaries communicating outcomes to leadership</li>
-      </ul>
-
-      <h3>Skills Applied</h3>
-      <div class="cs-skills-wrap">
-        <span class="pill pill-teal">SaaS Platform Product Management</span>
-        <span class="pill pill-teal">Big Data Systems</span>
-        <span class="pill pill-teal">IAM</span>
-        <span class="pill pill-teal">API Infrastructure</span>
-        <span class="pill pill-purple">DevOps Release Management</span>
-        <span class="pill pill-purple">Kubernetes / AWS</span>
-        <span class="pill pill-purple">Agile Delivery</span>
-        <span class="pill pill-purple">Data-Driven Product</span>
-      </div>
-
-      <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
-    </div>
-  </div>
-
-  <!-- ══════ CONTACT ══════ -->
-  <div class="contact-wrapper" id="contact">
-    <div class="contact-inner">
-      <div class="reveal">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-sub">
-          Whether you're building a fintech platform team, exploring a product advisory
-          relationship, or want to talk payments infrastructure — my inbox is open.
-        </p>
-      </div>
-
-      <div class="contact-links reveal reveal-delay-1">
-        <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="M2 7l10 7 10-7"/>
-          </svg>
-          Email Me
-        </a>
-
-        <a href="https://linkedin.com/in/nicolechernowmartinez" class="contact-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="4"/>
-            <path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/>
-          </svg>
-          LinkedIn
-        </a>
-
-        <a href="https://www.agenticsgrowthlab.com" class="contact-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          Agentics Growth Lab
-        </a>
-      </div>
-
-      <div class="reveal reveal-delay-2">
-        <a href="mailto:nicolechernowmartinez@gmail.com" class="contact-email">
-          nicolechernowmartinez@gmail.com
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ FOOTER ══════ -->
-  <footer>
-    <p>&copy; 2026 <span>Nicole Chernow-Martinez</span>. All rights reserved.</p>
-  </footer>
-
-  <!-- ══════ JAVASCRIPT ══════ -->
-  <script>
-  (function () {
-    'use strict';
-
-    /* ── Nav: apply glass style on scroll ── */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    /* ════════════════════════════════════════
-       PARTICLE CANVAS
-    ════════════════════════════════════════ */
-    var canvas = document.getElementById('particles-canvas');
-    var ctx    = canvas.getContext('2d');
-    var W, H, particles;
-    var mouseX = 0, mouseY = 0;
-
-    var ACCENT  = { r: 0,   g: 212, b: 180 };
-    var ACCENT2 = { r: 124, g: 92,  b: 252 };
-    var COUNT   = 85;
-    var LINK    = 115;
-
-    function lerp(a, b, t) {
-      return { r: a.r+(b.r-a.r)*t, g: a.g+(b.g-a.g)*t, b: a.b+(b.b-a.b)*t };
-    }
-
-    function resize() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-
-    function mkParticle() {
-      var t = Math.random();
-      return {
-        x:  Math.random() * W,
-        y:  Math.random() * H,
-        r:  Math.random() * 1.5 + 0.4,
-        vx: (Math.random() - 0.5) * 0.32,
-        vy: (Math.random() - 0.5) * 0.32,
-        a:  Math.random() * 0.5 + 0.15,
-        c:  lerp(ACCENT, ACCENT2, t),
-      };
-    }
-
-    function init() {
-      resize();
-      particles = [];
-      for (var i = 0; i < COUNT; i++) particles.push(mkParticle());
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-
-      /* connections */
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < particles.length; j++) {
-          var dx = particles[i].x - particles[j].x;
-          var dy = particles[i].y - particles[j].y;
-          var d  = Math.sqrt(dx*dx + dy*dy);
-          if (d < LINK) {
-            var a = (1 - d / LINK) * 0.16;
-            var c = lerp(particles[i].c, particles[j].c, 0.5);
-            ctx.strokeStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + a + ')';
-            ctx.lineWidth   = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
+  var canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');
+  var W,H,particles,mouseX=0,mouseY=0;
+  var A={r:0,g:212,b:180},A2={r:124,g:92,b:252};
+  function lerp(a,b,t){return{r:a.r+(b.r-a.r)*t,g:a.g+(b.g-a.g)*t,b:a.b+(b.b-a.b)*t};}
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function mkP(){var t=Math.random();return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.32,vy:(Math.random()-.5)*.32,a:Math.random()*.5+.15,c:lerp(A,A2,t)};}
+  function init(){resize();particles=[];for(var i=0;i<85;i++)particles.push(mkP());}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<115){var a=(1-d/115)*.16,c=lerp(particles[i].c,particles[j].c,.5);ctx.strokeStyle='rgba('+c.r+','+c.g+','+c.b+','+a+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}
       }
-
-      /* dots */
-      for (var k = 0; k < particles.length; k++) {
-        var p = particles[k];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + p.c.r + ',' + p.c.g + ',' + p.c.b + ',' + p.a + ')';
-        ctx.fill();
-
-        /* mouse influence */
-        var cx = (mouseX - W * 0.5) * 0.00010;
-        var cy = (mouseY - H * 0.5) * 0.00010;
-        p.vx = (p.vx + cx * p.r) * 0.99;
-        p.vy = (p.vy + cy * p.r) * 0.99;
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < -8)  p.x = W + 8;
-        if (p.x > W+8) p.x = -8;
-        if (p.y < -8)  p.y = H + 8;
-        if (p.y > H+8) p.y = -8;
-      }
-
-      requestAnimationFrame(draw);
     }
+    for(var k=0;k<particles.length;k++){
+      var p=particles[k];
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba('+p.c.r+','+p.c.g+','+p.c.b+','+p.a+')';ctx.fill();
+      var cx=(mouseX-W*.5)*.0001,cy=(mouseY-H*.5)*.0001;
+      p.vx=(p.vx+cx*p.r)*.99;p.vy=(p.vy+cy*p.r)*.99;
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-8)p.x=W+8;if(p.x>W+8)p.x=-8;if(p.y<-8)p.y=H+8;if(p.y>H+8)p.y=-8;
+    }
+    requestAnimationFrame(draw);
+  }
+  document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY;});
+  window.addEventListener('resize',init);
+  init();draw();
 
-    document.addEventListener('mousemove', function (e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+  var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 
-    window.addEventListener('resize', init);
-    init();
-    draw();
-
-    /* ════════════════════════════════════════
-       INTERSECTION OBSERVER — reveal
-    ════════════════════════════════════════ */
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      revealObs.observe(el);
-    });
-
-    /* ════════════════════════════════════════
-       EXPERTISE BARS — animate on enter
-    ════════════════════════════════════════ */
-    var barsEl  = document.getElementById('exp-bars');
-    var barsObs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        entries[0].target.querySelectorAll('.exp-bar-fill').forEach(function (bar) {
-          bar.style.width = bar.dataset.width + '%';
-        });
-        barsObs.unobserve(entries[0].target);
-      }
-    }, { threshold: 0.3 });
-
-    if (barsEl) barsObs.observe(barsEl);
-
-    /* ════════════════════════════════════════
-       ACTIVE NAV LINK highlight
-    ════════════════════════════════════════ */
-    var sections = document.querySelectorAll('[id]');
-    var navLinks = document.querySelectorAll('.nav-links a');
-
-    var activeObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (a) {
-            if (a.getAttribute('href') === '#' + entry.target.id) {
-              a.style.color = 'var(--accent)';
-            } else {
-              a.style.color = '';
-            }
-          });
-        }
-      });
-    }, { threshold: 0.45 });
-
-    sections.forEach(function (s) { activeObs.observe(s); });
-
-  }());
-  </script>
-
+  var secs=document.querySelectorAll('[id]'),nls=document.querySelectorAll('.nav-links a');
+  var ao=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){nls.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+e.target.id?'var(--accent)':'';});}});},{threshold:.45});
+  secs.forEach(function(s){ao.observe(s);});
+}());
+</script>
 </body>
 </html>
