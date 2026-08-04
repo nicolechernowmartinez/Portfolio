@@ -61,7 +61,7 @@
     .hero-tagline strong { color:var(--text); font-weight:600; }
 
     /* Live products strip */
-    .hero-products { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; max-width:760px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
+    .hero-products { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:820px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
     .hero-product-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:14px 16px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:6px; transition:border-color .3s,transform .3s; }
     .hero-product-card:hover { border-color:rgba(0,212,180,.4); transform:translateY(-3px); }
     .hero-product-card.featured { border-color:rgba(124,92,252,.4); background:rgba(124,92,252,.08); }
@@ -251,6 +251,31 @@
     .cs-back-top { display:inline-flex; align-items:center; gap:6px; color:var(--accent); text-decoration:none; font-size:.82rem; font-weight:600; letter-spacing:.04em; border:1px solid rgba(0,212,180,.22); padding:8px 20px; border-radius:100px; margin-top:48px; transition:border-color .25s,background .25s; }
     .cs-back-top:hover { border-color:var(--accent); background:rgba(0,212,180,.06); }
 
+    /* ── PUBLICATIONS ── */
+    .pub-wrapper { background:var(--bg2); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
+    .pub-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+    .pub-card { display:grid; grid-template-columns:220px 1fr; gap:44px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px; align-items:start; transition:border-color .35s,transform .35s,box-shadow .35s; }
+    .pub-card:hover { border-color:rgba(124,92,252,.3); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(124,92,252,.08); }
+    .pub-cover { aspect-ratio:2/3; border-radius:var(--radius); background:linear-gradient(150deg,var(--accent2) 0%,var(--accent) 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:22px; box-shadow:0 20px 50px rgba(124,92,252,.25); }
+    .pub-cover-title { font-size:1.05rem; font-weight:800; color:#07091a; line-height:1.25; margin-bottom:14px; }
+    .pub-cover-author { font-size:.7rem; font-weight:600; color:rgba(7,9,26,.7); letter-spacing:.04em; }
+    .pub-name { font-size:1.5rem; font-weight:800; margin-bottom:6px; }
+    .pub-tagline { font-size:.92rem; color:var(--accent2); font-weight:600; margin-bottom:14px; }
+    .pub-desc { font-size:.92rem; color:var(--muted); line-height:1.8; margin-bottom:18px; }
+    .pub-features { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; margin-bottom:26px; }
+    .pub-feature { font-size:.85rem; color:var(--muted); line-height:1.6; padding-left:20px; position:relative; }
+    .pub-feature::before { content:'→'; position:absolute; left:0; color:var(--accent2); font-size:.78rem; }
+    @media(max-width:900px){ .pub-card{grid-template-columns:1fr;} .pub-cover{max-width:180px;margin:0 auto;} .pub-features{grid-template-columns:1fr;} .pub-inner{padding:0 24px;} }
+
+    .wp-heading { font-size:1.05rem; font-weight:800; margin:56px 0 20px; color:var(--text); }
+    .wp-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .wp-item { display:flex; align-items:center; gap:14px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; text-decoration:none; color:var(--text); transition:border-color .3s,transform .3s,background .3s; }
+    .wp-item:hover { border-color:rgba(0,212,180,.3); transform:translateY(-3px); background:rgba(0,212,180,.04); }
+    .wp-icon { font-size:1.3rem; flex-shrink:0; }
+    .wp-title { flex:1; font-size:.9rem; font-weight:600; line-height:1.4; }
+    .wp-arrow { font-size:.76rem; color:var(--accent); font-weight:600; white-space:nowrap; flex-shrink:0; }
+    @media(max-width:700px){ .wp-grid{grid-template-columns:1fr;} }
+
     /* ── CONTACT ── */
     .contact-wrapper { background:var(--bg); width:100vw; margin-left:calc(-50vw + 50%); padding:120px 0; }
     .contact-inner { max-width:800px; margin:0 auto; padding:0 48px; text-align:center; }
@@ -325,6 +350,7 @@
     <li><a href="#portfolio" onclick="gtag('event','nav_products')">Enterprise AI Portfolio</a></li>
     <li><a href="#experience" onclick="gtag('event','nav_experience')">Experience</a></li>
     <li><a href="#skills" onclick="gtag('event','nav_skills')">Skills</a></li>
+    <li><a href="#publications" onclick="gtag('event','nav_publications')">Publications</a></li>
     <li><a href="#case-studies" onclick="gtag('event','nav_case_studies')">Case Studies</a></li>
     <li><a href="#contact" onclick="gtag('event','nav_contact')">Contact</a></li>
   </ul>
@@ -352,20 +378,20 @@
         <span class="hpc-name">AdvisorOS</span>
         <span class="hpc-sub">Enterprise AI Workspace for Financial Advisors</span>
       </a>
-      <a href="#p-eos" class="hero-product-card" onclick="gtag('event','hero_eos')">
-        <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">EOS</span>
-        <span class="hpc-sub">Enterprise Platform Operating System</span>
+      <a href="#p-finops-studio" class="hero-product-card featured" onclick="gtag('event','hero_finops_studio')">
+        <span class="hpc-label purple">✦ Live Now</span>
+        <span class="hpc-name">FinOps Studio</span>
+        <span class="hpc-sub">Multi-Platform AI Cost Governance</span>
       </a>
       <a href="#p-britney" class="hero-product-card" onclick="gtag('event','hero_britney')">
         <span class="hpc-label">✦ Live Now</span>
         <span class="hpc-name">Britney</span>
         <span class="hpc-sub">Reduce customer friction at credit unions</span>
       </a>
-      <a href="#p-caroline" class="hero-product-card" onclick="gtag('event','hero_caroline')">
+      <a href="#p-product-growth" class="hero-product-card" onclick="gtag('event','hero_pgi')">
         <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">Caroline</span>
-        <span class="hpc-sub">Reduce employee interruptions at banks</span>
+        <span class="hpc-name">Product Growth Intelligence</span>
+        <span class="hpc-sub">Score what's actually driving product growth</span>
       </a>
       <a href="#p-scout" class="hero-product-card" onclick="gtag('event','hero_scout')">
         <span class="hpc-label">✦ Live Now</span>
@@ -402,7 +428,7 @@
     <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
     <div class="about-stats">
       <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
-      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">6</div><div class="stat-label">AI Products Deployed</div></div>
+      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">8</div><div class="stat-label">AI Products Deployed</div></div>
       <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
       <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
     </div>
@@ -424,7 +450,7 @@
   <div class="products-inner">
     <div class="reveal">
       <p class="section-label">Enterprise AI Portfolio</p>
-      <h2 class="section-title">Six enterprise products.<br>Deployed. Try them now.</h2>
+      <h2 class="section-title">Eight enterprise products.<br>Deployed. Try them now.</h2>
       <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
     </div>
 
@@ -486,6 +512,35 @@
         <div class="product-actions">
           <a href="https://eosworker.lab-d86.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','eos_try')">✦ Try EOS Live</a>
           <a href="#cs-eos" class="btn-watch" onclick="gtag('event','eos_learn')">Learn More →</a>
+        </div>
+      </div>
+
+      <!-- FinOps Studio -->
+      <div class="product-card advisoros reveal reveal-delay-2" id="p-finops-studio">
+        <div class="product-header">
+          <div class="product-badge badge-watch"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite"></span>New · Live · Try Now</div>
+          <div class="product-name">FinOps Studio</div>
+          <div class="product-tagline">Multi-Platform AI Cost Governance &amp; Unit Economics</div>
+          <p class="product-desc">A production-deployed AI FinOps platform giving platform and finance leaders one governed view of spend, forecasting, and unit economics across every AI vendor in the stack — Anthropic, OpenAI, Gemini, and Cursor included. Built for the moment AI spend stops being a rounding error and starts needing a governance model.</p>
+          <div class="product-features">
+            <div class="product-feature">Unified cost governance across Anthropic, OpenAI, Gemini, Cursor, and enterprise platforms (Salesforce, ServiceNow, Boomi, Copilot)</div>
+            <div class="product-feature">Real-time alerts, forecasting, and unit economics modeling</div>
+            <div class="product-feature">Sustainability and efficiency scoring built into the cost model</div>
+            <div class="product-feature">CSV export and leadership-ready reporting decks, 30/60/90 governance Kanban</div>
+            <div class="product-feature">Executive scorecards for spend accountability, not just visibility</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-purple">React</span>
+            <span class="pill pill-teal">Neon Postgres</span>
+            <span class="pill pill-purple">Vercel</span>
+            <span class="pill pill-teal">AI FinOps</span>
+            <span class="pill pill-purple">Multi-LLM Governance</span>
+            <span class="pill pill-teal">Unit Economics</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://finops-studio.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','finops_studio_try')">✦ Try FinOps Studio Live</a>
+          <a href="#cs-finops" class="btn-watch" onclick="gtag('event','finops_studio_learn')">Learn More →</a>
         </div>
       </div>
 
@@ -600,6 +655,31 @@
         </div>
       </div>
 
+      <!-- Product Growth Intelligence -->
+      <div class="product-card reveal reveal-delay-2" id="p-product-growth">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">Product Growth Intelligence</div>
+          <div class="product-tagline">Score what's actually driving product growth</div>
+          <p class="product-desc">A production-deployed product growth intelligence platform that scores product health across a modular pillar framework — turning fragmented signals into a single measurable view for product and executive teams.</p>
+          <div class="product-features">
+            <div class="product-feature">Dimension-based scoring engine across weighted product health pillars</div>
+            <div class="product-feature">Modular pillar dashboard built on Cloudflare Workers</div>
+            <div class="product-feature">Executive workspace views for tracking risk and momentum over time</div>
+            <div class="product-feature">A structured, repeatable framework — not another static spreadsheet</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-teal">Cloudflare Workers</span>
+            <span class="pill pill-purple">Product Scoring Engine</span>
+            <span class="pill pill-teal">Executive Dashboards</span>
+            <span class="pill pill-purple">Product Operating Model</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://product-growth.vercel.app/?ref=demo" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','pgi_try')">✦ Try Product Growth Intelligence Live</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -618,8 +698,8 @@
         <div>
           <div class="timeline-role">Founder, CEO &amp; CPO</div>
           <div class="timeline-company-full">Agentics Growth Lab</div>
-          <p class="timeline-desc">Founded an AI product studio and designed, built, and deployed a portfolio of enterprise AI platforms and operational products demonstrating governance, product strategy, customer experience, workflow automation, and responsible AI in regulated environments. Each product built on the principle that AI proposes and humans decide.</p>
-          <div class="timeline-tags"><span class="tag">Human-in-the-Loop AI</span><span class="tag">AdvisorOS</span><span class="tag">EOS</span><span class="tag">Britney</span><span class="tag">Caroline</span><span class="tag">Scout</span><span class="tag">Claude API</span><span class="tag">Privacy-First</span></div>
+          <p class="timeline-desc">Founded an AI product studio and designed, built, and deployed a portfolio of enterprise AI platforms and operational products demonstrating governance, product strategy, customer experience, workflow automation, custom agentic workflow design, and responsible AI in regulated environments. Each product built on the principle that AI proposes and humans decide.</p>
+          <div class="timeline-tags"><span class="tag">Human-in-the-Loop AI</span><span class="tag">AdvisorOS</span><span class="tag">EOS</span><span class="tag">FinOps Studio</span><span class="tag">Britney</span><span class="tag">Caroline</span><span class="tag">Scout</span><span class="tag">Claude API</span><span class="tag">Privacy-First</span></div>
         </div>
       </div>
       <div class="timeline-item reveal reveal-delay-1">
@@ -709,6 +789,12 @@
       <p class="skill-desc">Influencing system design, defining API contracts, and owning integration-heavy platform roadmaps in PaaS and SaaS environments — from IAM to big data pipelines.</p>
       <div class="skill-pills"><span class="pill pill-teal">API Design</span><span class="pill pill-teal">PaaS</span><span class="pill pill-teal">IAM</span><span class="pill pill-teal">Systems Integration</span></div>
     </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-icon si-b">🧩</div>
+      <div class="skill-name">Custom Agentic Workflow Design</div>
+      <p class="skill-desc">Designing bespoke multi-agent workflows for enterprise clients — beyond off-the-shelf assistants — spanning cost governance, quality control, and operational automation across the AI vendor stack.</p>
+      <div class="skill-pills"><span class="pill pill-purple">Agentic Workflows</span><span class="pill pill-purple">Multi-LLM Orchestration</span><span class="pill pill-purple">AI FinOps</span><span class="pill pill-purple">Enterprise Automation</span></div>
+    </div>
     <div class="skill-card reveal reveal-delay-3">
       <div class="skill-icon si-f">📐</div>
       <div class="skill-name">Scaled Agile &amp; OKRs</div>
@@ -717,7 +803,7 @@
     </div>
   </div>
   <div class="executive-lens reveal">
-    <div class="lens-card"><div class="lens-kicker">AI Systems</div><div class="lens-title">Enterprise AI That Earns Trust</div><p class="lens-copy">Privacy-first, human-in-the-loop governance, explainable recommendations, FDR documentation, FinOps analysis — from vision to four deployed products.</p></div>
+    <div class="lens-card"><div class="lens-kicker">AI Systems</div><div class="lens-title">Enterprise AI That Earns Trust</div><p class="lens-copy">Privacy-first, human-in-the-loop governance, explainable recommendations, FDR documentation, FinOps analysis — from vision to eight deployed products.</p></div>
     <div class="lens-card"><div class="lens-kicker">Platform</div><div class="lens-title">Payments + Digital Banking Infrastructure</div><p class="lens-copy">ACH, wire, RTP, lending, servicing, IAM, APIs, vendor integrations, and regulated platform delivery.</p></div>
     <div class="lens-card"><div class="lens-kicker">Execution</div><div class="lens-title">Product Operating Models That Ship</div><p class="lens-copy">Roadmaps, OKRs, Agile delivery, measurable iteration, risk-aware prioritization, and executive-ready product narratives.</p></div>
   </div>
@@ -763,19 +849,132 @@
 
 <div class="section-divider"></div>
 
+<!-- ══ PUBLICATIONS ══ -->
+<div class="pub-wrapper" id="publications">
+  <div class="pub-inner">
+    <div class="reveal">
+      <p class="section-label">Published Thinking</p>
+      <h2 class="section-title">Publications</h2>
+      <p class="section-sub">The frameworks I use day to day, written down — a codified operating model for Agile product leadership grounded in Lean and Jobs-to-Be-Done thinking.</p>
+    </div>
+    <div class="pub-card reveal reveal-delay-1">
+      <div class="pub-cover" style="background:none;padding:0;overflow:hidden;">
+        <img src="https://m.media-amazon.com/images/I/61sozE3kVOL._SY522_.jpg" alt="Agile Product Creative Growth© book cover by Nicole Chernow-Martinez" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
+      </div>
+      <div>
+        <div class="pub-name">Agile Product Creative Growth©</div>
+        <div class="pub-tagline">A framework for Agile, Lean, and Jobs-to-Be-Done — unified</div>
+        <p class="pub-desc">A revolutionary guide that redefines Agile methodologies for the contemporary landscape. This all-encompassing book unveils a comprehensive framework seamlessly integrating Agile, Lean, and Jobs-to-Be-Done theory, cultivating innovation, collaboration, and enduring growth. Essential for leaders, project managers, product managers, and individual contributors navigating the dynamic terrain of Agile transformations.</p>
+        <div class="pub-features">
+          <div class="pub-feature">Uncovers the original intent of the Agile Manifesto and its fundamental principles</div>
+          <div class="pub-feature">Explores Servant Leadership and its role in empowering teams</div>
+          <div class="pub-feature">Introduces the Agile Product Creative Growth© framework</div>
+          <div class="pub-feature">Applies Jobs-to-Be-Done theory to customer motivation</div>
+          <div class="pub-feature">Examines Lean Principles for collaboration and contribution</div>
+          <div class="pub-feature">Shows how to sustain innovation with habit loops in Scrum and Kanban</div>
+        </div>
+        <div class="product-actions" style="padding:0;">
+          <a href="https://www.amazon.com/dp/B0CR9LTT3K" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','book_amazon')">✦ Get the Book on Amazon</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="wp-heading reveal reveal-delay-2">Lab Whitepapers &amp; Research</h3>
+    <div class="wp-grid reveal reveal-delay-2">
+      <a class="wp-item" href="https://www.agenticsgrowthlab.com/s/Safe_AI_Adoption_in_Banking.pdf" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_safe_ai_adoption')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Safe AI Adoption</span>
+        <span class="wp-arrow">Read PDF →</span>
+      </a>
+      <a class="wp-item" href="https://www.agenticsgrowthlab.com/s/Monica_Problem_Whitepaper_AGL_2026.pdf" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_dependency_bottlenecks')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Avoid Dependency Bottlenecks</span>
+        <span class="wp-arrow">Read PDF →</span>
+      </a>
+      <a class="wp-item" href="https://www.agenticsgrowthlab.com/s/Customer_Delight_Is_an_Output_of_Operational_Flow.pdf" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_customer_delight')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Customer Delight and Ops Efficiency</span>
+        <span class="wp-arrow">Read PDF →</span>
+      </a>
+      <a class="wp-item" href="https://www.agenticsgrowthlab.com/s/Claude_Went_Down_Your_AI_Architecture_Doesnt_Have_To.pdf" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_claude_went_down')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Claude Went Down</span>
+        <span class="wp-arrow">Read PDF →</span>
+      </a>
+      <a class="wp-item" href="https://www.agenticsgrowthlab.com/s/From_Reactive_QA_to_Continuous_Assurance.pdf" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_reactive_qa')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Preventing Reactive QA</span>
+        <span class="wp-arrow">Read PDF →</span>
+      </a>
+    </div>
+
+    <h3 class="wp-heading reveal reveal-delay-2">BetterPlanet Co-op Research</h3>
+    <div class="wp-grid reveal reveal-delay-2">
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/whitepaper-britany-human-centered-ai-for-the-next-generation-of-fintech-operations" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_britany')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Britany: Human-Centered AI for the Next Generation of FinTech Operations</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/9riygnr4rqwoy5a5v0h38x09p9pinr" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_customer_centric_1')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Driving Customer-Centric Innovation: A Multidimensional Approach in Agile</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/whitepaper-nurturing-positive-digital-experiences-through-centralized-entertainment-opportunities" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_digital_experiences')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Nurturing Positive Digital Experiences through Centralized Entertainment Opportunities</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/gewyd0zpqmzj3ay8u10tjacv49oouu" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_customer_centric_2')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Driving Customer-Centric Innovation: Integrating Customer Pain Point Theories with Agile Excellence, Lean Principles, Habits, Ideation, and Deep Customer Understanding</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/stop-doing-agile-to-be-agile" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_stop_doing_agile')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Stop Doing Agile to Be Agile</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/learn-about-what-agile-is" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_what_is_agile')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Learn about what Agile is</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/your-agile-journey-measure-it" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_measure_agility')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Measure your Organization's Agility</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+      <a class="wp-item" href="https://betterplanetcoop.org/whitepapers/p/5pivm0k53prfvby33qtx36aexafk81" target="_blank" rel="noopener noreferrer" onclick="gtag('event','wp_bp_agile_program_setup')">
+        <span class="wp-icon">📄</span>
+        <span class="wp-title">Get your Agile Program Setup</span>
+        <span class="wp-arrow">Read →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
 <!-- ══ CASE STUDIES ══ -->
 <div class="cs-wrapper" id="case-studies">
   <div class="cs-inner">
     <div class="reveal">
       <p class="section-label">Case Studies</p>
       <h2 class="section-title">Work That Ships</h2>
-      <p class="section-sub">Six published case studies — from complex payment rail integrations to enterprise platform operating systems and AI product management.</p>
+      <p class="section-sub">Nine published case studies — from complex payment rail integrations to enterprise platform operating systems, AI cost governance, and AI product management.</p>
     </div>
     <div class="cs-grid">
       <a href="#cs-eos" class="cs-card reveal reveal-delay-1">
         <div class="cs-icon si-a">🖥️</div>
         <div class="cs-title">Enterprise Platform Operating System (EOS)</div>
         <p class="cs-desc">A production-deployed operating system for platform leaders — governance, AI FinOps, health assessments, modernization playbooks, and executive reporting in one model.</p>
+        <span class="cs-arrow">Read case study →</span>
+      </a>
+      <a href="#cs-finops" class="cs-card reveal reveal-delay-2">
+        <div class="cs-icon si-d">📊</div>
+        <div class="cs-title">FinOps Studio — Multi-Platform AI Cost Governance</div>
+        <p class="cs-desc">A production-deployed AI FinOps platform unifying spend governance, forecasting, and unit economics across Anthropic, OpenAI, Gemini, Cursor, and enterprise platforms.</p>
         <span class="cs-arrow">Read case study →</span>
       </a>
       <a href="#cs-idea" class="cs-card reveal reveal-delay-2">
@@ -873,6 +1072,58 @@
       <span class="pill pill-teal">Executive Reporting</span>
       <span class="pill pill-teal">Modernization Playbooks</span>
       <span class="pill pill-purple">Product Operating Models</span>
+    </div>
+    <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
+  </div>
+</div>
+
+<!-- ══ CS-FINOPS ══ -->
+<div class="cs-full reveal" id="cs-finops">
+  <div class="cs-full-inner">
+    <span class="cs-company-tag">Agentics Growth Lab · React · Neon · Vercel</span>
+    <h2 class="cs-full-title">FinOps Studio — Multi-Platform AI Cost Governance</h2>
+
+    <a href="https://finops-studio.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:linear-gradient(135deg,var(--accent2),#5a3fcc);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-radius:100px;margin-bottom:32px;box-shadow:0 0 20px rgba(124,92,252,.3);">✦ Try FinOps Studio Live</a>
+
+    <h3>Why I Built It</h3>
+    <p>AI spend crossed a threshold most organizations weren't governance-ready for — multiple LLM vendors, multiple teams, no single source of truth on cost, usage, or efficiency. Finance sees a bill; platform leaders see a black box. I built FinOps Studio to give both a shared, governed view: real cost visibility, forecasting, and unit economics across every AI vendor in the stack, not just one.</p>
+
+    <h3>What It Demonstrates</h3>
+    <div class="cs-journey">
+      <div class="cs-journey-step"><span><strong>Cross-vendor governance</strong> — Anthropic, OpenAI, Gemini, and Cursor unified in one cost model</span></div>
+      <div class="cs-journey-step"><span><strong>Forecasting discipline</strong> — spend trajectory modeling before it becomes a budget surprise</span></div>
+      <div class="cs-journey-step"><span><strong>Unit economics</strong> — cost-per-outcome, not just cost-per-token</span></div>
+      <div class="cs-journey-step"><span><strong>Executive accountability</strong> — leadership-ready reporting, not raw usage dashboards</span></div>
+    </div>
+
+    <h3>Capabilities</h3>
+    <ul>
+      <li><strong>Unified cost governance</strong> across Anthropic, OpenAI, Gemini, Cursor, and enterprise platforms (Salesforce, ServiceNow, Boomi, Copilot)</li>
+      <li><strong>Alerts and forecasting</strong> to catch spend trajectory before month-end</li>
+      <li><strong>Unit economics modeling</strong> connecting AI spend to business outcomes</li>
+      <li><strong>Sustainability and efficiency scoring</strong> built into the cost model, not bolted on after</li>
+      <li><strong>CSV export and leadership reporting decks</strong>, with a 30/60/90 governance Kanban for rollout tracking</li>
+    </ul>
+
+    <div class="cs-impact"><p><strong>Why it matters:</strong> FinOps Studio demonstrates hands-on AI cost governance leadership — the exact discipline organizations need as multi-LLM adoption accelerates and finance starts asking platform teams to defend the number.</p></div>
+
+    <h3>Technology</h3>
+    <ul>
+      <li><strong>React</strong> — component-driven front end for real-time cost dashboards</li>
+      <li><strong>Neon Postgres</strong> — serverless relational database for spend and usage records</li>
+      <li><strong>Vercel</strong> — production deployment and edge delivery</li>
+    </ul>
+
+    <h3>Skills Applied</h3>
+    <div class="cs-skills-wrap">
+      <span class="pill pill-purple">AI FinOps</span>
+      <span class="pill pill-purple">Multi-LLM Cost Governance</span>
+      <span class="pill pill-teal">Unit Economics</span>
+      <span class="pill pill-teal">Forecasting</span>
+      <span class="pill pill-purple">React</span>
+      <span class="pill pill-teal">Neon Postgres</span>
+      <span class="pill pill-purple">Vercel</span>
+      <span class="pill pill-teal">Executive Reporting</span>
     </div>
     <a href="#case-studies" class="cs-back-top">↑ Back to Case Studies</a>
   </div>
