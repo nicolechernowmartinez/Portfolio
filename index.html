@@ -1405,6 +1405,7 @@
 
   // AGL Chatty widget toggle
   var aglBubble=document.getElementById('aglwb'),aglFrame=document.getElementById('aglwf');
+  if(window.innerWidth>600){aglFrame.style.display='block';}
   if(aglBubble&&aglFrame){
     aglBubble.addEventListener('click',function(){
       var open=aglFrame.style.display==='block';
