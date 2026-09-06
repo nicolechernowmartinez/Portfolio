@@ -102,7 +102,9 @@
     /* ── Collapsible sections ── */
     .accordion-header { cursor:pointer; -webkit-tap-highlight-color:transparent; border-radius:12px; }
     .accordion-header:focus-visible { outline:2px solid var(--accent); outline-offset:6px; }
-    .accordion-header .section-sub { margin-bottom:0; }
+    .accordion-header .section-title { margin-bottom:8px; }
+    .accordion-index { display:inline-block; color:var(--accent); font-weight:800; margin-right:8px; font-variant-numeric:tabular-nums; }
+    .accordion-tagline { font-size:.92rem; color:var(--muted); line-height:1.6; margin:0; max-width:520px; }
     .accordion-toggle-row { display:flex; align-items:flex-start; justify-content:space-between; gap:28px; }
     .accordion-toggle-row > div:first-child { flex:1 1 auto; min-width:0; }
     .accordion-toggle-label { flex:0 0 auto; display:flex; align-items:center; gap:10px; margin-top:8px; }
@@ -114,8 +116,42 @@
     .accordion-header[aria-expanded="true"] .accordion-chevron { transform:rotate(180deg); border-color:var(--accent); color:var(--accent); }
     .accordion-body-outer { overflow:hidden; height:0; transition:height .5s cubic-bezier(.4,0,.2,1); }
     .accordion-body-inner { padding-top:48px; }
-    .accordion-shell { transition:padding-top .5s cubic-bezier(.4,0,.2,1),padding-bottom .5s cubic-bezier(.4,0,.2,1); }
-    .accordion-shell.is-collapsed { padding-top:14px; padding-bottom:14px; }
+    .accordion-shell { transition:padding-top .5s cubic-bezier(.4,0,.2,1),padding-bottom .5s cubic-bezier(.4,0,.2,1); position:relative; scroll-margin-top:90px; }
+    .accordion-shell.is-collapsed { padding-top:18px; padding-bottom:18px; }
+    .accordion-shell:not(.is-collapsed) { padding-top:64px; padding-bottom:64px; }
+
+    /* ── Section panels (executive card treatment) ── */
+    .accordion-panel {
+      --panel-glow: rgba(126,223,214,.32);
+      position:relative;
+      max-width:1040px;
+      margin:0 auto;
+      background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.014) 60%);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:44px 52px;
+      box-shadow:20px 26px 54px -28px rgba(0,0,0,.6), -10px -6px 34px -32px rgba(0,0,0,.4);
+      transition:transform .35s cubic-bezier(.4,0,.2,1), border-color .35s ease, box-shadow .35s ease, background .35s ease;
+    }
+    .accordion-shell.is-collapsed .accordion-panel:hover,
+    .accordion-shell.is-collapsed .accordion-panel:focus-within {
+      transform:translateY(-3px);
+      border-color:rgba(255,255,255,.18);
+    }
+    .accordion-shell:not(.is-collapsed) .accordion-panel {
+      border-color:var(--panel-glow);
+      box-shadow:0 0 0 1px var(--panel-glow), 20px 26px 60px -26px rgba(0,0,0,.65), 0 26px 70px -38px var(--panel-glow);
+    }
+    .accordion-panel--teal    { --panel-glow: rgba(126,223,214,.32); background:linear-gradient(160deg,rgba(126,223,214,.06),rgba(255,255,255,.014) 55%); }
+    .accordion-panel--indigo  { --panel-glow: rgba(124,92,252,.34);  background:linear-gradient(160deg,rgba(124,92,252,.07),rgba(255,255,255,.014) 55%); }
+    .accordion-panel--neutral { --panel-glow: rgba(255,255,255,.24); background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.014) 55%); }
+    .accordion-panel--blue    { --panel-glow: rgba(88,150,255,.34);  background:linear-gradient(160deg,rgba(88,150,255,.06),rgba(255,255,255,.014) 55%); }
+    .accordion-panel--violet  { --panel-glow: rgba(178,110,255,.34); background:linear-gradient(160deg,rgba(178,110,255,.06),rgba(255,255,255,.014) 55%); }
+    .accordion-panel--cyan    { --panel-glow: rgba(96,200,220,.34);  background:linear-gradient(150deg,rgba(96,200,220,.055),rgba(124,92,252,.03) 70%); }
+    .accordion-panel .accordion-header { border-radius:10px; }
+    @media(max-width:900px){ .accordion-panel{ padding:34px 30px; max-width:100%; } }
+    @media(max-width:600px){ .accordion-panel{ padding:26px 20px; border-radius:14px; } .accordion-shell:not(.is-collapsed){padding-top:40px;padding-bottom:40px;} }
+    @media(prefers-reduced-motion:reduce){ .accordion-panel{ transition:border-color .3s ease, box-shadow .3s ease; } }
     .accordion-global-controls { width:100vw; margin-left:calc(-50vw + 50%); border-bottom:1px solid var(--border); background:var(--bg); }
     .accordion-global-inner { max-width:1200px; margin:0 auto; padding:16px 48px; display:flex; align-items:center; justify-content:flex-end; gap:14px; }
     .accordion-global-label { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:auto; }
@@ -471,13 +507,15 @@
 
 <!-- ══ ABOUT ══ -->
 <section id="about" class="accordion-shell is-collapsed">
+  <div class="accordion-panel accordion-panel--teal">
   <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-about">
     <div class="accordion-toggle-row">
       <div>
-        <p class="section-label">About Me</p>
+        <p class="section-label"><span class="accordion-index">01</span>About Me</p>
         <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
+        <p class="accordion-tagline">Payments · Lending · AI-Enabled Operations · 15+ Years</p>
       </div>
-      <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
     </div>
   </div>
   <div class="accordion-body-outer" id="acc-about" style="height:0">
@@ -503,6 +541,7 @@
     </div>
   </div>
   </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -510,19 +549,21 @@
 <!-- ══ LIVE PRODUCTS ══ -->
 <div class="products-wrapper accordion-shell is-collapsed" id="portfolio">
   <div class="products-inner">
+  <div class="accordion-panel accordion-panel--indigo">
     <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-portfolio">
       <div class="accordion-toggle-row">
         <div>
-          <p class="section-label">Enterprise AI Portfolio</p>
+          <p class="section-label"><span class="accordion-index">02</span>Enterprise AI Portfolio</p>
           <h2 class="section-title">Ten enterprise products.<br>Deployed. Try them now.</h2>
-          <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
+          <p class="accordion-tagline">Live AI products across banking, FinOps, product intelligence &amp; operations</p>
         </div>
-        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
       </div>
     </div>
 
     <div class="accordion-body-outer" id="acc-portfolio" style="height:0">
     <div class="accordion-body-inner">
+    <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
     <div class="products-grid">
 
       <!-- AdvisorOS -->
@@ -809,23 +850,26 @@
     </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ══ EXPERIENCE ══ -->
 <div class="exp-wrapper accordion-shell is-collapsed" id="experience">
   <div class="exp-inner">
+  <div class="accordion-panel accordion-panel--neutral">
     <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-experience">
       <div class="accordion-toggle-row">
         <div>
-          <p class="section-label">Career</p>
+          <p class="section-label"><span class="accordion-index">03</span>Career</p>
           <h2 class="section-title">Where I've Built</h2>
-          <p class="section-sub">Fifteen years of platform ownership, systems integration, and AI-enabled product delivery across fintech, insurance, and lending.</p>
+          <p class="accordion-tagline">Wells Fargo · First American · Finance of America · ICW Group · Tealium</p>
         </div>
-        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
       </div>
     </div>
     <div class="accordion-body-outer" id="acc-experience" style="height:0">
     <div class="accordion-body-inner">
+    <p class="section-sub">Fifteen years of platform ownership, systems integration, and AI-enabled product delivery across fintech, insurance, and lending.</p>
     <div class="timeline">
       <div class="timeline-item reveal">
         <div><div class="timeline-date">Nov 2025 – Present</div><div class="timeline-company-loc">San Diego, CA</div></div>
@@ -885,22 +929,25 @@
     </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ══ SKILLS ══ -->
 <section id="skills" class="accordion-shell is-collapsed">
+  <div class="accordion-panel accordion-panel--blue">
   <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-skills">
     <div class="accordion-toggle-row">
       <div>
-        <p class="section-label">Expertise</p>
+        <p class="section-label"><span class="accordion-index">04</span>Expertise</p>
         <h2 class="section-title">What I Bring</h2>
-        <p class="section-sub">Deep domain knowledge across the full stack — from enterprise AI product management to payments infrastructure to platform architecture.</p>
+        <p class="accordion-tagline">Payments infrastructure, AI governance, platform architecture &amp; compliance</p>
       </div>
-      <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
     </div>
   </div>
   <div class="accordion-body-outer" id="acc-skills" style="height:0">
   <div class="accordion-body-inner">
+  <p class="section-sub">Deep domain knowledge across the full stack — from enterprise AI product management to payments infrastructure to platform architecture.</p>
   <div class="skills-grid">
     <div class="skill-card reveal reveal-delay-1">
       <div class="skill-icon si-b">🤖</div>
@@ -952,6 +999,7 @@
   </div>
   </div>
   </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -997,18 +1045,20 @@
 <!-- ══ PUBLICATIONS ══ -->
 <div class="pub-wrapper accordion-shell is-collapsed" id="publications">
   <div class="pub-inner">
+  <div class="accordion-panel accordion-panel--violet">
     <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-publications">
       <div class="accordion-toggle-row">
         <div>
-          <p class="section-label">Published Thinking</p>
+          <p class="section-label"><span class="accordion-index">05</span>Published Thinking</p>
           <h2 class="section-title">Publications</h2>
-          <p class="section-sub">The frameworks I use day to day, written down — a codified operating model for Agile product leadership grounded in Lean and Jobs-to-Be-Done thinking.</p>
+          <p class="accordion-tagline">A published book, lab whitepapers &amp; cooperative research</p>
         </div>
-        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
       </div>
     </div>
     <div class="accordion-body-outer" id="acc-publications" style="height:0">
     <div class="accordion-body-inner">
+    <p class="section-sub">The frameworks I use day to day, written down — a codified operating model for Agile product leadership grounded in Lean and Jobs-to-Be-Done thinking.</p>
     <div class="pub-card reveal reveal-delay-1">
       <div class="pub-cover" style="background:none;padding:0;overflow:hidden;">
         <img src="https://m.media-amazon.com/images/I/61sozE3kVOL._SY522_.jpg" alt="Agile Product Creative Growth© book cover by Nicole Chernow-Martinez" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
@@ -1106,6 +1156,7 @@
     </div>
     </div>
   </div>
+  </div>
 </div>
 
 <div class="section-divider"></div>
@@ -1113,18 +1164,20 @@
 <!-- ══ CASE STUDIES ══ -->
 <div class="cs-wrapper accordion-shell is-collapsed" id="case-studies">
   <div class="cs-inner">
+  <div class="accordion-panel accordion-panel--cyan">
     <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-case-studies-grid acc-case-studies-details">
       <div class="accordion-toggle-row">
         <div>
-          <p class="section-label">Case Studies</p>
+          <p class="section-label"><span class="accordion-index">06</span>Case Studies</p>
           <h2 class="section-title">Work That Ships</h2>
-          <p class="section-sub">Nine published case studies — from complex payment rail integrations to enterprise platform operating systems, AI cost governance, and AI product management.</p>
+          <p class="accordion-tagline">Nine deep-dives across payments, platforms, and AI product work</p>
         </div>
-        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
       </div>
     </div>
     <div class="accordion-body-outer" id="acc-case-studies-grid" style="height:0">
     <div class="accordion-body-inner">
+    <p class="section-sub">Nine published case studies — from complex payment rail integrations to enterprise platform operating systems, AI cost governance, and AI product management.</p>
     <div class="cs-grid">
       <a href="#cs-eos" class="cs-card reveal reveal-delay-1">
         <div class="cs-icon si-a">🖥️</div>
@@ -1183,6 +1236,7 @@
     </div>
     </div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -1603,7 +1657,7 @@
     var shell=header.closest('.accordion-shell');
     if(open){
       header.setAttribute('aria-expanded','true');
-      if(hint)hint.textContent='Hide';
+      if(hint)hint.textContent='Close';
       if(shell)shell.classList.remove('is-collapsed');
       bodies.forEach(function(body){
         body.style.height=body.scrollHeight+'px';
@@ -1611,7 +1665,7 @@
       });
     } else {
       header.setAttribute('aria-expanded','false');
-      if(hint)hint.textContent='Show';
+      if(hint)hint.textContent='Explore';
       if(shell)shell.classList.add('is-collapsed');
       bodies.forEach(function(body){
         body.style.height=body.scrollHeight+'px';
