@@ -61,7 +61,7 @@
     .hero-tagline strong { color:var(--text); font-weight:600; }
 
     /* Live products strip */
-    .hero-products { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:820px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
+    .hero-products { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-width:1100px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
     .hero-product-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:14px 16px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:6px; transition:border-color .3s,transform .3s; }
     .hero-product-card:hover { border-color:rgba(0,212,180,.4); transform:translateY(-3px); }
     .hero-product-card.featured { border-color:rgba(124,92,252,.4); background:rgba(124,92,252,.08); }
@@ -98,10 +98,38 @@
     .reveal-delay-2 { transition-delay:.2s; }
     .reveal-delay-3 { transition-delay:.3s; }
     .reveal-delay-4 { transition-delay:.4s; }
+
+    /* ── Collapsible sections ── */
+    .accordion-header { cursor:pointer; -webkit-tap-highlight-color:transparent; border-radius:12px; }
+    .accordion-header:focus-visible { outline:2px solid var(--accent); outline-offset:6px; }
+    .accordion-header .section-sub { margin-bottom:0; }
+    .accordion-toggle-row { display:flex; align-items:flex-start; justify-content:space-between; gap:28px; }
+    .accordion-toggle-row > div:first-child { flex:1 1 auto; min-width:0; }
+    .accordion-toggle-label { flex:0 0 auto; display:flex; align-items:center; gap:10px; margin-top:8px; }
+    .accordion-hint-text { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); transition:color .3s; white-space:nowrap; }
+    .accordion-header:hover .accordion-hint-text { color:var(--accent); }
+    .accordion-chevron { flex:0 0 auto; width:44px; height:44px; border-radius:50%; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text); transition:transform .4s cubic-bezier(.4,0,.2,1),border-color .3s,background .3s,color .3s; }
+    .accordion-chevron svg { width:18px; height:18px; }
+    .accordion-header:hover .accordion-chevron { border-color:var(--accent); background:rgba(0,212,180,.08); color:var(--accent); }
+    .accordion-header[aria-expanded="true"] .accordion-chevron { transform:rotate(180deg); border-color:var(--accent); color:var(--accent); }
+    .accordion-body-outer { overflow:hidden; height:0; transition:height .5s cubic-bezier(.4,0,.2,1); }
+    .accordion-body-inner { padding-top:48px; }
+    .accordion-shell { transition:padding-top .5s cubic-bezier(.4,0,.2,1),padding-bottom .5s cubic-bezier(.4,0,.2,1); }
+    .accordion-shell.is-collapsed { padding-top:14px; padding-bottom:14px; }
+    .accordion-global-controls { width:100vw; margin-left:calc(-50vw + 50%); border-bottom:1px solid var(--border); background:var(--bg); }
+    .accordion-global-inner { max-width:1200px; margin:0 auto; padding:16px 48px; display:flex; align-items:center; justify-content:flex-end; gap:14px; }
+    .accordion-global-label { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:auto; }
+    .accordion-global-btns { display:flex; align-items:center; gap:10px; }
+    .accordion-global-sep { color:var(--border); }
+    .accordion-global-btn { background:none; border:1px solid var(--border); color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:8px 18px; border-radius:100px; cursor:pointer; transition:border-color .3s,color .3s,background .3s; font-family:inherit; }
+    .accordion-global-btn:hover, .accordion-global-btn:focus-visible { border-color:var(--accent); color:var(--accent); background:rgba(0,212,180,.08); outline:none; }
+    @media(max-width:600px){ .accordion-global-inner{padding:14px 24px; justify-content:center;} .accordion-global-label{display:none} }
+    @media(max-width:600px){ .accordion-toggle-row{gap:14px} .accordion-chevron{width:38px;height:38px} .accordion-hint-text{display:none} }
+    @media(prefers-reduced-motion:reduce){ .accordion-body-outer{transition:none} }
     .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); max-width:1200px; margin:0 auto; }
 
     /* ── ABOUT ── */
-    #about { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
     .about-bio { font-size:1.05rem; color:var(--muted); line-height:1.85; margin-bottom:24px; }
     .about-bio strong { color:var(--text); font-weight:600; }
     .about-extras { font-size:.88rem; color:var(--muted); line-height:1.75; margin-top:-8px; margin-bottom:24px; padding:16px 20px; border-left:2px solid rgba(0,212,180,.3); background:rgba(0,212,180,.04); border-radius:0 var(--radius) var(--radius) 0; }
@@ -122,7 +150,7 @@
     .products-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
     .products-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; margin-top:16px; }
 
-    .product-card { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; display:flex; flex-direction:column; transition:border-color .35s,transform .35s,box-shadow .35s; }
+    .product-card { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; display:flex; flex-direction:column; transition:border-color .35s,transform .35s,box-shadow .35s; scroll-margin-top:96px; }
     .product-card:hover { border-color:rgba(0,212,180,.3); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(0,212,180,.06); }
     .product-card.advisoros { border-color:rgba(124,92,252,.35); background:linear-gradient(135deg,rgba(124,92,252,.08),rgba(0,212,180,.05)); }
     .product-card.advisoros:hover { border-color:rgba(124,92,252,.6); box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 60px rgba(124,92,252,.1); }
@@ -303,7 +331,7 @@
     /* ── RESPONSIVE ── */
     @media(max-width:900px){
       nav{padding:18px 24px} .nav-links{gap:20px} section{padding:80px 24px}
-      #about{grid-template-columns:1fr;gap:48px}
+      .about-grid{grid-template-columns:1fr;gap:48px}
       .timeline-item{grid-template-columns:1fr;gap:12px;padding-left:32px}
       .skills-grid{grid-template-columns:1fr 1fr} .executive-lens{grid-template-columns:1fr}
       .cs-grid{grid-template-columns:1fr 1fr} .products-grid{grid-template-columns:1fr}
@@ -341,6 +369,7 @@
       #aglwb{right:16px !important;bottom:16px !important;}
     }
   </style>
+  <noscript><style>.accordion-body-outer{height:auto!important;overflow:visible!important}.accordion-shell.is-collapsed{padding-top:120px!important;padding-bottom:120px!important}.accordion-chevron{display:none}.accordion-hint-text{display:none}.accordion-global-controls{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -405,6 +434,16 @@
         <span class="hpc-name">Idea Capture</span>
         <span class="hpc-sub">Turn employee ideas into structured opportunities</span>
       </a>
+      <a href="#p-ask-my-bank" class="hero-product-card" onclick="gtag('event','hero_ask_my_bank')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Ask My Bank</span>
+        <span class="hpc-sub">Conversational banking, now with investments</span>
+      </a>
+      <a href="#p-mybloom-buddy" class="hero-product-card" onclick="gtag('event','hero_mybloom_buddy')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">MyBloom Buddy</span>
+        <span class="hpc-sub">Plant the right thing, right now</span>
+      </a>
     </div>
 
 
@@ -418,44 +457,72 @@
   <div class="scroll-indicator"><span>Scroll</span><div class="scroll-mouse"></div></div>
 </section>
 
+<!-- ══ ACCORDION CONTROLS ══ -->
+<div class="accordion-global-controls">
+  <div class="accordion-global-inner">
+    <span class="accordion-global-label">Sections</span>
+    <span class="accordion-global-btns">
+      <button type="button" class="accordion-global-btn" data-accordion-action="expand">Show all</button>
+      <span class="accordion-global-sep">/</span>
+      <button type="button" class="accordion-global-btn" data-accordion-action="collapse">Collapse all</button>
+    </span>
+  </div>
+</div>
+
 <!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="about-left">
-    <div class="reveal">
-      <p class="section-label">About Me</p>
-      <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
-    </div>
-    <p class="about-bio reveal reveal-delay-1">I specialize in <strong>payments, lending, and AI-enabled operational systems</strong>. I operate at the intersection of product, engineering, and operations — owning platform outcomes, influencing architecture, and driving measurable business impact in regulated environments.</p>
-    <p class="about-bio reveal reveal-delay-2">I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong> where AI proposes, humans decide, and telemetry turns operational judgment into measurable product iteration — especially in fintech and regulated workflows.</p>
-    <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
-    <div class="about-stats">
-      <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
-      <div class="stat-card reveal reveal-delay-2"><div class="stat-number">8</div><div class="stat-label">AI Products Deployed</div></div>
-      <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
-      <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
+<section id="about" class="accordion-shell is-collapsed">
+  <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-about">
+    <div class="accordion-toggle-row">
+      <div>
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Product, engineering,<br>and operations — unified</h2>
+      </div>
+      <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
     </div>
   </div>
-  <div class="about-right">
-    <div class="video-outer reveal reveal-delay-2">
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/3zjcndXSqhU" title="Nicole Chernow-Martinez — AI Persona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div class="accordion-body-outer" id="acc-about" style="height:0">
+  <div class="accordion-body-inner about-grid">
+    <div class="about-left">
+      <p class="about-bio reveal reveal-delay-1">I specialize in <strong>payments, lending, and AI-enabled operational systems</strong>. I operate at the intersection of product, engineering, and operations — owning platform outcomes, influencing architecture, and driving measurable business impact in regulated environments.</p>
+      <p class="about-bio reveal reveal-delay-2">I'm particularly effective in <strong>integration-heavy, cross-functional environments</strong> where AI proposes, humans decide, and telemetry turns operational judgment into measurable product iteration — especially in fintech and regulated workflows.</p>
+      <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
+      <div class="about-stats">
+        <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
+        <div class="stat-card reveal reveal-delay-2"><div class="stat-number">10</div><div class="stat-label">AI Products Deployed</div></div>
+        <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
+        <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
       </div>
-      <p class="video-label"><strong>Nicole's AI Persona</strong><br>See How I Think About Product Leadership</p>
     </div>
+    <div class="about-right">
+      <div class="video-outer reveal reveal-delay-2">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/3zjcndXSqhU" title="Nicole Chernow-Martinez — AI Persona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <p class="video-label"><strong>Nicole's AI Persona</strong><br>See How I Think About Product Leadership</p>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- ══ LIVE PRODUCTS ══ -->
-<div class="products-wrapper" id="portfolio">
+<div class="products-wrapper accordion-shell is-collapsed" id="portfolio">
   <div class="products-inner">
-    <div class="reveal">
-      <p class="section-label">Enterprise AI Portfolio</p>
-      <h2 class="section-title">Eight enterprise products.<br>Deployed. Try them now.</h2>
-      <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
+    <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-portfolio">
+      <div class="accordion-toggle-row">
+        <div>
+          <p class="section-label">Enterprise AI Portfolio</p>
+          <h2 class="section-title">Ten enterprise products.<br>Deployed. Try them now.</h2>
+          <p class="section-sub">Every product below is live and interactive. Privacy-first AI intelligence built for regulated financial environments — where humans stay in control.</p>
+        </div>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
     </div>
 
+    <div class="accordion-body-outer" id="acc-portfolio" style="height:0">
+    <div class="accordion-body-inner">
     <div class="products-grid">
 
       <!-- AdvisorOS -->
@@ -683,18 +750,82 @@
         </div>
       </div>
 
+      <!-- Ask My Bank -->
+      <div class="product-card reveal reveal-delay-1" id="p-ask-my-bank">
+        <div class="product-header">
+          <div class="product-badge badge-watch"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite"></span>New · Live · Try Now</div>
+          <div class="product-name">Ask My Bank</div>
+          <div class="product-tagline">Guided-form banking, with a real AI Banker</div>
+          <p class="product-desc">A conversational banking prototype where every money movement stays guided-form-first — never free text — while a Claude-powered AI Banker handles natural-language questions and can open the right form for you, pre-filled but always customer-confirmed. Now expanding into investment accounts, with live stock and crypto holdings alongside checking, savings, credit cards, and lease-to-own accounts.</p>
+          <div class="product-features">
+            <div class="product-feature">Five guided money actions — transfer, deposit, withdrawal, credit card payment, bill pay — each collected through dropdowns, amount fields, and a confirmation step, never free text</div>
+            <div class="product-feature">AI Banker recognizes money-action intent in natural language and opens the matching form pre-filled; execution always requires explicit customer confirmation</div>
+            <div class="product-feature">Full accounts view — checking, savings, credit cards, and Progressive-style lease-to-own accounts with an interactive early-payoff savings calculator</div>
+            <div class="product-feature">New: Investments section with live stock (AAPL) and crypto (Bitcoin) pricing and charts</div>
+            <div class="product-feature">Server-side recomputation on every confirmed action — the backend, not the AI, has final say on what executes</div>
+          </div>
+          <div class="privacy-notice"><strong>Demo only:</strong> All accounts, balances, and transactions are fictional. No real money moves.</div>
+          <br>
+          <div class="product-pills">
+            <span class="pill pill-purple">Claude API</span>
+            <span class="pill pill-teal">React · Vite · TypeScript</span>
+            <span class="pill pill-purple">Neon Postgres</span>
+            <span class="pill pill-teal">Vercel</span>
+            <span class="pill pill-purple">WCAG 2.1 AA</span>
+            <span class="pill pill-teal">Responsible AI</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://ask-my-bank.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','ask_my_bank_try')">✦ Try Ask My Bank Live</a>
+        </div>
+      </div>
+
+      <!-- MyBloom Buddy -->
+      <div class="product-card reveal reveal-delay-2" id="p-mybloom-buddy">
+        <div class="product-header">
+          <div class="product-badge badge-live"><span class="dot"></span>Live · Try Now</div>
+          <div class="product-name">MyBloom Buddy</div>
+          <div class="product-tagline">Plant the right thing, right now</div>
+          <p class="product-desc">A consumer-facing plant recommendation engine that matches flowers, shrubs, and trees to a gardener's exact conditions — USDA hardiness zone, available sunlight, and the current planting month — then hands off to a Claude-powered chat assistant for follow-up questions.</p>
+          <div class="product-features">
+            <div class="product-feature">Location-aware recommendations using USDA hardiness zone data</div>
+            <div class="product-feature">Matches plants to available sunlight (0–2, 3–4, 5–6, or 6+ hours) and the current planting window</div>
+            <div class="product-feature">Conversational follow-up via a Claude-powered chat assistant — pairings, beginner picks, pollinator-friendly options</div>
+            <div class="product-feature">Plant data sourced from Perenual, with hardiness zone lookup via Frostline</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-teal">Claude API</span>
+            <span class="pill pill-purple">USDA Hardiness Zones</span>
+            <span class="pill pill-teal">Perenual API</span>
+            <span class="pill pill-purple">Consumer AI</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://bloombuddy-six.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-try-live" onclick="gtag('event','mybloom_buddy_try')">✦ Try MyBloom Buddy Live</a>
+        </div>
+      </div>
+
+    </div>
+    </div>
     </div>
   </div>
 </div>
 
 <!-- ══ EXPERIENCE ══ -->
-<div class="exp-wrapper" id="experience">
+<div class="exp-wrapper accordion-shell is-collapsed" id="experience">
   <div class="exp-inner">
-    <div class="reveal">
-      <p class="section-label">Career</p>
-      <h2 class="section-title">Where I've Built</h2>
-      <p class="section-sub">Fifteen years of platform ownership, systems integration, and AI-enabled product delivery across fintech, insurance, and lending.</p>
+    <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-experience">
+      <div class="accordion-toggle-row">
+        <div>
+          <p class="section-label">Career</p>
+          <h2 class="section-title">Where I've Built</h2>
+          <p class="section-sub">Fifteen years of platform ownership, systems integration, and AI-enabled product delivery across fintech, insurance, and lending.</p>
+        </div>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
     </div>
+    <div class="accordion-body-outer" id="acc-experience" style="height:0">
+    <div class="accordion-body-inner">
     <div class="timeline">
       <div class="timeline-item reveal">
         <div><div class="timeline-date">Nov 2025 – Present</div><div class="timeline-company-loc">San Diego, CA</div></div>
@@ -751,16 +882,25 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </div>
 </div>
 
 <!-- ══ SKILLS ══ -->
-<section id="skills">
-  <div class="reveal">
-    <p class="section-label">Expertise</p>
-    <h2 class="section-title">What I Bring</h2>
-    <p class="section-sub">Deep domain knowledge across the full stack — from enterprise AI product management to payments infrastructure to platform architecture.</p>
+<section id="skills" class="accordion-shell is-collapsed">
+  <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-skills">
+    <div class="accordion-toggle-row">
+      <div>
+        <p class="section-label">Expertise</p>
+        <h2 class="section-title">What I Bring</h2>
+        <p class="section-sub">Deep domain knowledge across the full stack — from enterprise AI product management to payments infrastructure to platform architecture.</p>
+      </div>
+      <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+    </div>
   </div>
+  <div class="accordion-body-outer" id="acc-skills" style="height:0">
+  <div class="accordion-body-inner">
   <div class="skills-grid">
     <div class="skill-card reveal reveal-delay-1">
       <div class="skill-icon si-b">🤖</div>
@@ -806,9 +946,11 @@
     </div>
   </div>
   <div class="executive-lens reveal">
-    <div class="lens-card"><div class="lens-kicker">AI Systems</div><div class="lens-title">Enterprise AI That Earns Trust</div><p class="lens-copy">Privacy-first, human-in-the-loop governance, explainable recommendations, FDR documentation, FinOps analysis — from vision to eight deployed products.</p></div>
+    <div class="lens-card"><div class="lens-kicker">AI Systems</div><div class="lens-title">Enterprise AI That Earns Trust</div><p class="lens-copy">Privacy-first, human-in-the-loop governance, explainable recommendations, FDR documentation, FinOps analysis — from vision to ten deployed products.</p></div>
     <div class="lens-card"><div class="lens-kicker">Platform</div><div class="lens-title">Payments + Digital Banking Infrastructure</div><p class="lens-copy">ACH, wire, RTP, lending, servicing, IAM, APIs, vendor integrations, and regulated platform delivery.</p></div>
     <div class="lens-card"><div class="lens-kicker">Execution</div><div class="lens-title">Product Operating Models That Ship</div><p class="lens-copy">Roadmaps, OKRs, Agile delivery, measurable iteration, risk-aware prioritization, and executive-ready product narratives.</p></div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -853,13 +995,20 @@
 <div class="section-divider"></div>
 
 <!-- ══ PUBLICATIONS ══ -->
-<div class="pub-wrapper" id="publications">
+<div class="pub-wrapper accordion-shell is-collapsed" id="publications">
   <div class="pub-inner">
-    <div class="reveal">
-      <p class="section-label">Published Thinking</p>
-      <h2 class="section-title">Publications</h2>
-      <p class="section-sub">The frameworks I use day to day, written down — a codified operating model for Agile product leadership grounded in Lean and Jobs-to-Be-Done thinking.</p>
+    <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-publications">
+      <div class="accordion-toggle-row">
+        <div>
+          <p class="section-label">Published Thinking</p>
+          <h2 class="section-title">Publications</h2>
+          <p class="section-sub">The frameworks I use day to day, written down — a codified operating model for Agile product leadership grounded in Lean and Jobs-to-Be-Done thinking.</p>
+        </div>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
     </div>
+    <div class="accordion-body-outer" id="acc-publications" style="height:0">
+    <div class="accordion-body-inner">
     <div class="pub-card reveal reveal-delay-1">
       <div class="pub-cover" style="background:none;padding:0;overflow:hidden;">
         <img src="https://m.media-amazon.com/images/I/61sozE3kVOL._SY522_.jpg" alt="Agile Product Creative Growth© book cover by Nicole Chernow-Martinez" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
@@ -954,19 +1103,28 @@
         <span class="wp-arrow">Read →</span>
       </a>
     </div>
+    </div>
+    </div>
   </div>
 </div>
 
 <div class="section-divider"></div>
 
 <!-- ══ CASE STUDIES ══ -->
-<div class="cs-wrapper" id="case-studies">
+<div class="cs-wrapper accordion-shell is-collapsed" id="case-studies">
   <div class="cs-inner">
-    <div class="reveal">
-      <p class="section-label">Case Studies</p>
-      <h2 class="section-title">Work That Ships</h2>
-      <p class="section-sub">Nine published case studies — from complex payment rail integrations to enterprise platform operating systems, AI cost governance, and AI product management.</p>
+    <div class="accordion-header reveal" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-case-studies-grid acc-case-studies-details">
+      <div class="accordion-toggle-row">
+        <div>
+          <p class="section-label">Case Studies</p>
+          <h2 class="section-title">Work That Ships</h2>
+          <p class="section-sub">Nine published case studies — from complex payment rail integrations to enterprise platform operating systems, AI cost governance, and AI product management.</p>
+        </div>
+        <span class="accordion-toggle-label"><span class="accordion-hint-text">Show</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
+      </div>
     </div>
+    <div class="accordion-body-outer" id="acc-case-studies-grid" style="height:0">
+    <div class="accordion-body-inner">
     <div class="cs-grid">
       <a href="#cs-eos" class="cs-card reveal reveal-delay-1">
         <div class="cs-icon si-a">🖥️</div>
@@ -1023,8 +1181,13 @@
         <span class="cs-arrow">Read case study →</span>
       </a>
     </div>
+    </div>
+    </div>
   </div>
 </div>
+
+<div class="accordion-body-outer" id="acc-case-studies-details" style="height:0">
+<div class="accordion-body-inner">
 
 <!-- ══ CS-EOS ══ -->
 <div class="cs-full reveal" id="cs-eos">
@@ -1320,6 +1483,9 @@
   </div>
 </div>
 
+</div>
+</div>
+
 <!-- ══ CONTACT ══ -->
 <div class="contact-wrapper" id="contact">
   <div class="contact-inner">
@@ -1421,6 +1587,113 @@
         aglBubble.style.transform='scale(1)';
       }
     });
+  }
+
+  // ── Collapsible sections ──
+  var pendingScroll=null;
+
+  function accordionBodies(header){
+    var ids=(header.getAttribute('aria-controls')||'').split(/\s+/).filter(Boolean);
+    return ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+  }
+
+  function setAccordionOpen(header,open){
+    var bodies=accordionBodies(header);
+    var hint=header.querySelector('.accordion-hint-text');
+    var shell=header.closest('.accordion-shell');
+    if(open){
+      header.setAttribute('aria-expanded','true');
+      if(hint)hint.textContent='Hide';
+      if(shell)shell.classList.remove('is-collapsed');
+      bodies.forEach(function(body){
+        body.style.height=body.scrollHeight+'px';
+        body.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+      });
+    } else {
+      header.setAttribute('aria-expanded','false');
+      if(hint)hint.textContent='Show';
+      if(shell)shell.classList.add('is-collapsed');
+      bodies.forEach(function(body){
+        body.style.height=body.scrollHeight+'px';
+        requestAnimationFrame(function(){body.style.height='0px';});
+      });
+    }
+  }
+
+  var accHeaders=document.querySelectorAll('.accordion-header');
+  accHeaders.forEach(function(header){
+    header.addEventListener('click',function(){
+      var open=header.getAttribute('aria-expanded')==='true';
+      setAccordionOpen(header,!open);
+    });
+    header.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){
+        e.preventDefault();
+        header.click();
+      }
+    });
+    accordionBodies(header).forEach(function(body){
+      body.addEventListener('transitionend',function(e){
+        if(e.propertyName!=='height')return;
+        if(header.getAttribute('aria-expanded')==='true'){
+          body.style.height='auto';
+          if(pendingScroll&&body.contains(pendingScroll)){
+            var target=pendingScroll;
+            pendingScroll=null;
+            target.scrollIntoView({behavior:'smooth',block:'start'});
+          }
+        }
+      });
+    });
+  });
+
+  function headerFor(body){
+    return document.querySelector('.accordion-header[aria-controls~="'+body.id+'"]');
+  }
+
+  document.querySelectorAll('.accordion-global-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var expand=btn.getAttribute('data-accordion-action')==='expand';
+      accHeaders.forEach(function(header){
+        var isOpen=header.getAttribute('aria-expanded')==='true';
+        if(expand&&!isOpen)setAccordionOpen(header,true);
+        if(!expand&&isOpen)setAccordionOpen(header,false);
+      });
+    });
+  });
+
+  // Auto-expand and scroll to a target that lives inside a collapsed section
+  function ensureVisible(target){
+    var body=target.closest('.accordion-body-outer');
+    if(!body)return false;
+    if(body.style.height==='auto')return false;
+    var header=headerFor(body);
+    if(!header)return false;
+    pendingScroll=target;
+    setAccordionOpen(header,true);
+    return true;
+  }
+
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]');
+    if(!a)return;
+    var id=a.getAttribute('href').slice(1);
+    if(!id)return;
+    var target=document.getElementById(id);
+    if(!target)return;
+    if(ensureVisible(target)){
+      e.preventDefault();
+      if(history.pushState)history.pushState(null,'','#'+id);
+    }
+  });
+
+  if(location.hash){
+    var initTarget=document.querySelector(location.hash);
+    if(initTarget){
+      if(!ensureVisible(initTarget)){
+        setTimeout(function(){initTarget.scrollIntoView({block:'start'});},60);
+      }
+    }
   }
 }());
 </script>
