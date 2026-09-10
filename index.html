@@ -1581,6 +1581,9 @@
 <div id="aglwb" style="position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2e75b6,#1b3a6b);cursor:pointer;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s ease;"><svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
 <iframe id="aglwf" src="https://chatty-bot-worker.lab-d86.workers.dev/?id=ncm-guide" style="position:fixed;bottom:90px;right:24px;width:380px;height:580px;display:none;border-radius:16px;z-index:9998;border:none;box-shadow:0 8px 32px rgba(0,0,0,.18)"></iframe>
 
+<!-- ══ CONFETTI ══ -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <!-- ══ JS ══ -->
 <script>
 (function(){
@@ -1731,6 +1734,22 @@
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]');
     if(!a)return;
+
+    // Branded confetti burst from the point the visitor clicked.
+    // Respect reduced-motion preferences and fail gracefully if the CDN is unavailable.
+    if(typeof confetti==='function' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      confetti({
+        particleCount:120,
+        spread:90,
+        startVelocity:38,
+        colors:['#7EDFD6','#7c5cfc','#ffffff'],
+        origin:{
+          x:Math.min(1,Math.max(0,e.clientX/window.innerWidth)),
+          y:Math.min(1,Math.max(0,e.clientY/window.innerHeight))
+        }
+      });
+    }
+
     var id=a.getAttribute('href').slice(1);
     if(!id)return;
     var target=document.getElementById(id);
