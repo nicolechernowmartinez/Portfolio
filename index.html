@@ -1851,5 +1851,561 @@
   }
 }());
 </script>
+
+<!-- NCM GA4 DEEP PORTFOLIO ANALYTICS -->
+<script>
+(function () {
+  'use strict';
+  if (window.__ncmGa4DeepTracking) return;
+  window.__ncmGa4DeepTracking = true;
+
+  function ga(eventName, params) {
+    if (typeof window.gtag !== 'function') return;
+    try { window.gtag('event', eventName, params || {}); } catch (e) {}
+  }
+
+  function txt(el) {
+    return ((el && (el.innerText || el.textContent)) || '')
+      .trim().replace(/\s+/g, ' ').slice(0, 180);
+  }
+
+  function hostFrom(url) {
+    try { return new URL(url, window.location.href).hostname || ''; } catch (e) { return ''; }
+  }
+
+  function safeUtm() {
+    var q = new URLSearchParams(window.location.search);
+    return {
+      utm_source: (q.get('utm_source') || '').slice(0,100),
+      utm_medium: (q.get('utm_medium') || '').slice(0,100),
+      utm_campaign: (q.get('utm_campaign') || '').slice(0,100),
+      utm_content: (q.get('utm_content') || '').slice(0,100),
+      utm_term: (q.get('utm_term') || '').slice(0,100)
+    };
+  }
+
+  function viewportBucket() {
+    var w = window.innerWidth || document.documentElement.clientWidth || 0;
+    if (w < 600) return 'mobile';
+    if (w < 900) return 'tablet';
+    return 'desktop';
+  }
+
+  function placementFor(link) {
+    if (link.closest('.hero-products')) return 'hero_product';
+    if (link.closest('.product-actions')) return 'portfolio_product';
+    if (link.closest('.nav-links')) return 'navigation';
+    if (link.closest('.hero-cta')) return 'hero_cta';
+    if (link.closest('.cs-grid')) return 'case_study_card';
+    if (link.closest('.cs-full')) return 'case_study_detail';
+    if (link.closest('.wp-grid')) return 'publication_or_whitepaper';
+    if (link.closest('.contact-links') || link.classList.contains('contact-email')) return 'contact';
+    if (link.classList.contains('cs-back-top')) return 'case_study_back_to_top';
+    return 'other';
+  }
+
+  function productNameFor(el) {
+    var hero = el.closest && el.closest('.hero-product-card');
+    if (hero) return txt(hero.querySelector('.hpc-name'));
+    var card = el.closest && el.closest('.product-card');
+    if (card) return txt(card.querySelector('.product-name'));
+    return '';
+  }
+
+  // Session/landing context — no PII, no full query string.
+  var utm = safeUtm();
+  ga('portfolio_session_start', {
+    page_path: window.location.pathname,
+    referrer_host: document.referrer ? hostFrom(document.referrer) : 'direct',
+    viewport_type: viewportBucket(),
+    viewport_width: window.innerWidth || 0,
+    viewport_height: window.innerHeight || 0,
+    language: (navigator.language || '').slice(0,20),
+    utm_source: utm.utm_source,
+    utm_medium: utm.utm_medium,
+    utm_campaign: utm.utm_campaign,
+    utm_content: utm.utm_content,
+    utm_term: utm.utm_term
+  });
+
+  // Every link click, normalized into one event, plus specific product/download/contact events.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+
+    var rawHref = link.getAttribute('href') || '';
+    var absHref = link.href || rawHref;
+    var placement = placementFor(link);
+    var productName = productNameFor(link);
+    var label = txt(link);
+    var targetHost = hostFrom(absHref);
+    var isExternal = /^https?:/i.test(absHref) && targetHost && targetHost !== window.location.hostname;
+    var isMail = /^mailto:/i.test(rawHref);
+    var isTel = /^tel:/i.test(rawHref);
+    var isDownload = /\.(pdf|docx?|xlsx?|pptx?|csv|zip)(?:$|[?#])/i.test(absHref);
+
+    ga('portfolio_link_click', {
+      link_text: label,
+      link_url: absHref.slice(0,500),
+      destination_host: targetHost,
+      placement: placement,
+      product_name: productName,
+      external_link: isExternal ? 'yes' : 'no',
+      link_target: link.getAttribute('target') || '',
+      page_path: window.location.pathname
+    });
+
+    if (productName) {
+      ga('portfolio_product_click', {
+        product_name: productName,
+        placement: placement,
+        link_url: absHref.slice(0,500),
+        destination_host: targetHost
+      });
+    }
+
+    if (isExternal) {
+      ga('portfolio_outbound_click', {
+        link_text: label,
+        destination_host: targetHost,
+        link_url: absHref.slice(0,500),
+        placement: placement,
+        product_name: productName
+      });
+    }
+
+    if (isDownload) {
+      ga('portfolio_download', {
+        file_name: absHref.split('/').pop().split(/[?#]/)[0].slice(0,160),
+        file_url: absHref.slice(0,500),
+        placement: placement
+      });
+    }
+
+    if (isMail || isTel) {
+      ga('portfolio_contact_intent', {
+        contact_type: isMail ? 'email' : 'phone',
+        placement: placement,
+        link_text: label
+      });
+    }
+  }, true);
+
+  // Accordion section opens/closes, including global show-all/collapse-all.
+  document.addEventListener('click', function (event) {
+    var header = event.target.closest && event.target.closest('.accordion-header');
+    if (header) {
+      setTimeout(function () {
+        var shell = header.closest('.accordion-shell');
+        ga('portfolio_section_toggle', {
+          section_id: shell ? (shell.id || '') : '',
+          section_name: txt(header.querySelector('.section-label')) || txt(header.querySelector('.section-title')),
+          action: header.getAttribute('aria-expanded') === 'true' ? 'open' : 'close'
+        });
+      }, 0);
+    }
+
+    var globalBtn = event.target.closest && event.target.closest('.accordion-global-btn');
+    if (globalBtn) {
+      ga('portfolio_sections_global_action', {
+        action: globalBtn.getAttribute('data-accordion-action') || txt(globalBtn)
+      });
+    }
+  }, true);
+
+  // Visibility: which major sections and product cards were actually seen.
+  var seenSections = new WeakSet();
+  var seenProducts = new WeakSet();
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.35 || seenSections.has(entry.target)) return;
+        seenSections.add(entry.target);
+        ga('portfolio_section_view', {
+          section_id: entry.target.id || '',
+          section_name: txt(entry.target.querySelector('.section-label')) || txt(entry.target.querySelector('.section-title'))
+        });
+      });
+    }, { threshold: [0.35] });
+
+    document.querySelectorAll('#about,#portfolio,#experience,#skills,#publications,#case-studies,#contact').forEach(function (el) {
+      sectionObserver.observe(el);
+    });
+
+    var productObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.5 || seenProducts.has(entry.target)) return;
+        seenProducts.add(entry.target);
+        ga('portfolio_product_view', {
+          product_name: txt(entry.target.querySelector('.product-name')),
+          product_id: entry.target.id || ''
+        });
+      });
+    }, { threshold: [0.5] });
+
+    document.querySelectorAll('.product-card').forEach(function (el) { productObserver.observe(el); });
+  }
+
+  // Scroll depth milestones.
+  var scrollMarks = {25:false,50:false,75:false,90:false,100:false};
+  function trackScroll() {
+    var doc = document.documentElement;
+    var max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
+    [25,50,75,90,100].forEach(function (m) {
+      if (!scrollMarks[m] && pct >= m) {
+        scrollMarks[m] = true;
+        ga('portfolio_scroll_depth', { percent_scrolled: m });
+      }
+    });
+  }
+  window.addEventListener('scroll', trackScroll, { passive:true });
+  trackScroll();
+
+  // Meaningful time-on-page milestones; GA4 also records user_engagement automatically.
+  [15,30,60,120,300].forEach(function (seconds) {
+    setTimeout(function () {
+      if (!document.hidden) ga('portfolio_time_milestone', { seconds_engaged: seconds });
+    }, seconds * 1000);
+  });
+
+  // Chatty open/close.
+  var chatBubble = document.getElementById('aglwb');
+  var chatClose = document.getElementById('aglwclose');
+  if (chatBubble) chatBubble.addEventListener('click', function () {
+    ga('portfolio_chatty_open', { assistant: 'ncm-guide' });
+  }, true);
+  if (chatClose) chatClose.addEventListener('click', function () {
+    ga('portfolio_chatty_close', { assistant: 'ncm-guide' });
+  }, true);
+
+  // YouTube iframe exposure (playback itself is not inferred without YouTube Player API).
+  var videoFrame = document.querySelector('.video-wrap iframe');
+  if (videoFrame && 'IntersectionObserver' in window) {
+    var videoSeen = false;
+    var videoObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!videoSeen && entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          videoSeen = true;
+          ga('portfolio_video_view', { video_title: videoFrame.getAttribute('title') || 'AI Persona' });
+          videoObserver.disconnect();
+        }
+      });
+    }, { threshold:[0.5] });
+    videoObserver.observe(videoFrame);
+  }
+
+  // Capture exit context once per page lifecycle.
+  var exitSent = false;
+  function sendExit() {
+    if (exitSent) return;
+    exitSent = true;
+    ga('portfolio_page_exit', {
+      max_scroll_percent: Object.keys(scrollMarks).filter(function(k){return scrollMarks[k];}).pop() || 0,
+      page_path: window.location.pathname
+    });
+  }
+  window.addEventListener('pagehide', sendExit);
+})();
+</script>
+
+
+<script>
+/* NCM GA4 Maximum Useful Telemetry — invisible analytics only; no UI changes. */
+(function () {
+  'use strict';
+  if (window.__ncmMaxTelemetryLoaded) return;
+  window.__ncmMaxTelemetryLoaded = true;
+
+  function ga(name, params) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    } catch (_) {}
+  }
+  function txt(el) {
+    return el ? ((el.innerText || el.textContent || '').trim().replace(/\s+/g,' ').slice(0,160)) : '';
+  }
+  function now() { return Date.now(); }
+  function seconds(ms) { return Math.max(0, Math.round(ms / 1000)); }
+  function viewportType() {
+    var w = window.innerWidth || 0;
+    return w < 600 ? 'mobile' : (w < 900 ? 'tablet' : 'desktop');
+  }
+  function productName(el) {
+    var card = el && el.closest ? el.closest('.product-card') : null;
+    if (card) return txt(card.querySelector('.product-name'));
+    var hero = el && el.closest ? el.closest('.hero-product-card') : null;
+    return hero ? txt(hero.querySelector('.hpc-name')) : '';
+  }
+  function sectionName(el) {
+    if (!el) return '';
+    return txt(el.querySelector('.section-label')) || txt(el.querySelector('.section-title')) || el.id || '';
+  }
+
+  // Anonymous visit continuity. Stores only counters/timestamps in this browser; no identity or content.
+  var visitCount = 1, firstSeen = now(), previousSeen = 0;
+  try {
+    firstSeen = Number(localStorage.getItem('ncm_first_seen')) || firstSeen;
+    previousSeen = Number(localStorage.getItem('ncm_last_seen')) || 0;
+    visitCount = (Number(localStorage.getItem('ncm_visit_count')) || 0) + 1;
+    localStorage.setItem('ncm_first_seen', String(firstSeen));
+    localStorage.setItem('ncm_last_seen', String(now()));
+    localStorage.setItem('ncm_visit_count', String(visitCount));
+  } catch (_) {}
+  ga('portfolio_visit_context', {
+    visit_number: visitCount,
+    visitor_type: visitCount > 1 ? 'returning_browser' : 'first_seen_browser',
+    days_since_first_seen: Math.floor((now() - firstSeen) / 86400000),
+    days_since_previous_seen: previousSeen ? Math.floor((now() - previousSeen) / 86400000) : -1,
+    viewport_type: viewportType()
+  });
+
+  // In-session journey sequence (labels only; no copied text, form values, or PII).
+  var journey = [];
+  function addJourney(step, detail) {
+    if (journey.length >= 30) return;
+    journey.push((step + (detail ? ':' + detail : '')).slice(0,100));
+    ga('portfolio_journey_step', {
+      step_number: journey.length,
+      step_type: step,
+      step_detail: (detail || '').slice(0,100)
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (a) {
+      var p = productName(a);
+      addJourney(p ? 'product_click' : 'link_click', p || txt(a));
+    }
+    var header = e.target.closest && e.target.closest('.accordion-header');
+    if (header) {
+      var shell = header.closest('.accordion-shell');
+      addJourney('section_toggle', shell ? (shell.id || sectionName(shell)) : 'section');
+    }
+  }, true);
+
+  // Active engagement clock: counts only while tab is visible and window has focus.
+  var pageStarted = now();
+  var activeMs = 0;
+  var activeSince = (!document.hidden && document.hasFocus()) ? now() : 0;
+  function pauseActive() {
+    if (activeSince) { activeMs += now() - activeSince; activeSince = 0; }
+  }
+  function resumeActive() {
+    if (!activeSince && !document.hidden && document.hasFocus()) activeSince = now();
+  }
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) {
+      pauseActive();
+      ga('portfolio_tab_state', { state:'hidden', active_seconds:seconds(activeMs) });
+    } else {
+      resumeActive();
+      ga('portfolio_tab_state', { state:'visible', active_seconds:seconds(activeMs) });
+    }
+  });
+  window.addEventListener('blur', pauseActive);
+  window.addEventListener('focus', resumeActive);
+
+  // Dwell telemetry for major sections and individual product cards.
+  var dwellMap = new Map();
+  function dwellState(el, kind, name) {
+    if (!dwellMap.has(el)) dwellMap.set(el, {kind:kind,name:name,ms:0,since:0,entered:false});
+    return dwellMap.get(el);
+  }
+  function startDwell(el, kind, name) {
+    var s=dwellState(el,kind,name);
+    if (!s.since && !document.hidden) s.since=now();
+    if (!s.entered) {
+      s.entered=true;
+      ga(kind === 'product' ? 'portfolio_product_engaged_view' : 'portfolio_section_engaged_view', {
+        name:name,
+        visibility_threshold:'60_percent'
+      });
+    }
+  }
+  function stopDwell(el) {
+    var s=dwellMap.get(el);
+    if (s && s.since) { s.ms += now()-s.since; s.since=0; }
+  }
+  if ('IntersectionObserver' in window) {
+    var dwellObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var el=entry.target;
+        var isProduct=el.classList.contains('product-card');
+        var name=isProduct ? txt(el.querySelector('.product-name')) : sectionName(el);
+        if (entry.isIntersecting && entry.intersectionRatio>=0.60) startDwell(el,isProduct?'product':'section',name);
+        else stopDwell(el);
+      });
+    },{threshold:[0,0.6]});
+    document.querySelectorAll('#about,#portfolio,#experience,#skills,#publications,#case-studies,#contact,.product-card').forEach(function(el){dwellObserver.observe(el);});
+
+    // High-intent visibility: 80% visible continuously for 3 seconds.
+    var timers=new WeakMap(), qualified=new WeakSet();
+    var intentObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var el=entry.target;
+        if (entry.isIntersecting && entry.intersectionRatio>=0.80 && !qualified.has(el)) {
+          if (!timers.has(el)) timers.set(el,setTimeout(function(){
+            qualified.add(el); timers.delete(el);
+            ga('portfolio_product_high_intent_view', {
+              product_name:txt(el.querySelector('.product-name')),
+              visible_percent:80,
+              sustained_seconds:3
+            });
+          },3000));
+        } else if (timers.has(el)) {
+          clearTimeout(timers.get(el)); timers.delete(el);
+        }
+      });
+    },{threshold:[0,0.8]});
+    document.querySelectorAll('.product-card').forEach(function(el){intentObserver.observe(el);});
+  }
+
+  // Copy intent without collecting the copied content.
+  document.addEventListener('copy', function(e){
+    var sel = window.getSelection && window.getSelection();
+    var node = sel && sel.anchorNode ? (sel.anchorNode.nodeType===1 ? sel.anchorNode : sel.anchorNode.parentElement) : null;
+    var p = node ? productName(node) : '';
+    var section = node && node.closest ? node.closest('section,.accordion-shell,.products-wrapper,.cs-wrapper,.pub-wrapper,.contact-wrapper') : null;
+    ga('portfolio_copy_intent', {
+      context: p ? 'product' : (section ? 'section' : 'page'),
+      product_name:p,
+      section_id:section ? (section.id || '') : ''
+    });
+    addJourney('copy', p || (section ? section.id : 'page'));
+  });
+
+  // Chatty: duration and reopen count.
+  var chatBubble=document.getElementById('aglwb');
+  var chatClose=document.getElementById('aglwclose');
+  var chatOpenedAt=0, chatOpenCount=0;
+  if (chatBubble) chatBubble.addEventListener('click', function(){
+    chatOpenCount += 1; chatOpenedAt = now();
+    ga('portfolio_chatty_session_start', { open_number:chatOpenCount });
+    addJourney('chatty_open', String(chatOpenCount));
+  }, true);
+  if (chatClose) chatClose.addEventListener('click', function(){
+    var dur = chatOpenedAt ? seconds(now()-chatOpenedAt) : 0;
+    ga('portfolio_chatty_session_end', { open_number:chatOpenCount, open_seconds:dur });
+    chatOpenedAt=0;
+    addJourney('chatty_close', String(dur));
+  }, true);
+
+  // Scroll direction reversals and maximum exact depth (bucketed to avoid noisy event spam).
+  var lastY=window.scrollY||0, lastDir='', reversalCount=0, maxExact=0;
+  var depthBuckets={10:0,25:0,50:0,75:0,90:0,100:0};
+  function onScroll(){
+    var y=window.scrollY||0;
+    var dir=y>lastY?'down':(y<lastY?'up':lastDir);
+    if (lastDir && dir && dir!==lastDir && Math.abs(y-lastY)>20) {
+      reversalCount++;
+      if (reversalCount<=10) ga('portfolio_scroll_reversal',{direction:dir,reversal_number:reversalCount});
+    }
+    if (dir) lastDir=dir;
+    lastY=y;
+    var doc=document.documentElement;
+    var max=Math.max(1,doc.scrollHeight-window.innerHeight);
+    var pct=Math.max(0,Math.min(100,Math.round((y/max)*100)));
+    if (pct>maxExact) maxExact=pct;
+    [10,25,50,75,90,100].forEach(function(b){
+      if (!depthBuckets[b] && pct>=b) { depthBuckets[b]=1; ga('portfolio_scroll_bucket',{percent_scrolled:b,direction:dir||'down'}); }
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // Performance telemetry: navigation timing, paint, LCP, CLS and long tasks.
+  var perf={ttfb_ms:null,dom_content_loaded_ms:null,load_ms:null,fcp_ms:null,lcp_ms:null,cls:0,long_tasks:0};
+  try {
+    var nav=performance.getEntriesByType('navigation')[0];
+    if (nav) {
+      perf.ttfb_ms=Math.round(nav.responseStart);
+      perf.dom_content_loaded_ms=Math.round(nav.domContentLoadedEventEnd);
+      perf.load_ms=Math.round(nav.loadEventEnd||0);
+    }
+    var paints=performance.getEntriesByType('paint');
+    paints.forEach(function(p){ if(p.name==='first-contentful-paint') perf.fcp_ms=Math.round(p.startTime); });
+    if ('PerformanceObserver' in window) {
+      try { new PerformanceObserver(function(list){ list.getEntries().forEach(function(e){ perf.lcp_ms=Math.round(e.startTime); }); }).observe({type:'largest-contentful-paint',buffered:true}); } catch(_){ }
+      try { new PerformanceObserver(function(list){ list.getEntries().forEach(function(e){ if(!e.hadRecentInput) perf.cls += e.value; }); }).observe({type:'layout-shift',buffered:true}); } catch(_){ }
+      try { new PerformanceObserver(function(list){ perf.long_tasks += list.getEntries().length; }).observe({type:'longtask',buffered:true}); } catch(_){ }
+    }
+  } catch(_) {}
+  window.addEventListener('load',function(){
+    setTimeout(function(){
+      ga('portfolio_performance', {
+        ttfb_ms:perf.ttfb_ms||0,
+        fcp_ms:perf.fcp_ms||0,
+        lcp_ms:perf.lcp_ms||0,
+        cls_milli:Math.round((perf.cls||0)*1000),
+        dom_content_loaded_ms:perf.dom_content_loaded_ms||0,
+        load_ms:perf.load_ms||0,
+        long_tasks:perf.long_tasks||0
+      });
+    },1500);
+  });
+
+  // JavaScript/runtime errors. Do not transmit error messages or stack traces (may contain sensitive data).
+  window.addEventListener('error', function(e){
+    var target=e.target;
+    if (target && target!==window && target.tagName) {
+      ga('portfolio_resource_error', {
+        resource_type:String(target.tagName).toLowerCase(),
+        resource_host:target.src ? (function(){try{return new URL(target.src,location.href).hostname}catch(_){return ''}})() : (target.href ? (function(){try{return new URL(target.href,location.href).hostname}catch(_){return ''}})() : '')
+      });
+      return;
+    }
+    ga('portfolio_js_error', {
+      error_name:e.error && e.error.name ? String(e.error.name).slice(0,80) : 'Error',
+      script_host:e.filename ? (function(){try{return new URL(e.filename,location.href).hostname}catch(_){return ''}})() : '',
+      line:e.lineno||0,
+      column:e.colno||0
+    });
+  }, true);
+  window.addEventListener('unhandledrejection', function(e){
+    var reason=e.reason;
+    ga('portfolio_unhandled_rejection', {
+      error_name:reason && reason.name ? String(reason.name).slice(0,80) : 'PromiseRejection'
+    });
+  });
+
+  // Final anonymous session summary. Event uses only aggregate behavior, not content or identity.
+  var summarySent=false;
+  function flushDwell(){
+    dwellMap.forEach(function(s,el){ if(s.since){s.ms+=now()-s.since;s.since=0;} });
+  }
+  function sendSummary(){
+    if(summarySent) return; summarySent=true;
+    pauseActive(); flushDwell();
+    var productMs=0, sectionMs=0, productsEngaged=0, sectionsEngaged=0;
+    dwellMap.forEach(function(s){
+      if(s.kind==='product'){productMs+=s.ms;if(s.ms>=3000)productsEngaged++;}
+      else {sectionMs+=s.ms;if(s.ms>=3000)sectionsEngaged++;}
+    });
+    if(chatOpenedAt){
+      ga('portfolio_chatty_session_end',{open_number:chatOpenCount,open_seconds:seconds(now()-chatOpenedAt),exit_while_open:'yes'});
+      chatOpenedAt=0;
+    }
+    ga('portfolio_session_summary', {
+      elapsed_seconds:seconds(now()-pageStarted),
+      active_seconds:seconds(activeMs),
+      max_scroll_percent:maxExact,
+      scroll_reversals:reversalCount,
+      products_engaged_3s:productsEngaged,
+      sections_engaged_3s:sectionsEngaged,
+      product_dwell_seconds:seconds(productMs),
+      section_dwell_seconds:seconds(sectionMs),
+      chatty_opens:chatOpenCount,
+      journey_steps:journey.length,
+      last_journey_step:journey.length ? journey[journey.length-1] : '',
+      viewport_type:viewportType(),
+      visit_number:visitCount
+    });
+  }
+  window.addEventListener('pagehide',sendSummary);
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) flushDwell(); });
+})();
+</script>
+
 </body>
 </html>
