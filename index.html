@@ -469,10 +469,10 @@
         <span class="hpc-name">Scout</span>
         <span class="hpc-sub">Catch what broke after your release</span>
       </a>
-      <a href="#p-idea-capture" class="hero-product-card" onclick="gtag('event','hero_idea_capture')">
-        <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">Idea Capture</span>
-        <span class="hpc-sub">Turn employee ideas into structured opportunities</span>
+      <a href="#p-agentic-incident-lab" class="hero-product-card featured" onclick="gtag('event','hero_agentic_incident_lab')">
+        <span class="hpc-label purple">✦ Live Now</span>
+        <span class="hpc-name">Agentic Incident Lab</span>
+        <span class="hpc-sub">Live multi-framework AI for incident response</span>
       </a>
       <a href="#p-ask-my-bank" class="hero-product-card" onclick="gtag('event','hero_ask_my_bank')">
         <span class="hpc-label">✦ Live Now</span>
@@ -530,7 +530,7 @@
       <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
       <div class="about-stats">
         <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
-        <div class="stat-card reveal reveal-delay-2"><div class="stat-number">10</div><div class="stat-label">AI Products Deployed</div></div>
+        <div class="stat-card reveal reveal-delay-2"><div class="stat-number">12</div><div class="stat-label">AI Products Deployed</div></div>
         <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
         <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
       </div>
@@ -558,7 +558,7 @@
       <div class="accordion-toggle-row">
         <div>
           <p class="section-label"><span class="accordion-index">02</span>Enterprise AI Portfolio</p>
-          <h2 class="section-title">Ten enterprise products.<br>Deployed. Try them now.</h2>
+          <h2 class="section-title">Twelve enterprise products.<br>Deployed. Try them now.</h2>
           <p class="accordion-tagline">Live AI products across banking, FinOps, product intelligence &amp; operations</p>
         </div>
         <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
@@ -877,6 +877,33 @@
         </div>
       </div>
 
+
+      <!-- Agentic Incident Lab -->
+      <div class="product-card advisoros reveal reveal-delay-2" id="p-agentic-incident-lab">
+        <div class="product-header">
+          <div class="product-badge badge-watch"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite"></span>New · Live · Try Now</div>
+          <div class="product-name">Agentic Incident Lab</div>
+          <div class="product-tagline">Live multi-framework AI for incident response</div>
+          <p class="product-desc">A production-deployed agentic AI lab for operational incident investigation. The same incident and retrieved evidence can be run through LangGraph, CrewAI, or AutoGen so orchestration behavior is directly comparable — with RAG, vector retrieval, measured telemetry, and human approval boundaries built into the runtime.</p>
+          <div class="product-features">
+            <div class="product-feature">Runs three live Python orchestration frameworks: LangGraph state graphs, CrewAI role-based crews, and AutoGen conversational agent teams</div>
+            <div class="product-feature">Grounds investigations with embeddings, vector similarity, cited evidence, and Neon pgvector when configured</div>
+            <div class="product-feature">Measures run IDs, latency, token usage, model selection, framework behavior, and evidence lineage</div>
+            <div class="product-feature">Keeps consequential actions human-controlled through structured outputs, bounded requests, protected secrets, and explicit approval</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-purple">Python</span>
+            <span class="pill pill-teal">LangGraph</span>
+            <span class="pill pill-purple">CrewAI</span>
+            <span class="pill pill-teal">AutoGen</span>
+            <span class="pill pill-purple">RAG · pgvector</span>
+            <span class="pill pill-teal">Vercel · Neon</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://agentic-incident-qwh6u90g2-agentics-growth-lab.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','agentic_incident_lab_try')">✦ Try Agentic Incident Lab Live</a>
+        </div>
+      </div>
     </div>
     </div>
     </div>
@@ -1792,6 +1819,22 @@
     if(!id)return;
     var target=document.getElementById(id);
     if(!target)return;
+
+    // Main-menu navigation: open only the selected accordion section before scrolling to it.
+    // Other sections keep their current state; the menu never expands unrelated sections.
+    if(a.closest('.nav-links') && target.classList.contains('accordion-shell')){
+      var targetHeader=target.querySelector(':scope > .accordion-panel > .accordion-header, :scope > .products-inner > .accordion-panel > .accordion-header, :scope > .exp-inner > .accordion-panel > .accordion-header, :scope > .pub-inner > .accordion-panel > .accordion-header, :scope > .cs-inner > .accordion-panel > .accordion-header');
+      if(targetHeader && targetHeader.getAttribute('aria-expanded')!=='true'){
+        setAccordionOpen(targetHeader,true);
+      }
+      e.preventDefault();
+      if(history.pushState)history.pushState(null,'','#'+id);
+      requestAnimationFrame(function(){
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+      return;
+    }
+
     if(ensureVisible(target)){
       e.preventDefault();
       if(history.pushState)history.pushState(null,'','#'+id);
