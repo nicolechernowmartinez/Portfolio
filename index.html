@@ -53,7 +53,7 @@
     #particles-canvas { position:absolute; inset:0; width:100%; height:100%; }
     .hero-gradient { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(0,212,180,.15) 0%,transparent 65%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(124,92,252,.13) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 70%,rgba(0,212,180,.07) 0%,transparent 60%); pointer-events:none; }
     .hero-gradient::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent); opacity:.45; }
-    .hero-content { position:relative; z-index:2; max-width:1000px; padding:0 24px; }
+    .hero-content { position:relative; z-index:2; max-width:1250px; padding:0 24px; }
     .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(0,212,180,.1); border:1px solid rgba(0,212,180,.25); border-radius:100px; padding:6px 18px; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; margin-top:8px; opacity:0; animation:fadeSlideUp .8s .3s forwards; max-width:90vw; text-align:center; white-space:normal; line-height:1.5; }
     .hero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
     .hero-name { font-size:clamp(2.2rem,5.5vw,5rem); font-weight:800; line-height:1.0; letter-spacing:-.02em; background:linear-gradient(135deg,#fff 30%,#a8b4d0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:24px; opacity:0; animation:fadeSlideUp .9s .55s forwards; }
@@ -61,7 +61,7 @@
     .hero-tagline strong { color:var(--text); font-weight:600; }
 
     /* Live products strip */
-    .hero-products { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-width:1100px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
+    .hero-products { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; max-width:1200px; margin:0 auto 24px; opacity:0; animation:fadeSlideUp .9s .82s forwards; }
     .hero-product-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:14px 16px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:6px; transition:border-color .3s,transform .3s; }
     .hero-product-card:hover { border-color:rgba(0,212,180,.4); transform:translateY(-3px); }
     .hero-product-card.featured { border-color:rgba(124,92,252,.4); background:rgba(124,92,252,.08); }
@@ -442,7 +442,7 @@
       &nbsp;&nbsp;|&nbsp;&nbsp;15+ Years in Regulated Financial Environments
     </p>
 
-    <!-- 4 live products -->
+    <!-- 10 live products -->
     <div class="hero-products">
       <a href="#p-advisoros" class="hero-product-card featured" onclick="gtag('event','hero_advisoros')">
         <span class="hpc-label purple">✦ Live Now</span>
@@ -454,35 +454,46 @@
         <span class="hpc-name">FinOps Studio</span>
         <span class="hpc-sub">Multi-Platform AI Cost Governance</span>
       </a>
-      <a href="#p-britney" class="hero-product-card" onclick="gtag('event','hero_britney')">
-        <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">Britney</span>
-        <span class="hpc-sub">Reduce customer friction at credit unions</span>
+      <a href="#p-agentic-incident-lab" class="hero-product-card featured" onclick="gtag('event','hero_agentic_incident_lab')">
+        <span class="hpc-label purple">✦ Live Now</span>
+        <span class="hpc-name">Agentic Incident Lab</span>
+        <span class="hpc-sub">Live multi-framework AI for incident response</span>
+      </a>
+      <a href="#p-payments-operations-command-center" class="hero-product-card featured" onclick="gtag('event','hero_payments_ops_command_center')">
+        <span class="hpc-label purple">✦ Live Now</span>
+        <span class="hpc-name">Payments Operations Command Center</span>
+        <span class="hpc-sub">AI-guided ACH, FedNow, FedWire &amp; RTP operations</span>
       </a>
       <a href="#p-product-growth" class="hero-product-card" onclick="gtag('event','hero_pgi')">
         <span class="hpc-label">✦ Live Now</span>
         <span class="hpc-name">Product Growth Intelligence</span>
         <span class="hpc-sub">Score what's actually driving product growth</span>
       </a>
-      <a href="#p-scout" class="hero-product-card" onclick="gtag('event','hero_scout')">
+
+      <a href="#p-founder-ops-studio" class="hero-product-card" onclick="gtag('event','hero_founder_ops_studio')">
         <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">Scout</span>
-        <span class="hpc-sub">Catch what broke after your release</span>
-      </a>
-      <a href="#p-agentic-incident-lab" class="hero-product-card featured" onclick="gtag('event','hero_agentic_incident_lab')">
-        <span class="hpc-label purple">✦ Live Now</span>
-        <span class="hpc-name">Agentic Incident Lab</span>
-        <span class="hpc-sub">Live multi-framework AI for incident response</span>
+        <span class="hpc-name">Founder Ops Studio</span>
+        <span class="hpc-sub">AI-native operating system for founder execution</span>
       </a>
       <a href="#p-ask-my-bank" class="hero-product-card" onclick="gtag('event','hero_ask_my_bank')">
         <span class="hpc-label">✦ Live Now</span>
         <span class="hpc-name">Ask My Bank</span>
         <span class="hpc-sub">Conversational banking, now with investments</span>
       </a>
-      <a href="#p-founder-ops-studio" class="hero-product-card" onclick="gtag('event','hero_founder_ops_studio')">
+      <a href="#p-britney" class="hero-product-card" onclick="gtag('event','hero_britney')">
         <span class="hpc-label">✦ Live Now</span>
-        <span class="hpc-name">Founder Ops Studio</span>
-        <span class="hpc-sub">AI-native operating system for founder execution</span>
+        <span class="hpc-name">Britney</span>
+        <span class="hpc-sub">Reduce customer friction at credit unions</span>
+      </a>
+      <a href="#p-idea-capture" class="hero-product-card" onclick="gtag('event','hero_idea_capture')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Idea Capture</span>
+        <span class="hpc-sub">Turn employee ideas into structured opportunities</span>
+      </a>
+      <a href="#p-scout" class="hero-product-card" onclick="gtag('event','hero_scout')">
+        <span class="hpc-label">✦ Live Now</span>
+        <span class="hpc-name">Scout</span>
+        <span class="hpc-sub">Catch what broke after your release</span>
       </a>
     </div>
 
@@ -530,7 +541,7 @@
       <div class="about-extras reveal reveal-delay-3"><strong>Founder</strong> of Agentics Growth Lab and BetterPlanet Co-op &nbsp;·&nbsp; Guest Lecturer at <strong>SDSU</strong></div>
       <div class="about-stats">
         <div class="stat-card reveal reveal-delay-1"><div class="stat-number">15+</div><div class="stat-label">Years of Experience</div></div>
-        <div class="stat-card reveal reveal-delay-2"><div class="stat-number">12</div><div class="stat-label">AI Products Deployed</div></div>
+        <div class="stat-card reveal reveal-delay-2"><div class="stat-number">13</div><div class="stat-label">AI Products Deployed</div></div>
         <div class="stat-card reveal reveal-delay-3"><div class="stat-number">80+</div><div class="stat-label">Loan Lifecycle Initiatives</div></div>
         <div class="stat-card reveal reveal-delay-4"><div class="stat-number">70+</div><div class="stat-label">Countries via BetterPlanet</div></div>
       </div>
@@ -558,7 +569,7 @@
       <div class="accordion-toggle-row">
         <div>
           <p class="section-label"><span class="accordion-index">02</span>Enterprise AI Portfolio</p>
-          <h2 class="section-title">Twelve enterprise products.<br>Deployed. Try them now.</h2>
+          <h2 class="section-title">Thirteen enterprise products.<br>Deployed. Try them now.</h2>
           <p class="accordion-tagline">Live AI products across banking, FinOps, product intelligence &amp; operations</p>
         </div>
         <span class="accordion-toggle-label"><span class="accordion-hint-text">Explore</span><span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></span>
@@ -877,6 +888,34 @@
         </div>
       </div>
 
+
+      <!-- Payments Operations Command Center -->
+      <div class="product-card advisoros reveal reveal-delay-1" id="p-payments-operations-command-center">
+        <div class="product-header">
+          <div class="product-badge badge-watch"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite"></span>New · Live · Try Now</div>
+          <div class="product-name">Payments Operations Command Center</div>
+          <div class="product-tagline">AI-guided multi-rail operations with human approval</div>
+          <p class="product-desc">A live multi-rail payments operations workspace spanning ACH, FedNow, FedWire, and RTP. Specialist AI teams work through rail-specific daily run books, inspect operational evidence, surface reconciliation breaks and risk, then pause for a human SME to approve each step — with operator productivity reporting, manager oversight, and a durable Neon audit trail.</p>
+          <div class="product-features">
+            <div class="product-feature">Rail-specific AI run books for ACH, FedNow, FedWire, and RTP — not one generic checklist copied across payment types</div>
+            <div class="product-feature">Specialist AI teams perform evidence review, reconciliation analysis, exception triage, posting checks, connectivity review, and control validation</div>
+            <div class="product-feature">Movable operator guide resumes at the first unfinished step; humans explicitly approve work before it is marked complete</div>
+            <div class="product-feature">Cross-rail operator activity reports and a manager view show productivity, approvals, blocked work, attention items, and rail-level activity</div>
+            <div class="product-feature">Material or systemic operational issues route to Incident Intelligence / Lindsay while consequential payment actions remain human-controlled</div>
+          </div>
+          <div class="product-pills">
+            <span class="pill pill-purple">ACH · FedNow · FedWire · RTP</span>
+            <span class="pill pill-teal">Human-in-the-Loop AI</span>
+            <span class="pill pill-purple">OpenAI · Python · FastAPI</span>
+            <span class="pill pill-teal">Next.js · Vercel</span>
+            <span class="pill pill-purple">Neon PostgreSQL</span>
+            <span class="pill pill-teal">Payments Operations</span>
+          </div>
+        </div>
+        <div class="product-actions">
+          <a href="https://agentic-incident-lab.vercel.app/?workspace=platform&rail=ach&scenario=healthy" target="_blank" rel="noopener noreferrer" class="btn-try-advisoros" onclick="gtag('event','payments_ops_command_center_try')">✦ Open Payments Operations Command Center</a>
+        </div>
+      </div>
 
       <!-- Agentic Incident Lab -->
       <div class="product-card advisoros reveal reveal-delay-2" id="p-agentic-incident-lab">
