@@ -741,7 +741,7 @@
     }
     .expertise-summary {
       display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
-      margin-top:18px; padding-top:18px; border-top:1px solid var(--border);
+      margin:0 0 18px; padding:0 0 18px; border-bottom:1px solid var(--border);
     }
     .expertise-summary-item { padding:14px 15px; border-radius:12px; background:rgba(255,255,255,.022); border:1px solid var(--border); }
     .expertise-summary-kicker { font-size:.63rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
@@ -1290,66 +1290,43 @@
     .hero-video-card{
       appearance:none;
       width:100%;
-      border:1px solid rgba(126,223,214,.24);
-      border-radius:14px;
+      border:0;
+      border-radius:0;
       padding:0;
-      overflow:hidden;
-      background:rgba(7,9,26,.72);
-      box-shadow:0 16px 38px rgba(0,0,0,.24),0 0 24px rgba(126,223,214,.06);
+      overflow:visible;
+      background:transparent;
+      box-shadow:none;
       cursor:pointer;
       color:var(--text);
       font-family:inherit;
       text-align:left;
-      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+      transition:transform .22s ease;
     }
     .hero-video-card:hover,
     .hero-video-card:focus-visible{
       transform:translateY(-2px);
-      border-color:rgba(126,223,214,.58);
-      box-shadow:0 18px 42px rgba(0,0,0,.3),0 0 28px rgba(126,223,214,.12);
       outline:none;
     }
     .hero-video-preview{
       position:relative;
       width:100%;
-      aspect-ratio:4/5.15;
-      overflow:hidden;
-      background:var(--bg3);
+      aspect-ratio:auto;
+      overflow:visible;
+      background:transparent;
+      display:block;
     }
+    .hero-video-preview img,
     .hero-video-preview video{
       display:block;
       width:100%;
-      height:100%;
-      object-fit:cover;
+      height:auto;
+      object-fit:contain;
       object-position:center top;
       pointer-events:none;
+      border-radius:28px;
     }
-    .hero-video-preview::after{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top,rgba(7,9,26,.54),transparent 46%);
-      pointer-events:none;
-    }
-    .hero-video-play{
-      position:absolute;
-      z-index:2;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:34px;
-      height:34px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:50%;
-      background:rgba(7,9,26,.78);
-      border:1px solid rgba(255,255,255,.36);
-      color:#fff;
-      font-size:.82rem;
-      box-shadow:0 6px 20px rgba(0,0,0,.3);
-      padding-left:2px;
-    }
+    .hero-video-preview::after{content:none;}
+    .hero-video-play{display:none;}
     .hero-video-meta{
       padding:9px 9px 10px;
     }
@@ -1535,12 +1512,10 @@
       .hero-video-preview{
         aspect-ratio:9/11;
       }
-      .hero-video-meta{
-        padding:6px 7px 7px;
-      }
-      .hero-video-kicker{font-size:.48rem;margin-bottom:2px;}
-      .hero-video-title{font-size:.55rem;line-height:1.22;}
-      .hero-video-play{width:30px;height:30px;font-size:.72rem;}
+      .hero-video-meta{display:none;}
+      .hero-video-kicker,
+      .hero-video-title,
+      .hero-video-play{display:none;}
       .hero-proof-grid{
         flex:1 1 auto;
         grid-template-columns:1fr;
@@ -1647,14 +1622,8 @@
   <aside class="hero-proof-rail" aria-label="Meet Nicole and career highlights">
     <button class="hero-video-card" id="hero-video-open" type="button" aria-label="Play Nicole's portfolio introduction">
       <span class="hero-video-preview">
-        <video muted playsinline preload="metadata" aria-hidden="true">
-          <source src="https://betterplanetcoop.github.io/AI-First%20Fintech%20Leadership%20Portfolio.mp4" type="video/mp4">
-        </video>
+        <img src="https://betterplanetcoop.github.io/Hi-Nicole.png" alt="Meet Nicole video thumbnail" loading="eager" decoding="async">
         <span class="hero-video-play">▶</span>
-      </span>
-      <span class="hero-video-meta">
-        <span class="hero-video-kicker">Meet Nicole</span>
-        <span class="hero-video-title">AI-First Fintech Leadership</span>
       </span>
     </button>
 
@@ -2333,6 +2302,11 @@
   </div>
   <div class="accordion-body-outer" id="acc-skills" style="height:0">
   <div class="accordion-body-inner">
+    <div class="expertise-summary reveal">
+      <div class="expertise-summary-item"><div class="expertise-summary-kicker">AI Systems</div><div class="expertise-summary-title">Enterprise AI that earns trust</div></div>
+      <div class="expertise-summary-item"><div class="expertise-summary-kicker">Platform</div><div class="expertise-summary-title">Payments + digital banking infrastructure</div></div>
+      <div class="expertise-summary-item"><div class="expertise-summary-kicker">Execution</div><div class="expertise-summary-title">Product operating models that ship</div></div>
+    </div>
     <div class="expertise-compact">
       <div class="expertise-row reveal reveal-delay-1">
         <div class="expertise-icon">🤖</div>
@@ -2362,11 +2336,6 @@
         <div class="expertise-icon">📐</div>
         <div><div class="expertise-name">Scaled Agile &amp; OKRs</div><p class="expertise-copy">Product operating models, team coaching and delivery structures designed to hold up under regulatory pressure.</p><div class="expertise-tags"><span>SAFe / Scrum</span><span>OKRs</span><span>Team Coaching</span><span>PI Planning</span></div></div>
       </div>
-    </div>
-    <div class="expertise-summary reveal">
-      <div class="expertise-summary-item"><div class="expertise-summary-kicker">AI Systems</div><div class="expertise-summary-title">Enterprise AI that earns trust</div></div>
-      <div class="expertise-summary-item"><div class="expertise-summary-kicker">Platform</div><div class="expertise-summary-title">Payments + digital banking infrastructure</div></div>
-      <div class="expertise-summary-item"><div class="expertise-summary-kicker">Execution</div><div class="expertise-summary-title">Product operating models that ship</div></div>
     </div>
   </div>
   </div>
