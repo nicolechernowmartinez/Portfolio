@@ -2298,7 +2298,8 @@
     aglBubble.addEventListener('mouseenter',function(){aglBubble.style.transform='scale(1.08)';});
     aglBubble.addEventListener('mouseleave',function(){aglBubble.style.transform=aglFrame.style.display==='block'?'scale(1.06)':'scale(1)';});
     document.addEventListener('click',function(e){
-      if(aglFrame.style.display==='block'&&!aglFrame.contains(e.target)&&!aglBubble.contains(e.target)&&!aglClose.contains(e.target)){
+      var clickedThemeToggle = themeToggle && themeToggle.contains(e.target);
+      if(aglFrame.style.display==='block'&&!clickedThemeToggle&&!aglFrame.contains(e.target)&&!aglBubble.contains(e.target)&&!aglClose.contains(e.target)){
         setChattyOpen(false);
       }
     });
